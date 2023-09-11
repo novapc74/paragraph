@@ -74,7 +74,7 @@ prod-yarn-build:
 	yarn --cwd project/ build
 
 echo-open-browser:
-	xdg-open http://localhost:8033/
+	xdg-open http://localhost:8037/
 
 server-update:
 	cd project && yarn build && composer install

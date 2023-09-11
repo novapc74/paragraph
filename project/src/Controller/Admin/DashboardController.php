@@ -37,7 +37,7 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('<span style="color: red">Symfony template</span>');
+            ->setTitle('<span style="color: red">&#167;</span> PARAGRAPH');
     }
 
     public function configureCrud(): Crud
