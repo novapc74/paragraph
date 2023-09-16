@@ -1,0 +1,42 @@
+{# @var socialNetwork \App\Entity\SocialNetwork #}
+{# @var contact \App\Entity\Contact #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Домашняя страница{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+        <h1>Домашняя страница</h1>
+
+        {% set contact = contact() %}
+        {% set socialNetworks = socialNetworks() %}
+
+        <section>
+            <h2 style="color: #7c2d12">Контакты</h2>
+            <ul>
+                <li>Адрес: {{ contact.address }}</li>
+                <li>
+                    <ul>
+                        Телефоны:
+                        {% for phone in contact.phone %}
+                            <li>{{ phone }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li>ИНН: {{ contact.inn }}</li>
+                <li>Координаты на карте Яндекс: {{ contact.coordinates }}</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 style="color: #7c2d12">Соц.сети</h2>
+            <ul>
+                {% for socialNetwork in socialNetworks %}
+                    <li>{{ socialNetwork.name }} - {{ socialNetwork.link }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+    </div>
+{% endblock %}

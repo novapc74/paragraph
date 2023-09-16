@@ -2,10 +2,8 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Branch;
 use App\Entity\Contact;
 use App\Entity\Feedback;
-use App\Entity\Gallery;
 use App\Entity\SocialNetwork;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
@@ -24,13 +22,6 @@ class DashboardController extends AbstractDashboardController
                                 private readonly AdminUrlGenerator $adminUrlGenerator)
     {
     }
-
-    #[Route('/', name: 'default')]
-    public function index(): RedirectResponse
-    {
-        return $this->redirectToRoute('admin');
-    }
-
 
     #[Route('/admin', name: 'admin')]
     public function admin(): Response
@@ -58,7 +49,7 @@ class DashboardController extends AbstractDashboardController
 //        yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
 
         yield MenuItem::section('контакты');
-//        yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
+        yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
         yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
 
 
