@@ -2,7 +2,11 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Branch;
+use App\Entity\Contact;
+use App\Entity\Feedback;
 use App\Entity\Gallery;
+use App\Entity\SocialNetwork;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -50,7 +54,16 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToCrud('Пользователи', 'fa-solid fa-user', User::class);
 
-//        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
+        yield MenuItem::section();
+//        yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
+
+        yield MenuItem::section('контакты');
+//        yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
+        yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
+
+
+
+        //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
 //        foreach (self::getSectionMenu() as [$label, $icon, $url]) {
 //            yield MenuItem::linkToUrl($label, $icon, $url);
 //        }

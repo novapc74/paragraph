@@ -18,7 +18,7 @@ framework:
     php_errors:
         log: true
 
-    ide: 'phpstorm://open?file=%%f&line=%%l&/project/>/home/novapc/projects/symfony-template/project/'
+    ide: 'phpstorm://open?file=%%f&line=%%l&/project/>/home/novapc/projects/paragraph/project/'
 
 when@test:
     framework:
