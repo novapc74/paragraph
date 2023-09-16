@@ -46,10 +46,12 @@ class ContactCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+            FormField::addRow(),
             EmailField::new('email', 'Email')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+            FormField::addRow(),
             CollectionField::new('phone', 'Телефоны')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
