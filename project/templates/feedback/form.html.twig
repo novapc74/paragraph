@@ -1,6 +1,20 @@
 {{ form_start(form) }}
 
-    {{ form_row(form) }}
+    {{ form_label(form.name, 'Название', {'label_attr': {'class': 'foo'}}) }}
+    {{ form_widget(form.name, {'attr': {'class': 'name_field'}}) }}
+    {{ form_errors(form.name) }}
+
+    {{ form_label(form.email, 'Почта', {'label_attr': {'class': 'foo'}}) }}
+    {{ form_widget(form.email, {'attr': {'class': 'name_field'}}) }}
+    {{ form_errors(form.email) }}
+
+    {{ form_label(form.phone, 'Телефон', {'label_attr': {'class': 'foo'}}) }}
+    {{ form_widget(form.phone, {'attr': {'class': 'name_field'}}) }}
+    {{ form_errors(form.phone) }}
+
+    {{ form_label(form.agreeTerm, 'Согласен или нет', {'label_attr': {'class': 'foo'}}) }}
+    {{ form_widget(form.agreeTerm, {'attr': {'class': 'name_field'}}) }}
+    {{ form_errors(form.agreeTerm) }}
 
     <button type="submit">Отправить</button>
 
