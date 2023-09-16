@@ -2,17 +2,16 @@
 
 namespace App\Message;
 
-
-use App\Service\MailerService;
+use App\Entity\Feedback;
 
 class SendEmail
 {
-    public function __construct(private readonly MailerService $mailerService, private /*Feedback*/ $feedback)
+    public function __construct(private readonly Feedback $feedback)
     {
     }
 
-    public function sendEmail(): void
+    public function getFeedback(): Feedback
     {
-        $this->mailerService->resolveMailer($this->feedback);
+        return $this->feedback;
     }
 }

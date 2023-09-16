@@ -46,7 +46,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Пользователи', 'fa-solid fa-user', User::class);
 
         yield MenuItem::section();
-//        yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
+        yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
 
         yield MenuItem::section('контакты');
         yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
