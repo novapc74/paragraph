@@ -1,51 +1,8 @@
-{{ form_start(feedbackForm, {
-    'attr': {
-        'class': 'feedback-form'
-    },
-}) }}
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.name, {
-        'attr': {
-            'class': 'feedback-form__input',
-        }}) }}
-    {{ form_label(feedbackForm.name, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.phone, {
-        'attr': {
-            'class': 'feedback-form__input text-number',
-        }}) }}
-    {{ form_label(feedbackForm.phone, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<div class="feedback-form__control base-input">
-    {{ form_widget(feedbackForm.email, {
-        'attr': {
-            'class': 'feedback-form__input',
-        }}) }}
-    {{ form_label(feedbackForm.email, null, { 'label_attr': {'class': 'feedback-form__label'} }) }}
-</div>
-<label for="{{ feedbackForm.agreeTerm.vars.id }}" class="feedback-form__checkbox">
-    {{ form_widget(feedbackForm.agreeTerm) }}
-    <span class="feedback-form__check">
-        <svg>
-            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-input"></use>
-        </svg>
-    </span>
-    <div class="feedback-form__policy">
-        <span>
-            Я принимаю условия
-        </span>
-        <a href="/policy">
-            Политики конфиденциальности
-        </a>
-    </div>
-</label>
+{{ form_start(form) }}
 
-{{ form_widget(feedbackForm._token) }}
+    {{ form_row(form) }}
 
-<button class="feedback-form__btn">
-    Отправить
-</button>
+    <button type="submit">Отправить</button>
 
-{{ form_errors(feedbackForm) }}
-{{ form_end(feedbackForm,{'render_rest': false}) }}
+{{ form_end(form) }}
+
