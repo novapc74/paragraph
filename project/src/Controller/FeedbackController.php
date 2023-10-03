@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Feedback;
 use App\Message\SendEmail;
-use App\Form\FeedbackFormType;
+use App\Form\PopupFeedbackFormType;
+use App\Form\FooterFeedbackFormType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,40 +15,49 @@ use Symfony\Component\Messenger\MessageBusInterface;
 
 class FeedbackController extends AbstractController
 {
-    #[Route('/feedback', name: 'app_feedback', methods: ['GET', 'POST'])]
-    public function index(Request             $request,
-                          ManagerRegistry     $managerRegistry,
-                          MessageBusInterface $bus): Response
-    {
-        if (!$request->isXmlHttpRequest()) {
-            return $this->redirect('/');
-        }
+	public function __construct(private readonly ManagerRegistry     $managerRegistry,
+	                            private readonly MessageBusInterface $bus)
+	{
+	}
 
-        $identifier = $request->query->get('identifier', 'single');
+	#[Route('/feedback/popup', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
+	public function resolvePopupForm(Request $request): Response
+	{
+		return $this->resolveForm($request, PopupFeedbackFormType::class);
+	}
 
-        $feedBack = new Feedback();
+	#[Route('/feedback/footer', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
+	public function resolveFooterForm(Request $request): Response
+	{
+		return $this->resolveForm($request, FooterFeedbackFormType::class);
+	}
 
-        $form = $this->createFormBuilder($feedBack)
-            ->create($identifier, FeedbackFormType::class)
-            ->getForm();
+	private function resolveForm($request, $formType): Response
+	{
+		if (!$request->isXmlHttpRequest()) {
+			return $this->redirect('/');
+		}
 
-        $form->handleRequest($request);
+		$feedBack = new Feedback();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $feedBack = $form->getData();
+		$form = $this->createForm($formType, $feedBack);
+		$form->handleRequest($request);
 
-            $em = $managerRegistry->getManager();
-            $em->persist($feedBack);
-            $em->flush();
+		if ($form->isSubmitted() && $form->isValid()) {
+			$feedBack = $form->getData();
 
-            $bus->dispatch(new SendEmail($feedBack));
+			$em = $this->managerRegistry->getManager();
+			$em->persist($feedBack);
+			$em->flush();
 
-            return $this->json(['success' => true], 201);
-        }
+			$this->bus->dispatch(new SendEmail($feedBack));
 
-        return $this->render("feedback/form.html.twig", [
-            'form' => $form->createView()
-        ]);
-    }
+			return $this->json(['success' => true], 201);
+		}
+
+		return $this->render("feedback/form.html.twig", [
+			'form' => $form->createView()
+		]);
+	}
 }
 
