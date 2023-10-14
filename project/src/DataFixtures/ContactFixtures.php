@@ -3,10 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Contact;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 
-class ContactFixtures extends BaseFixture implements FixtureGroupInterface
+class ContactFixtures extends BaseFixture implements DependentFixtureInterface
 {
     public function loadData(ObjectManager $manager): void
     {
@@ -23,7 +23,8 @@ class ContactFixtures extends BaseFixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
+
     {
         return [
             SocialNetworkFixtures::class

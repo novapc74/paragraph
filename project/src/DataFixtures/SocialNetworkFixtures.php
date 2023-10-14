@@ -3,10 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\SocialNetwork;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 
-class SocialNetworkFixtures extends BaseFixture implements FixtureGroupInterface
+class SocialNetworkFixtures extends BaseFixture implements DependentFixtureInterface
 {
     private const SOCIAL_NETWORK_DATA = [
         [
@@ -33,7 +33,7 @@ class SocialNetworkFixtures extends BaseFixture implements FixtureGroupInterface
         $manager->flush();
     }
 
-    public static function getGroups(): array
+    public function getDependencies(): array
     {
         return [
             UserFixtures::class

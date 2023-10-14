@@ -1,0 +1,24 @@
+{# @var review \App\Entity\Review #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Отзывы{% endblock %}
+
+{% block body %}
+    <div class="example-wrapper">
+
+        <section>
+            <h2 style="color: #7c2d12">Отзывы</h2>
+            <ul>
+                Телефоны:
+                {% for review in reviews %}
+                    <li>Имя: {{ review.title }}</li>
+                    <li>Заголовок: {{ review.subTitle }}</li>
+                    <li>Описание: {{ review.description }}</li>
+                    <li>Рейтинг: {{ review.rating }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+
+{% endblock %}
