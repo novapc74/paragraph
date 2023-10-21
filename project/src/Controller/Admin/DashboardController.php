@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Feedback;
+use App\Entity\Property;
+use App\Entity\PropertyGroup;
 use App\Entity\Review;
 use App\Entity\SocialNetwork;
 use App\Entity\User;
@@ -49,5 +51,8 @@ class DashboardController extends AbstractDashboardController
 
         yield MenuItem::section('товары');
         yield MenuItem::linkToCrud('Страны', 'fa-solid fa-globe', Country::class);
+        yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
+        yield MenuItem::linkToCrud('Свойства', 'fa-solid fa-barcode', Property::class);
+
     }
 }
