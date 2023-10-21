@@ -21,6 +21,9 @@ class PropertyGroup
     #[ORM\OneToMany(mappedBy: 'propertyGroup', targetEntity: Property::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $properties;
 
+    #[ORM\Column]
+    private ?int $position = null;
+
     public function __construct()
     {
         $this->properties = new ArrayCollection();
@@ -62,6 +65,18 @@ class PropertyGroup
                 $property->setPropertyGroup(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): static
+    {
+        $this->position = $position;
 
         return $this;
     }
