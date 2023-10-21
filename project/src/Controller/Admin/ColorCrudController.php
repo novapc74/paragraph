@@ -44,6 +44,7 @@ class ColorCrudController extends AbstractCrudController
             TextField::new('hex', 'HEX кодировка')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->formatValue(fn($value) => '<i style="color:' . $value . ';">' . $value. '</i>')
             ,
             FormField::addRow(),
             IntegerField::new('position', 'Позиция')

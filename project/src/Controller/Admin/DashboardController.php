@@ -2,21 +2,21 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\User;
 use App\Entity\Color;
+use App\Entity\Review;
 use App\Entity\Contact;
 use App\Entity\Country;
 use App\Entity\Feedback;
 use App\Entity\Property;
 use App\Entity\PropertyGroup;
-use App\Entity\Review;
 use App\Entity\SocialNetwork;
-use App\Entity\User;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
@@ -55,6 +55,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Цвета', 'fa-solid fa-palette', Color::class);
         yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
         yield MenuItem::linkToCrud('Свойства', 'fa-solid fa-barcode', Property::class);
-
     }
 }
