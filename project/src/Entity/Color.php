@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Entity\Trait\IdentifierTrait;
+use App\Entity\Trait\PositionTrait;
 use App\Repository\ColorRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ColorRepository::class)]
 class Color
 {
-    use IdentifierTrait;
+    use
+        IdentifierTrait,
+        PositionTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -18,9 +22,6 @@ class Color
     #[ORM\Column(length: 10)]
     private ?string $hex = null;
 
-    #[ORM\Column]
-    private ?int $position = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -28,7 +29,7 @@ class Color
 
     public function __toString(): string
     {
-     return $this->getTitle() ?? 'новый цвет';
+        return $this->getTitle() ?? 'новый цвет';
     }
 
     public function getHex(): ?string
@@ -43,15 +44,4 @@ class Color
         return $this;
     }
 
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
-
-        return $this;
-    }
 }

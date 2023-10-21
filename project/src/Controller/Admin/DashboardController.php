@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Category;
 use App\Entity\Store;
 use App\Entity\User;
 use App\Entity\Color;
@@ -57,6 +58,9 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Цвета', 'fa-solid fa-palette', Color::class);
         yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
         yield MenuItem::linkToCrud('Свойства', 'fa-solid fa-barcode', Property::class);
+
+        yield MenuItem::section('каталог');
+        yield MenuItem::linkToCrud('Категории', 'fa-solid fa-tree', Category::class);
 
     }
 }

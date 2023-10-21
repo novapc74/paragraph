@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Entity\Trait\IdentifierTrait;
+use App\Entity\Trait\PositionTrait;
 use App\Repository\PropertyGroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -11,7 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: PropertyGroupRepository::class)]
 class PropertyGroup
 {
-    use IdentifierTrait;
+    use IdentifierTrait, PositionTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -21,9 +22,6 @@ class PropertyGroup
     #[ORM\OrderBy(['position' => 'ASC'])]
     #[ORM\OneToMany(mappedBy: 'propertyGroup', targetEntity: Property::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $properties;
-
-    #[ORM\Column]
-    private ?int $position = null;
 
     public function __construct()
     {
@@ -66,18 +64,6 @@ class PropertyGroup
                 $property->setPropertyGroup(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
 
         return $this;
     }

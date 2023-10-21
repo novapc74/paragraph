@@ -3,13 +3,14 @@
 namespace App\Entity;
 
 use App\Entity\Trait\IdentifierTrait;
+use App\Entity\Trait\PositionTrait;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PropertyRepository::class)]
 class Property
 {
-    use IdentifierTrait;
+    use IdentifierTrait, PositionTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,9 +19,6 @@ class Property
 
     #[ORM\ManyToOne(targetEntity: PropertyGroup::class, cascade: ['persist'], inversedBy: 'properties')]
     private ?PropertyGroup $propertyGroup = null;
-
-    #[ORM\Column]
-    private ?int $position = null;
 
     public function getId(): ?int
     {
@@ -40,18 +38,6 @@ class Property
     public function setPropertyGroup(?PropertyGroup $propertyGroup): static
     {
         $this->propertyGroup = $propertyGroup;
-
-        return $this;
-    }
-
-    public function getPosition(): ?int
-    {
-        return $this->position;
-    }
-
-    public function setPosition(int $position): static
-    {
-        $this->position = $position;
 
         return $this;
     }
