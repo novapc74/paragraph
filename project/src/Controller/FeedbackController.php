@@ -10,32 +10,31 @@ use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FeedbackController extends AbstractController
 {
     public function __construct(private readonly ManagerRegistry     $managerRegistry,
-                                private readonly MessageBusInterface $bus,
-                                private readonly Request             $request)
+                                private readonly MessageBusInterface $bus)
     {
     }
 
     #[Route('/feedback/popup', name: 'app_feedback_popup', methods: ['GET', 'POST'])]
-    public function resolvePopupForm(): Response
+    public function resolvePopupForm(Request $request): Response
     {
-        return $this->resolveForm(PopupFeedbackFormType::class);
+        return $this->resolveForm($request, PopupFeedbackFormType::class);
     }
 
     #[Route('/feedback/footer', name: 'app_feedback_footer', methods: ['GET', 'POST'])]
-    public function resolveFooterForm(): Response
+    public function resolveFooterForm(Request $request): Response
     {
-        return $this->resolveForm(FooterFeedbackFormType::class);
+        return $this->resolveForm($request, FooterFeedbackFormType::class);
     }
 
-    private function resolveForm(string $formType): Response
+    private function resolveForm($request, string $formType): Response
     {
-        if (!$this->request->isXmlHttpRequest()) {
+        if (!$request->isXmlHttpRequest()) {
             $message = 'There is not XmlHttpRequest!';
             $success = false;
 
@@ -45,7 +44,7 @@ class FeedbackController extends AbstractController
         $feedBack = new Feedback();
 
         $form = $this->createForm($formType, $feedBack);
-        $form->handleRequest($this->request);
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $feedBack = $form->getData();

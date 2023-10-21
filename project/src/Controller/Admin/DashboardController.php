@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Contact;
+use App\Entity\Country;
 use App\Entity\Feedback;
 use App\Entity\Review;
 use App\Entity\SocialNetwork;
@@ -11,19 +12,11 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DashboardController extends AbstractDashboardController
 {
-    public function __construct(private readonly ManagerRegistry   $managerRegistry,
-                                private readonly AdminUrlGenerator $adminUrlGenerator)
-    {
-    }
-
     #[Route('/admin', name: 'admin')]
     public function admin(): Response
     {
@@ -46,50 +39,15 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToCrud('Пользователи', 'fa-solid fa-user', User::class);
 
-        yield MenuItem::section();
-        yield MenuItem::linkToCrud('Обратная связь', 'fa-solid fa-comment', Feedback::class);
+        yield MenuItem::section('обратная связь');
+        yield MenuItem::linkToCrud('Сообщения', 'fa-solid fa-comment', Feedback::class);
         yield MenuItem::linkToCrud('Отзывы', 'fa-solid fa-comments', Review::class);
 
         yield MenuItem::section('контакты');
         yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
         yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
 
-
-
-        //        yield MenuItem::section('Секции на страницах', 'fa-sharp fa-solid fa-puzzle-piece');
-//        foreach (self::getSectionMenu() as [$label, $icon, $url]) {
-//            yield MenuItem::linkToUrl($label, $icon, $url);
-//        }
+        yield MenuItem::section('товары');
+        yield MenuItem::linkToCrud('Страны', 'fa-solid fa-globe', Country::class);
     }
-
-//    private function getSectionMenu(): array
-//    {
-//        $dataSectionMenu = [];
-//
-//        $dataSectionMenu['Добавить секцию'] = [
-//            'Добавить секцию',
-//            'fa-solid fa-plus',
-//            $this->adminUrlGenerator
-//                ->unsetAll()
-//                ->setController(PageSectionCrudController::class)
-//                ->setAction(Crud::PAGE_INDEX)
-//                ->generateUrl()
-//        ];
-//
-//        foreach ($this->managerRegistry->getRepository(PageSection::class)->findAll() as $section) {
-//            $sectionType = array_search($section->getType(), PageSection::getAvailableSectionType());
-//            if (!array_key_exists($sectionType, $dataSectionMenu)) {
-//                $url = $this->adminUrlGenerator
-//                    ->unsetAll()
-//                    ->setController(PageSectionCrudController::class)
-//                    ->setAction(Crud::PAGE_INDEX)
-//                    ->set('type', $section->getType())
-//                    ->generateUrl();
-//
-//                $dataSectionMenu[$sectionType] = [$sectionType, false, $url];
-//            }
-//        }
-//
-//        return $dataSectionMenu;
-//    }
 }
