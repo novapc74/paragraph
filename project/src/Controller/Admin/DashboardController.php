@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Store;
 use App\Entity\User;
 use App\Entity\Color;
 use App\Entity\Review;
@@ -50,10 +51,12 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
         yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
 
-        yield MenuItem::section('товары');
+        yield MenuItem::section('для товаров');
+        yield MenuItem::linkToCrud('Маркетплейсы', 'fa-solid fa-store', Store::class);
         yield MenuItem::linkToCrud('Страны', 'fa-solid fa-globe', Country::class);
         yield MenuItem::linkToCrud('Цвета', 'fa-solid fa-palette', Color::class);
         yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
         yield MenuItem::linkToCrud('Свойства', 'fa-solid fa-barcode', Property::class);
+
     }
 }

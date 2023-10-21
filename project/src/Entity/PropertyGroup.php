@@ -18,6 +18,7 @@ class PropertyGroup
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\OrderBy(['position' => 'ASC'])]
     #[ORM\OneToMany(mappedBy: 'propertyGroup', targetEntity: Property::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $properties;
 
