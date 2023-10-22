@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Color;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -30,6 +31,7 @@ class CategoryCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            FormField::addTab('Основное'),
             TextField::new('title', 'Категория')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
@@ -45,6 +47,14 @@ class CategoryCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+            FormField::addTab('Товары'),
+            AssociationField::new('products', 'Товары')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                ])
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
         ];
     }
 }
