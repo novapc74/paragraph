@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Measure;
+use App\Entity\Product;
 use App\Entity\Store;
 use App\Entity\User;
 use App\Entity\Color;
@@ -63,5 +64,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('каталог');
         yield MenuItem::linkToCrud('Маркетплейсы', 'fa-solid fa-store', Store::class);
         yield MenuItem::linkToCrud('Категории', 'fa-solid fa-tree', Category::class);
+        yield MenuItem::linkToCrud('Товары', 'fa-brands fa-product-hunt', Product::class);
     }
 }

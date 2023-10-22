@@ -21,6 +21,9 @@ class Gallery
     #[ORM\Column(nullable: true)]
     private ?int $sort = 0;
 
+    #[ORM\ManyToOne(inversedBy: 'gallery')]
+    private ?Product $product = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -51,6 +54,18 @@ class Gallery
     public function setSort(?int $sort): static
     {
         $this->sort = $sort;
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
 
         return $this;
     }
