@@ -34,6 +34,8 @@ class PropertyFixtures extends BaseFixture implements DependentFixtureInterface
     {
         return [
             CountryFixtures::class,
+            MeasureFixtures::class,
+            ColorFixtures::class,
         ];
     }
 }

@@ -4,9 +4,8 @@ namespace App\DataFixtures;
 
 use App\Entity\Color;
 use Doctrine\Persistence\ObjectManager;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class ColorFixtures extends BaseFixture implements DependentFixtureInterface
+class ColorFixtures extends BaseFixture
 {
     private const COLOR_DATA = [
         [
@@ -52,12 +51,5 @@ class ColorFixtures extends BaseFixture implements DependentFixtureInterface
         });
 
         $manager->flush();
-    }
-
-    public function getDependencies(): array
-    {
-        return [
-            CountryFixtures::class,
-        ];
     }
 }
