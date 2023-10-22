@@ -3442,10 +3442,10 @@ inherits@2.0.3:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   integrity sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==
 
-input-mask@^1.1.20:
-  version "1.1.20"
-  resolved "https://registry.yarnpkg.com/input-mask/-/input-mask-1.1.20.tgz#b977ab4f2b4111b6bbf7c2b4e92457b91b1b033c"
-  integrity sha512-81Ja6Dn8FF693LCij7zucS10hmslzGe+NHL6SU2nGnJqgX8VgPROliD4Eua3d68P1MudqRNvlZvErlPEb+fC8A==
+inputmask@^5.0.8:
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/inputmask/-/inputmask-5.0.8.tgz#cd0f70b058c3291a0d4f27de25dbfc179c998bb4"
+  integrity sha512-1WcbyudPTXP1B28ozWWyFa6QRIUG4KiLoyR6LFHlpT4OfTzRqFfWgHFadNvRuMN1S9XNVz9CdNvCGjJi+uAMqQ==
 
 interpret@^2.2.0:
   version "2.2.0"

@@ -1,0 +1,16 @@
+@import "../../vars";
+.response-popup {
+  &__title {
+    margin-bottom: 20px;
+    color: $blue;
+    span {
+      white-space: nowrap;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 10px;
+    }
+    &.hidden {
+      display: none;
+    }
+  }
+}

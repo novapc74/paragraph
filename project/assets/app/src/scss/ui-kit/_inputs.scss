@@ -1,0 +1,155 @@
+@import "../vars";
+@import "../mixins/base";
+
+.default-input {
+  display: block;
+  position: relative;
+
+  input, textarea {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 25px;
+    //border-bottom: 1px solid $blue-dark;
+    //@include text-16;
+    //color: $blue-dark;
+    transition-property: border-color, color;
+    @include base-transition;
+
+    &::placeholder {
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+  }
+
+  &.empty {
+    input, textarea {
+      //border-color: $blue-dark-2;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      input, textarea {
+        //border-color: $blue-dark;
+      }
+    }
+  }
+
+  &__error-icon, &__success-icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    transition: opacity .3s ease;
+    fill: none;
+  }
+
+  &__error-icon {
+    stroke: $red;
+  }
+
+  &__error-text {
+    position: absolute;
+    left: 0;
+    bottom: -22px;
+    //@include text-14_300;
+    color: $red;
+    opacity: 0;
+    transition: opacity .3s ease;
+    &_hidden {
+      display: none;
+    }
+  }
+
+  input.error {
+    color: $red;
+    border-color: $red;
+  }
+
+  input.error ~ &__error-icon, input.error ~ &__error-text {
+    opacity: 1;
+  }
+
+  &__success-icon {
+    //stroke: $blue-dark;
+  }
+
+  input.success ~ &__success-icon {
+    opacity: 1;
+  }
+
+  &_textarea {
+    height: 92px;
+  }
+
+  &_dark {
+    input, textarea {
+      border-bottom: 1px solid $grey-light;
+      color: $grey-light;
+    }
+
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        input, textarea {
+          border-color: $grey-light;
+        }
+      }
+    }
+  }
+
+  &_dark &__success-icon {
+    stroke: $grey-light;
+  }
+}
+
+.default-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  //@include text-14_300;
+  //color: $blue-dark-2;
+  cursor: pointer;
+
+  input {
+    display: none;
+  }
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    //border: 1px solid $blue-dark-2;
+    opacity: 0.5;
+    transition-property: border-color, color, opacity;
+    @include base-transition;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      //stroke: $blue-dark-2;
+      fill: none;
+      opacity: 0;
+      transition-property: fill, opacity;
+      @include base-transition;
+    }
+  }
+
+  input:checked ~ &__checkbox {
+    opacity: 1;
+
+    svg {
+      opacity: 1;
+    }
+  }
+
+  input.error ~ &__checkbox {
+    //border-color: $red;
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover &__checkbox {
+      opacity: 1;
+    }
+  }
+}

@@ -1,4 +1,5 @@
 @import "vars";
+@import "mixins/base";
 /*Обнуление*/
 * {
   padding: 0;
@@ -27,9 +28,11 @@ header,
 section {
   display: block;
 }
+html {
+  height: 100%;
+}
 html,
 body {
-  height: 100%;
   overflow-x: hidden;
   scroll-behavior: smooth;
 }
@@ -43,7 +46,10 @@ body {
 input,
 button,
 textarea {
-  font-family: $ff-main;
+  font-family: $ff-text;
+  background-color: transparent;
+  border: none;
+  resize: none;
 }
 input::-ms-clear {
   display: none;
@@ -51,6 +57,7 @@ input::-ms-clear {
 button {
   cursor: pointer;
   background-color: transparent;
+  border: none;
 }
 button::-moz-focus-inner {
   padding: 0;
@@ -80,6 +87,9 @@ h6 {
   font-weight: inherit;
   font-size: inherit;
 }
+address {
+  font-style: normal;
+}
 //-webkit-overflow-scrolling: touch;
 //animation-play-state: paused !important;
 
@@ -94,7 +104,8 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
   -webkit-background-clip: text;
-  -webkit-text-fill-color: $brown_light;
+  -webkit-text-fill-color: $black;
 }
+
 
 /*--------------------*/

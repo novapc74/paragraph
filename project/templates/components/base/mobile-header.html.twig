@@ -1,0 +1,47 @@
+<div class="mobile-header" data-mobile-menu>
+    <div class="mobile-header__inner">
+        <nav class="mobile-header__nav">
+            <ul class="nav-header__list">
+                {% if menu %}
+                    {% for item in menu %}
+                        {% if item.subLinks is defined %}
+                            <li class="dropdown-menu mobile-header__menu mobile-menu" data-dropdown>
+                                <div class="dropdown-menu__header mobile-menu__header" data-open-dropdown>
+                                    <span class="title-18 mobile-menu__title">{{ item.name }} <span
+                                                class="title-16_italic">({{ item.subLinks | length }})</span></span>
+                                    <span class="dropdown-menu__btn mobile-menu__btn"></span>
+                                </div>
+                                <ul class="dropdown-menu__inner mobile-menu__list"
+                                    style="--count: {{ serviceList() | length }}">
+                                    {% for sublink in item.subLinks %}
+                                        <li class="default-link mobile-menu__item">
+                                            <a href="{{ sublink.link }}"
+                                               class="mobile-menu__link">{{ sublink.name }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li class="mobile-header__menu mobile-menu">
+                                <a href="{{ path(item.link) }}" class="title-18 mobile-menu__title">{{ item.name }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                {% if contacts.phone %}
+                    <li class="mobile-header__menu mobile-menu">
+                        <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}"
+                           class="title-18 mobile-menu__title">{{ contacts.phone[0] }}</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+
+        <button class="default-button default-button_solid_white mobile-header__button" data-open-modal="feedback">
+            Оставить заявку
+            <svg>
+                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-top-right-icon"></use>
+            </svg>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<header class="header" data-header>
+    <div class="container header__container">
+        {% if isHome %}
+            <div class="logo header__logo">
+                <svg>
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#logo"></use>
+                </svg>
+            </div>
+        {% else %}
+            <a href="{{ path('app_home') }}" class="logo header__logo">
+                <svg>
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#logo"></use>
+                </svg>
+            </a>
+        {% endif %}
+
+        <div class="header__menu">
+            <nav class="header__nav nav-header">
+                <ul class="nav-header__list">
+                    <li class="default-link nav-header__item">
+                        <a href="#" class="nav-header__link">О нас</a>
+                    </li>
+                    <li class="default-link nav-header__item">
+                        <a href="#" class="nav-header__link">Каталог (3)</a>
+                    </li>
+                    <li class="default-link nav-header__item">
+                        <a href="#" class="nav-header__link">Отзывы</a>
+                    </li>
+                    <li class="default-link nav-header__item">
+                        <a href="#" class="nav-header__link">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+
+            {% if contact.phone %}
+{#                <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}"#}
+{#                   class="default-link header__phone">{{ contacts.phone[0] }}</a>#}
+                <a href="tel:{{ contact.phone[0] }}"
+                   class="default-link numeric header__phone">{{ contact.phone[0] }}</a>
+            {% endif %}
+
+            <button class="default-button header__button header__button_feedback" data-open-modal="feedback">
+                <span>Оставить заявку</span>
+                <svg class="default-button__bg">
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#button-bg"></use>
+                </svg>
+            </button>
+            <button class="default-button header__button header__button_menu" data-open-menu>
+                Меню
+            </button>
+        </div>
+    </div>
+</header>

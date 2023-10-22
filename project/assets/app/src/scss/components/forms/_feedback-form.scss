@@ -1,0 +1,112 @@
+@import "../../vars";
+@import "../../mixins/base";
+
+.feedback-form {
+  display: grid;
+  gap: 30px;
+
+  &__inputs {
+    display: grid;
+    gap: 35px;
+  }
+
+  &__input {
+  }
+
+  &__checkbox {
+  }
+
+  &__policy {
+    a {
+      //color: $yellow;
+      opacity: 0.75;
+      transition: opacity .3s ease;
+      @media screen and (min-width: 1366px) {
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__submit {
+    width: 100%;
+  }
+}
+
+.feedback-wrapper {
+  &_dark {
+    .default-input {
+
+      input, textarea {
+        color: $grey-light;
+        border-color: $grey-light;
+      }
+
+      &.empty {
+        input, textarea {
+          //border-color: $blue-dark-2;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        &:hover {
+          input, textarea {
+            border-color: $grey-light;
+          }
+        }
+      }
+
+      &__success-icon {
+        stroke: $grey-light;
+      }
+    }
+
+    .default-checkbox {
+      //color: $blue-dark-2;
+
+      &__checkbox {
+        svg {
+          stroke: $grey-light;
+        }
+      }
+    }
+
+    .default-button {
+      //color: $blue-dark;
+      background-color: $grey-light;
+
+      svg {
+        //fill: $blue-dark;
+      }
+
+      &:visited {
+        //color: $blue-dark;
+      }
+
+      @media screen and (min-width: 1024px) {
+        &:hover {
+          color: $grey-light;
+          //background-color: $blue-dark-2;
+        }
+      }
+
+      &:active {
+        background-color: $white;
+      }
+    }
+
+    /* Change Autocomplete styles in Chrome*/
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+      -webkit-text-fill-color: $grey-light;
+    }
+  }
+}

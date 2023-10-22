@@ -1,18 +1,20 @@
 {# @var socialNetwork \App\Entity\SocialNetwork #}
 {# @var contact \App\Entity\Contact #}
 
-{% extends 'base.html.twig' %}
+{% extends 'layouts/default.html.twig' %}
 
-{% block title %}Домашняя страница{% endblock %}
+{% block meta %}
+    <meta property="og:title"
+          content="PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов.">
+    <meta property="og:description"
+          content="Наша продукция - это стильный и функциональный порядок в вашем доме и офисе. Мы осознанно отказались от производства вертикальных накопителей, поставляемых в сложенном состоянии, понимая, что они не могут гарантировать отсутствие перекосов и деформаций после их приведения в собранное состояние.">
+{% endblock %}
 
-{% block body %}
-    <div class="example-wrapper">
-        <h1>Paragraph</h1>
+{% block content %}
+    <section class="section">
+        <div class="container">
+            <h1>Paragraph</h1>
 
-        {% set contact = contact() %}
-        {% set socialNetworks = socialNetworks() %}
-
-        <section>
             <h2 style="color: #7c2d12">Контакты</h2>
             <ul>
                 <li>Название: {{ contact.title }}</li>
@@ -29,16 +31,14 @@
                 <li>ИНН: {{ contact.inn }}</li>
                 <li>Координаты на карте Яндекс: {{ contact.coordinates }}</li>
             </ul>
-        </section>
 
-        <section>
             <h2 style="color: #7c2d12">Соц.сети</h2>
             <ul>
                 {% for socialNetwork in socialNetworks %}
                     <li>{{ socialNetwork.name }} - {{ socialNetwork.link }}</li>
                 {% endfor %}
             </ul>
-        </section>
 
-    </div>
+        </div>
+    </section>
 {% endblock %}

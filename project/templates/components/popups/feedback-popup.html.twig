@@ -1,0 +1,16 @@
+{% extends 'components/popups/default-popup.html.twig' %}
+
+{% block classname %}feedback-popup{% endblock %}
+{% block name %}feedback{% endblock %}
+
+{% block content %}
+    <div class="feedback-popup__body">
+        <div class="title-24-45 feedback-popup__title">
+            Оставить заявку <span>на консультацию</span>
+        </div>
+        <p class="feedback-popup__text">
+            Мы готовы предоставить вам высококачественные услуги, которые превратят ваши пространства в источник вдохновения и эффективности. Доверьтесь нам, и мы сделаем ваше окружение лучше.
+        </p>
+        <div class="feedback-wrapper feedback-popup__form" data-form="popup" data-popup-name="feedback" data-response-popup-name="response"></div>
+    </div>
+{% endblock %}
