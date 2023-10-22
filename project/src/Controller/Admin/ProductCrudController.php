@@ -4,9 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use App\Entity\Property;
+use App\Form\Admin\StoreFormType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -70,6 +72,20 @@ class ProductCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+            FormField::addTab('Маркетплейс'),
+
+            # TODO тут нужно определиться... либо ссылка на маркетплейс, либо ссылка на товар на маркетплейсе...
+            #   переделать crud и связи поменять...
+
+//            AssociationField::new('stores', 'Маркетплейсы')
+//                ->setFormType(StoreFormType::class)
+//                ->setFormTypeOptions([
+//                    'by_reference' => false,
+//                    'error_bubbling' => false,
+//                ])
+//                ->setTextAlign('center')
+//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+//            ,
         ];
     }
 }

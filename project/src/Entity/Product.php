@@ -28,6 +28,8 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Gallery::class)]
     private Collection $gallery;
 
+    # TODO тут нужно определиться... либо ссылка на маркетплейс, либо ссылка на товар на маркетплейсе...
+    #   переделать crud и связи поменять...
     #[ORM\ManyToMany(targetEntity: Store::class, inversedBy: 'products', cascade: ['persist'])]
     private Collection $stores;
 
