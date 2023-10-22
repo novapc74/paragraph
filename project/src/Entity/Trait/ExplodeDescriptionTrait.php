@@ -48,7 +48,7 @@ trait ExplodeDescriptionTrait
     {
         $description = implode(
             $this->delimiterDescription,
-            [$this->shortDescription, $this->fullDescription]
+            [$this->shortDescription ?? $this->getShortDescription(), $this->fullDescription ?? $this->getFullDescription()]
         );
 
         $this->setDescription($description);

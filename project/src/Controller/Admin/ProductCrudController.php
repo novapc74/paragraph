@@ -6,6 +6,7 @@ use App\Entity\Product;
 use App\Entity\Property;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -33,6 +34,7 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            FormField::addTab('Основное'),
             TextField::new('title', 'Название')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
@@ -62,6 +64,11 @@ class ProductCrudController extends AbstractCrudController
                         new NotBlank(),
                     ]
                 ])
+            ,
+            FormField::addTab('Категория'),
+            AssociationField::new('category', 'Категория')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
         ];
     }

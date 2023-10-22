@@ -31,6 +31,9 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\ManyToMany(targetEntity: Store::class, inversedBy: 'products', cascade: ['persist'])]
     private Collection $stores;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
@@ -109,6 +112,18 @@ class Product implements ExplodeDescriptionInterface
     public function removeStore(Store $store): static
     {
         $this->stores->removeElement($store);
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }
