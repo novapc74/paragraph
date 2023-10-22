@@ -1,0 +1,40 @@
+.error {
+  &__container {
+    height: calc(100vh - 54px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media screen and (min-width: 1024px) {
+      height: calc(100vh - 66px);
+    }
+    @media screen and (min-width: 1366px) {
+      height: calc(100vh - 76px);
+    }
+  }
+  &__image {
+    flex: 1;
+    img {
+      object-fit: contain;
+    }
+  }
+  &__bottom {
+    text-align: center;
+    padding-bottom: 40px;
+    @media screen and (min-width: 1366px) {
+      padding-bottom: 80px;
+    }
+  }
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__text {
+    margin-bottom: 30px;
+  }
+  &__button {
+    width: 100%;
+    @media screen and (min-width: 1366px) {
+      width: 231px;
+      margin: 0 auto;
+    }
+  }
+}

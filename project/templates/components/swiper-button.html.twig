@@ -1,0 +1,6 @@
+{% set direction = direction | default('prev') %}
+<button class="swiper-button swiper-button_{{ direction }}">
+    <svg>
+        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-left-right-icon"></use>
+    </svg>
+</button>

@@ -1,0 +1,58 @@
+// обнуление стилей
+@import "null";
+
+// базовые подключения
+@import "fonts";
+@import "base";
+
+// ui
+@import "ui-kit/buttons";
+@import "ui-kit/typography";
+@import "ui-kit/inputs";
+@import "ui-kit/swiper";
+
+////dropdowns
+//@import "components/dropdowns/dropdown";
+//@import "components/dropdowns/dropdown-menu";
+//
+//// подключение базовых компонентов
+@import "components/base/header";
+//@import "components/base/footer";
+//@import "components/base/section";
+//@import "components/base/breadcrumbs";
+//@import "components/base/mobile-header";
+//
+//// формы
+//@import "components/forms/feedback-form";
+//
+//// popups
+//@import "components/popups/default-popup";
+//@import "components/popups/feedback-popup";
+//@import "components/popups/response-popup";
+//@import "components/popups/review-popup";
+//
+//// подключение компонентов страниц
+//// base
+//@import "sections/about";
+//@import "sections/advantages";
+//@import "components/review";
+//@import "sections/reviews";
+//@import "sections/partners";
+//@import "sections/feedback";
+//@import "sections/info";
+//@import "sections/swiper-section";
+//// home
+//@import "sections/home/hero";
+//@import "sections/home/services";
+//// service
+//@import "sections/service/expertise";
+//@import "sections/service/cases";
+//@import "sections/service/products";
+//// contacts
+//@import "sections/contacts/contacts";
+//@import "sections/contacts/branches";
+//// about
+//@import "sections/about/about-info";
+//@import "sections/about/licenses";
+//// 404
+//@import "404";

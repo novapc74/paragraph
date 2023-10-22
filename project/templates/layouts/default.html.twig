@@ -1,0 +1,67 @@
+{# @var socialNetwork \App\Entity\SocialNetwork #}
+{# @var contact \App\Entity\Contact #}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <link sizes="16x16" rel="icon" type="image/svg" href="{{ asset('favicon/16x16.svg') }}">
+    <link sizes="32x32" rel="icon" type="image/svg" href="{{ asset('favicon/32x32.svg') }}">
+    {#    <link sizes="48x48" rel="icon" type="image/svg" href="{{ asset('favicon/48x48.svg') }}"> #}
+    {#    <link sizes="70x70" rel="icon" type="image/svg" href="{{ asset('favicon/70x70.svg') }}"> #}
+    <link sizes="96x96" rel="icon" type="image/svg" href="{{ asset('favicon/96x96.svg') }}">
+    <link sizes="128x128" rel="icon" type="image/svg" href="{{ asset('favicon/128x128.svg') }}">
+    <link sizes="196x196" rel="icon" type="image/svg" href="{{ asset('favicon/196x196.svg') }}">
+    {#    <link sizes="270x270" rel="icon" type="image/svg" href="{{ asset('favicon/270x270.svg') }}"> #}
+
+    {#    <link sizes="120x120" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-120x120.svg') }}"> #}
+    {#    <link sizes="152x152" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-152x152.svg') }}"> #}
+    {#    <link sizes="167x167" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-167x167.svg') }}"> #}
+    {#    <link sizes="180x180" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-180x180.svg') }}"> #}
+
+    <title>{% block title %}PARAGRAPH{% endblock %}</title>
+    <meta name="description"
+          content="{% block description %}PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов.{% endblock %}">
+    {% block meta %}{% endblock %}
+    <meta property="og:url" content="{{ app.request.uri }}">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Paragraph"/>
+{#    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">#}
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+</head>
+<body>
+
+{% set isHome = isHome | default(false) %}
+{% set contact = contact() %}
+{% set socialNetworks = socialNetworks() %}
+
+{% block header %}
+    {% include 'components/base/header.html.twig' %}
+{% endblock %}
+
+<main class="main">
+    {% block content %}{% endblock %}
+</main>
+
+{#{% block footer %}#}
+{#    {% include 'components/base/footer.html.twig' %}#}
+{#{% endblock %}#}
+
+{#{% include 'components/base/mobile-header.html.twig' %}#}
+{#{% include 'components/popups/feedback-popup.html.twig' %}#}
+{#{% include 'components/popups/response-popup.html.twig' %}#}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('app') }}
+{#    <script src="https://api-maps.yandex.ru/2.1/?apikey=66e7f852-a2c4-46fc-b4f3-254ece42aa13&lang=ru_RU"#}
+{#            type="text/javascript">#}
+{#    </script>#}
+{% endblock %}
+</body>
+</html>

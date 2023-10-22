@@ -110,10 +110,10 @@ Encore
         ]
     })
 
-    .copyFiles({
-        from: path.resolve(__dirname, 'assets/app/src/video'),
-        to: 'video/[path][name].[hash:8].[ext]'
-    })
+    // .copyFiles({
+    //     from: path.resolve(__dirname, 'assets/app/src/video'),
+    //     to: 'video/[path][name].[hash:8].[ext]'
+    // })
 
     .addPlugin(new SpritePlugin({
         plainSprite: true,

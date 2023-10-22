@@ -1,0 +1,16 @@
+@import "../../vars";
+.feedback-popup {
+  &__title {
+    margin-bottom: 20px;
+    color: $blue;
+    span {
+      white-space: nowrap;
+    }
+  }
+  &__text {
+    margin-bottom: 30px;
+  }
+  &__form {
+
+  }
+}

@@ -1,0 +1,11 @@
+<div class="default-popup {% block classname %}{% endblock %}" data-modal="{% block name %}{% endblock %}">
+    <span class="default-popup__overlay"></span>
+    <div class="default-popup__body">
+        <button class="default-popup__close-btn">
+            <svg class="default-popup__close-icon">
+                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#close-icon"></use>
+            </svg>
+        </button>
+        {% block content %}{% endblock %}
+    </div>
+</div>
