@@ -41,7 +41,6 @@ class Product implements ExplodeDescriptionInterface
     {
         $this->gallery = new ArrayCollection();
         $this->stores = new ArrayCollection();
-        $this->properties = new ArrayCollection();
         $this->productProperties = new ArrayCollection();
     }
 
@@ -137,14 +136,6 @@ class Product implements ExplodeDescriptionInterface
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection<int, ProductPropertyValue>
-     */
-    public function getProperties(): Collection
-    {
-        return $this->properties;
     }
 
     /**

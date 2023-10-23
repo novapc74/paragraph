@@ -54,16 +54,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Контакты', 'fa-regular fa-address-card', Contact::class);
         yield MenuItem::linkToCrud('Соц.сети', 'fa-brands fa-twitter', SocialNetwork::class);
 
-        yield MenuItem::section('для товаров');
-//        yield MenuItem::linkToCrud('Маркетплейсы', 'fa-solid fa-store', Store::class);
+        yield MenuItem::section('общая информация');
         yield MenuItem::linkToCrud('Страны', 'fa-solid fa-globe', Country::class);
         yield MenuItem::linkToCrud('Цвета', 'fa-solid fa-palette', Color::class);
         yield MenuItem::linkToCrud('Меры измерения', 'fa-solid fa-scale-balanced', Measure::class);
-        yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
-        yield MenuItem::linkToCrud('Свойства', 'fa-solid fa-barcode', Property::class);
 
         yield MenuItem::section('каталог');
         yield MenuItem::linkToCrud('Категории', 'fa-solid fa-tree', Category::class);
         yield MenuItem::linkToCrud('Товары', 'fa-brands fa-product-hunt', Product::class);
+        yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
+        yield MenuItem::linkToCrud('Названия свойства', 'fa-solid fa-barcode', Property::class);
     }
 }

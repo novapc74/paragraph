@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Product;
 use App\Entity\Property;
+use App\Form\Admin\ProductPropertyValueType;
 use App\Form\Admin\StoreFormType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -48,6 +49,11 @@ class ProductCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
+            AssociationField::new('category', 'Категория')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+            ,
+            FormField::addRow(),
             TextareaField::new('shortDescription', 'Короткое описание')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
@@ -67,10 +73,12 @@ class ProductCrudController extends AbstractCrudController
                     ]
                 ])
             ,
-            FormField::addTab('Категория'),
-            AssociationField::new('category', 'Категория')
+            FormField::addTab('Свойства товара'),
+            CollectionField::new('productProperties', 'Свойства товара')
+                ->setEntryType(ProductPropertyValueType::class)
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
                 ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->renderExpanded()
             ,
             FormField::addTab('Маркетплейс'),
             CollectionField::new('stores', 'Маркетплейсы')
@@ -80,6 +88,7 @@ class ProductCrudController extends AbstractCrudController
                     'error_bubbling' => false,
                 ])
                 ->setTextAlign('center')
+                ->renderExpanded()
             ,
         ];
     }
