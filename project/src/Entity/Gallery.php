@@ -24,6 +24,9 @@ class Gallery
     #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'gallery')]
     private ?Product $product = null;
 
+    #[ORM\ManyToOne(inversedBy: 'gallery')]
+    private ?ProductModification $productModification = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,6 +69,18 @@ class Gallery
     public function setProduct(?Product $product): static
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getProductModification(): ?ProductModification
+    {
+        return $this->productModification;
+    }
+
+    public function setProductModification(?ProductModification $productModification): static
+    {
+        $this->productModification = $productModification;
 
         return $this;
     }

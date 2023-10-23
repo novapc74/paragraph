@@ -25,9 +25,6 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\Column(type: Types::TEXT)]
     private string $description;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Gallery::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
-    private Collection $gallery;
-
     #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]
     private ?Category $category = null;
 
@@ -37,11 +34,14 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductPropertyValue::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $productProperties;
 
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductModification::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $modifications;
+
     public function __construct()
     {
-        $this->gallery = new ArrayCollection();
         $this->stores = new ArrayCollection();
         $this->productProperties = new ArrayCollection();
+        $this->modifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -62,36 +62,6 @@ class Product implements ExplodeDescriptionInterface
     public function setDescription(string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Gallery>
-     */
-    public function getGallery(): Collection
-    {
-        return $this->gallery;
-    }
-
-    public function addGallery(Gallery $gallery): static
-    {
-        if (!$this->gallery->contains($gallery)) {
-            $this->gallery->add($gallery);
-            $gallery->setProduct($this);
-        }
-
-        return $this;
-    }
-
-    public function removeGallery(Gallery $gallery): static
-    {
-        if ($this->gallery->removeElement($gallery)) {
-            // set the owning side to null (unless already changed)
-            if ($gallery->getProduct() === $this) {
-                $gallery->setProduct(null);
-            }
-        }
 
         return $this;
     }
@@ -162,6 +132,36 @@ class Product implements ExplodeDescriptionInterface
             // set the owning side to null (unless already changed)
             if ($productProperty->getProduct() === $this) {
                 $productProperty->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductModification>
+     */
+    public function getModifications(): Collection
+    {
+        return $this->modifications;
+    }
+
+    public function addModification(ProductModification $modification): static
+    {
+        if (!$this->modifications->contains($modification)) {
+            $this->modifications->add($modification);
+            $modification->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeModification(ProductModification $modification): static
+    {
+        if ($this->modifications->removeElement($modification)) {
+            // set the owning side to null (unless already changed)
+            if ($modification->getProduct() === $this) {
+                $modification->setProduct(null);
             }
         }
 

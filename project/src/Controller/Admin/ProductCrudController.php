@@ -7,6 +7,7 @@ use App\Entity\Property;
 use App\Form\Admin\GalleryType;
 use App\Form\Admin\ProductPropertyValueType;
 use App\Form\Admin\StoreFormType;
+use App\Form\ProductModificationType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -91,22 +92,14 @@ class ProductCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->renderExpanded()
             ,
-            FormField::addTab('Галерея'),
-            TextField::new('image', 'Галерея')
-                ->onlyOnIndex()
-                ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
-            ,
-            CollectionField::new('gallery', 'Картинки')
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-                ->setEntryType(GalleryType::class)
+            FormField::addTab('Модификации'),
+            CollectionField::new('modifications', 'Модификации')
+                ->setEntryType(ProductModificationType::class)
                 ->setFormTypeOptions([
                     'by_reference' => false,
                     'error_bubbling' => false,
                 ])
-                ->renderExpanded()
-                ->onlyOnForms()
-            ,
+            ->setTemplatePath('admin/crud/assoc_description.html.twig')
         ];
     }
 }

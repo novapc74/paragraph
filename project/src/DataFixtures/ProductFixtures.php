@@ -15,10 +15,9 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
                 ->setTitle('Nero')
                 ->setShortDescription('Элегантный вертикальный накопитель А4 из 2-мм картона с дизайнерской обложкой. Организация и стиль в одном.')
                 ->setFullDescription('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deserunt dolorem dolores ea ipsam libero minima optio perspiciatis quod, sit. Beatae consequuntur deleniti deserunt fugit ipsa minus quia quod sunt!')
-                ->setCategory($this->getReference('Category_0'));
-
-            $product->addStore($this->getReference('Store_0'));
-            $product->addStore($this->getReference('Store_1'));
+                ->setCategory($this->getReference('Category_0'))
+                ->addStore($this->getReference('Store_0'))
+                ->addStore($this->getReference('Store_1'));
         });
 
         $manager->flush();
@@ -29,6 +28,7 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
         return [
             CategoryFixtures::class,
             StoreFixtures::class,
+            ColorFixtures::class,
         ];
     }
 }
