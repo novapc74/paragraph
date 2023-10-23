@@ -34,10 +34,15 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Store::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $stores;
 
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductPropertyValue::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $productProperties;
+
     public function __construct()
     {
         $this->gallery = new ArrayCollection();
         $this->stores = new ArrayCollection();
+        $this->properties = new ArrayCollection();
+        $this->productProperties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +133,44 @@ class Product implements ExplodeDescriptionInterface
             // set the owning side to null (unless already changed)
             if ($store->getProduct() === $this) {
                 $store->setProduct(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ProductPropertyValue>
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    /**
+     * @return Collection<int, ProductPropertyValue>
+     */
+    public function getProductProperties(): Collection
+    {
+        return $this->productProperties;
+    }
+
+    public function addProductProperty(ProductPropertyValue $productProperty): static
+    {
+        if (!$this->productProperties->contains($productProperty)) {
+            $this->productProperties->add($productProperty);
+            $productProperty->setProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProductProperty(ProductPropertyValue $productProperty): static
+    {
+        if ($this->productProperties->removeElement($productProperty)) {
+            // set the owning side to null (unless already changed)
+            if ($productProperty->getProduct() === $this) {
+                $productProperty->setProduct(null);
             }
         }
 
