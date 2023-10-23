@@ -25,7 +25,7 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\Column(type: Types::TEXT)]
     private string $description;
 
-    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Gallery::class)]
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Gallery::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $gallery;
 
     #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]

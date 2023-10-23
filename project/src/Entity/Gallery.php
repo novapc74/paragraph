@@ -21,7 +21,7 @@ class Gallery
     #[ORM\Column(nullable: true)]
     private ?int $sort = 0;
 
-    #[ORM\ManyToOne(inversedBy: 'gallery')]
+    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'gallery')]
     private ?Product $product = null;
 
     public function getId(): ?int
@@ -31,7 +31,7 @@ class Gallery
 
     public function __toString(): string
     {
-        return $this->type ?? $this->id;
+        return 'test';
     }
 
     public function getImage(): ?Media
