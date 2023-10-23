@@ -9,7 +9,7 @@ use Doctrine\Persistence\ObjectManager;
 class CategoryFixtures extends BaseFixture
 {
     private const CATEGORY_DATA = [
-        'Категория A', 'Категория B', 'Категория C'
+        'Лоток для бумаг', 'Категория B', 'Категория C'
     ];
 
     protected function loadData(ObjectManager $manager): void

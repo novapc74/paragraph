@@ -10,11 +10,15 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
 {
     protected function loadData(ObjectManager $manager): void
     {
-        $this->createEntity(Product::class, 2, function (Product $product, $count) {
+        $this->createEntity(Product::class, 1, function (Product $product) {
             $product
-                ->setTitle('title')
-                ->setShortDescription('short')
-                ->setFullDescription('full');
+                ->setTitle('Nero')
+                ->setShortDescription('Элегантный вертикальный накопитель А4 из 2-мм картона с дизайнерской обложкой. Организация и стиль в одном.')
+                ->setFullDescription('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deserunt dolorem dolores ea ipsam libero minima optio perspiciatis quod, sit. Beatae consequuntur deleniti deserunt fugit ipsa minus quia quod sunt!')
+                ->setCategory($this->getReference('Category_0'));
+
+            $product->addStore($this->getReference('Store_0'));
+            $product->addStore($this->getReference('Store_1'));
         });
 
         $manager->flush();
@@ -23,7 +27,8 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            CategoryFixtures::class
+            CategoryFixtures::class,
+            StoreFixtures::class,
         ];
     }
 }

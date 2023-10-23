@@ -58,7 +58,7 @@ class ProductCrudController extends AbstractCrudController
                 ])
             ,
             FormField::addRow(),
-            TextareaField::new('fullDescription', 'Короткое описание')
+            TextareaField::new('fullDescription', 'Полное описание')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
                 ->setFormTypeOptions([
@@ -73,10 +73,6 @@ class ProductCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addTab('Маркетплейс'),
-
-            # TODO тут нужно определиться... либо ссылка на маркетплейс, либо ссылка на товар на маркетплейсе...
-            #   переделать crud и связи поменять...
-
             CollectionField::new('stores', 'Маркетплейсы')
                 ->setEntryType(StoreFormType::class)
                 ->setFormTypeOptions([

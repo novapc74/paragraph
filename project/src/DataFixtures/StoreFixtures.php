@@ -11,11 +11,11 @@ class StoreFixtures extends BaseFixture
     private const STORE_DATA = [
         [
             'title' => 'ozone',
-            'link' => 'www.ozone.ru'
+            'link' => 'www.ozone.ru/product/nero'
         ],
         [
             'title' => 'wb',
-            'link' => 'www.wb.ru'
+            'link' => 'www.wb.ru/product/nero'
         ],
     ];
 
