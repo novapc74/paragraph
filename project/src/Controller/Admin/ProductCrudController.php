@@ -77,15 +77,14 @@ class ProductCrudController extends AbstractCrudController
             # TODO тут нужно определиться... либо ссылка на маркетплейс, либо ссылка на товар на маркетплейсе...
             #   переделать crud и связи поменять...
 
-//            AssociationField::new('stores', 'Маркетплейсы')
-//                ->setFormType(StoreFormType::class)
-//                ->setFormTypeOptions([
-//                    'by_reference' => false,
-//                    'error_bubbling' => false,
-//                ])
-//                ->setTextAlign('center')
-//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-//            ,
+            CollectionField::new('stores', 'Маркетплейсы')
+                ->setEntryType(StoreFormType::class)
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                    'error_bubbling' => false,
+                ])
+                ->setTextAlign('center')
+            ,
         ];
     }
 }

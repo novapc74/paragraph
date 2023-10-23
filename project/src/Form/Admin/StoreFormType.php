@@ -12,22 +12,18 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class StoreFormType extends AbstractType
 {
-    public function __construct(private readonly StoreRepository $repository)
-    {
-    }
-
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
-        $choices = array_map(fn(Store $store) => $store->getTitle(), $this->repository->findAll());
-
         $builder
             ->add('link', UrlType::class, [
-                'label' => 'Ссылка на товар',
+                'label' => 'Ссылка',
             ])
             ->add('title', ChoiceType::class, [
-                'label' => 'Маркетплейсы',
-                'choices' => array_unique($choices),
+                'label' => 'Маркет',
+                'choices' => [
+                    'OZONE' => 'ozone',
+                    'WILDBERRIES' => 'wb'
+                ],
             ]);
     }
 

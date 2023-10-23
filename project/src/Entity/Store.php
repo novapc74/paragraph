@@ -23,14 +23,8 @@ class Store
     #[ORM\Column(length: 255)]
     private ?string $link = null;
 
-    #[ORM\ManyToMany(targetEntity: Product::class, mappedBy: 'stores', cascade: ['persist'])]
-    private Collection $products;
-
-    public function __construct()
-    {
-        $this->products = new ArrayCollection();
-    }
-
+    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'stores')]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -54,29 +48,14 @@ class Store
         return $this;
     }
 
-    /**
-     * @return Collection<int, Product>
-     */
-    public function getProducts(): Collection
+    public function getProduct(): ?Product
     {
-        return $this->products;
+        return $this->product;
     }
 
-    public function addProduct(Product $product): static
+    public function setProduct(?Product $product): static
     {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-            $product->addStore($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProduct(Product $product): static
-    {
-        if ($this->products->removeElement($product)) {
-            $product->removeStore($this);
-        }
+        $this->product = $product;
 
         return $this;
     }

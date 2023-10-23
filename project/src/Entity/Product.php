@@ -28,13 +28,11 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Gallery::class)]
     private Collection $gallery;
 
-    # TODO тут нужно определиться... либо ссылка на маркетплейс, либо ссылка на товар на маркетплейсе...
-    #   переделать crud и связи поменять...
-    #[ORM\ManyToMany(targetEntity: Store::class, inversedBy: 'products', cascade: ['persist'])]
-    private Collection $stores;
-
     #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]
     private ?Category $category = null;
+
+    #[ORM\OneToMany(mappedBy: 'product', targetEntity: Store::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    private Collection $stores;
 
     public function __construct()
     {
@@ -94,6 +92,18 @@ class Product implements ExplodeDescriptionInterface
         return $this;
     }
 
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Store>
      */
@@ -106,6 +116,7 @@ class Product implements ExplodeDescriptionInterface
     {
         if (!$this->stores->contains($store)) {
             $this->stores->add($store);
+            $store->setProduct($this);
         }
 
         return $this;
@@ -113,19 +124,12 @@ class Product implements ExplodeDescriptionInterface
 
     public function removeStore(Store $store): static
     {
-        $this->stores->removeElement($store);
-
-        return $this;
-    }
-
-    public function getCategory(): ?Category
-    {
-        return $this->category;
-    }
-
-    public function setCategory(?Category $category): static
-    {
-        $this->category = $category;
+        if ($this->stores->removeElement($store)) {
+            // set the owning side to null (unless already changed)
+            if ($store->getProduct() === $this) {
+                $store->setProduct(null);
+            }
+        }
 
         return $this;
     }
