@@ -35,7 +35,7 @@
             {% if contact.phone %}
 {#                <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}"#}
 {#                   class="default-link header__phone">{{ contacts.phone[0] }}</a>#}
-                <a href="tel:{{ contact.phone[0] }}"
+                <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
                    class="default-link numeric header__phone">{{ contact.phone[0] }}</a>
             {% endif %}
 

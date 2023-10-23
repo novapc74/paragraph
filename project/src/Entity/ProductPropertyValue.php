@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductPropertyValueRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+#[ORM\HasLifecycleCallbacks]
 #[ORM\Entity(repositoryClass: ProductPropertyValueRepository::class)]
 class ProductPropertyValue
 {
@@ -21,6 +22,45 @@ class ProductPropertyValue
 
     #[ORM\ManyToOne(targetEntity: Property::class, inversedBy: 'productPropertyValues')]
     private ?Property $productProperty = null;
+
+    private ?string $country = null;
+    private ?string $measure = null;
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): static
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getMeasure(): string
+    {
+        return $this->measure;
+    }
+
+    public function setMeasure(string $measure): static
+    {
+        $this->measure = $measure;
+
+        return $this;
+    }
+
+    #[ORM\PreFlush]
+    public function prePersist(): void
+    {
+        if ($this->measure && $this->value) {
+            $this->value = "{$this->value} {$this->measure}";
+        }
+
+        elseif ($this->country) {
+            $this->value = $this->country;
+        }
+    }
 
     public function getId(): ?int
     {
@@ -67,4 +107,6 @@ class ProductPropertyValue
 
         return $this;
     }
+
+
 }

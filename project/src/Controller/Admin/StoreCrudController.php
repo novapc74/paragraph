@@ -44,5 +44,4 @@ class StoreCrudController extends AbstractCrudController
             ,
         ];
     }
-
 }

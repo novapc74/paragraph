@@ -2,17 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Category;
-use App\Entity\Measure;
-use App\Entity\Product;
-use App\Entity\Store;
 use App\Entity\User;
 use App\Entity\Color;
 use App\Entity\Review;
+use App\Entity\Product;
 use App\Entity\Contact;
 use App\Entity\Country;
-use App\Entity\Feedback;
+use App\Entity\Measure;
 use App\Entity\Property;
+use App\Entity\Category;
+use App\Entity\Feedback;
 use App\Entity\PropertyGroup;
 use App\Entity\SocialNetwork;
 use Symfony\Component\HttpFoundation\Response;
