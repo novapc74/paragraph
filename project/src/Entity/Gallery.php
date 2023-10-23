@@ -15,7 +15,7 @@ class Gallery
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist'])]
+    #[ORM\ManyToOne(targetEntity: Media::class, cascade: ['persist', 'remove'])]
     private ?Media $image = null;
 
     #[ORM\Column(nullable: true)]
