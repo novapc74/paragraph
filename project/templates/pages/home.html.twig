@@ -13,7 +13,10 @@
 {% endblock %}
 
 {% block content %}
-    <section class="section">
+
+    {% include 'components/sections/hero.html.twig' %}
+
+    <section class="section" style="height: 100vh">
         <div class="container">
             <h1>Paragraph</h1>
 
@@ -46,7 +49,7 @@
 
     <hr>
 
-    <section class="section">
+    <section class="section" style="height: 100vh">
         <div class="container">
             {% if propertyGroups | length %}
                 <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>
@@ -62,7 +65,7 @@
                     {% endfor %}
                 </ul>
 
-                <ul>
+                <ul id="contacts">
                     {% for group_name, property_group in propertyGroups %}
                         <li>{{ group_name }}</li>
                         <ul>

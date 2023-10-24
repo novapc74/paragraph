@@ -1,0 +1,62 @@
+<section class="section section_light hero">
+    <div class="container hero__container">
+        <div class="swiper hero__swiper hero-swiper">
+            <div class="swiper-wrapper hero-swiper__wrapper">
+                <div class="swiper-slide hero-swiper__slide hero-slide">
+                    <div class="hero-slide__top">
+                        <div class="hero-slide__header">
+                            <h3 class="hero-slide__heading">папка-регистратор</h3>
+                            <h4 class="hero-slide__title">nero</h4>
+                        </div>
+                        <div class="hero-slide__content">
+                            <p class="hero-slide__description">Мы предлагаем оптовые и мелкооптовые поставки всего
+                                ассортимента продукции под торговой маркой PARAGRAPH</p>
+                            <a href="#" class="text-button hero-slide__link">подробнее</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide__image">
+                        <img src="{{ asset('build/images/hero-1.png') }}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide hero-swiper__slide">
+                    <div class="hero-slide__top">
+                        <div class="hero-slide__header">
+                            <h3 class="hero-slide__heading">лоток для бумаги</h3>
+                            <h4 class="hero-slide__title">blu notte</h4>
+                        </div>
+                        <div class="hero-slide__content">
+                            <p class="hero-slide__description">Мы предлагаем оптовые и мелкооптовые поставки всего
+                                ассортимента продукции под торговой маркой PARAGRAPH</p>
+                            <a href="#" class="text-button hero-slide__link">подробнее</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide__image">
+                        <img src="{{ asset('build/images/hero-2.png') }}" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide hero-swiper__slide">
+                    <div class="hero-slide__top">
+                        <div class="hero-slide__header">
+                            <h3 class="hero-slide__heading">папка-регистратор</h3>
+                            <h4 class="hero-slide__title">twich</h4>
+                        </div>
+                        <div class="hero-slide__content">
+                            <p class="hero-slide__description">Мы предлагаем оптовые и мелкооптовые поставки всего
+                                ассортимента продукции под торговой маркой PARAGRAPH</p>
+                            <a href="#" class="text-button hero-slide__link">подробнее</a>
+                        </div>
+                    </div>
+                    <div class="hero-slide__image">
+                        <img src="{{ asset('build/images/hero-3.png') }}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="default-swiper-navigation hero__navigation">
+            {% include 'components/swiper-button.html.twig' %}
+            <div class="default-swiper-pagination hero__pagination"></div>
+            {% include 'components/swiper-button.html.twig' with { direction: 'next' } %}
+        </div>
+        <span class="hero__bg"></span>
+    </div>
+</section>

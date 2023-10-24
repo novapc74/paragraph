@@ -18,7 +18,7 @@
 //// подключение базовых компонентов
 @import "components/base/header";
 //@import "components/base/footer";
-//@import "components/base/section";
+@import "components/base/section";
 //@import "components/base/breadcrumbs";
 //@import "components/base/mobile-header";
 //
@@ -31,18 +31,8 @@
 //@import "components/popups/response-popup";
 //@import "components/popups/review-popup";
 //
-//// подключение компонентов страниц
-//// base
-//@import "sections/about";
-//@import "sections/advantages";
-//@import "components/review";
-//@import "sections/reviews";
-//@import "sections/partners";
-//@import "sections/feedback";
-//@import "sections/info";
-//@import "sections/swiper-section";
-//// home
-//@import "sections/home/hero";
+// подключение секций
+@import "sections/hero";
 //@import "sections/home/services";
 //// service
 //@import "sections/service/expertise";

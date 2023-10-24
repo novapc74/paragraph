@@ -7,7 +7,7 @@
                 </svg>
             </div>
         {% else %}
-            <a href="{{ path('app_home') }}" class="logo header__logo">
+            <a href="{{ path('app_home_page') }}" class="logo header__logo">
                 <svg>
                     <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#logo"></use>
                 </svg>
@@ -18,23 +18,21 @@
             <nav class="header__nav nav-header">
                 <ul class="nav-header__list">
                     <li class="default-link nav-header__item">
-                        <a href="#" class="nav-header__link">О нас</a>
+                        <a href="/#about" class="nav-header__link">О нас</a>
                     </li>
                     <li class="default-link nav-header__item">
-                        <a href="#" class="nav-header__link">Каталог (3)</a>
+                        <a href="/#catalog" class="nav-header__link">Каталог (3)</a>
                     </li>
                     <li class="default-link nav-header__item">
-                        <a href="#" class="nav-header__link">Отзывы</a>
+                        <a href="/#reviews" class="nav-header__link">Отзывы</a>
                     </li>
                     <li class="default-link nav-header__item">
-                        <a href="#" class="nav-header__link">Контакты</a>
+                        <a href="/#contacts" class="nav-header__link">Контакты</a>
                     </li>
                 </ul>
             </nav>
 
             {% if contact.phone %}
-{#                <a href="tel:{{ contacts.phone[0] | filterPhoneMask }}"#}
-{#                   class="default-link header__phone">{{ contacts.phone[0] }}</a>#}
                 <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
                    class="default-link numeric header__phone">{{ contact.phone[0] }}</a>
             {% endif %}

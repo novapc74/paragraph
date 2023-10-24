@@ -9,7 +9,8 @@
   z-index: 95;
   transform: translateY(0);
   opacity: 1;
-  transition-property: opacity, transform, background-color;
+  transition-property: opacity, transform;
+  background-color: $cream-light;
   @include base-transition;
 
   &__container {

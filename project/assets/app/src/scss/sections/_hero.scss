@@ -1,0 +1,143 @@
+@import "../vars";
+@import "../mixins/base";
+.hero {
+  &__container {
+    position: relative;
+  }
+
+  &__navigation {
+    @media screen and (min-width: 768px) {
+      margin-top: 25px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-top: 10px;
+    }
+  }
+
+  &__bg {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+      position: absolute;
+      background-image: url(../../images/drop-bg.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      top: -15px;
+      bottom: 0;
+      right: -70px;
+      width: 775px;
+      z-index: -1;
+    }
+    @media screen and (min-width: 1366px) {
+      top: -45px;
+      right: -85px;
+      width: 905px;
+    }
+  }
+}
+
+.hero-slide {
+  &__top {
+    opacity: 0;
+    transition: opacity 1s ease;
+    margin-bottom: 30px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 25px;
+      display: flex;
+      justify-content: space-between;
+      gap: 60px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 50px;
+    }
+  }
+
+  &_active &__top, &_active &__image {
+    opacity: 1;
+  }
+
+  &__header {
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__heading {
+    color: $black;
+    font-size: 15px;
+    line-height: 110%; /* 16.5px */
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      font-size: 16px;
+      text-transform: none;
+    }
+    @media screen and (min-width: 768px) {
+      font-size: 20px;
+    }
+  }
+
+  &__title {
+    width: max-content;
+    color: $black;
+    font-family: $ff-secondary;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 100%; /* 66px */
+    text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      font-size: 80px;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 90px;
+    }
+    @media screen and (min-width: 1366px) {
+      font-size: 120px;
+    }
+  }
+
+  &__content {
+    @media screen and (min-width: 1024px) {
+      max-width: 50%;
+    }
+    @media screen and (min-width: 1366px) {
+      padding-right: 142px;
+    }
+  }
+
+  &__description {
+    margin-bottom: 15px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__link {
+    color: $black;
+  }
+
+  &__image {
+    position: relative;
+    padding-top: 100%;
+    opacity: 0;
+    transition: opacity 1s ease;
+    @media screen and (min-width: 768px) {
+      padding-top: 0;
+      height: 658px;
+    }
+    @media screen and (min-width: 1024px) {
+      height: 450px;
+    }
+    @media screen and (min-width: 1366px) {
+      height: 494px;
+    }
+    img {
+      @include absolute-100;
+    }
+  }
+}
