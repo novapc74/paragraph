@@ -2,57 +2,12 @@
 @import "../mixins/base";
 
 .swiper-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 66px;
-  height: 66px;
-  background-color: transparent;
-  border-radius: 50%;
-  //border: 2px solid $blue-dark-2;
-  transform-origin: center;
-  transition-property: background-color, border-color;
-  @include base-transition;
-
-  svg {
-    width: 26px;
-    height: 26px;
-    margin-left: -2px;
-    //fill: $blue-dark;
-    transition: fill .3s ease;
-  }
-
-  @media screen and (min-width: 1024px) {
-    &:hover {
-      background-color: $blue;
-      border-color: $blue;
-
-      svg {
-        fill: $grey-light;
-      }
-    }
-  }
-
-  &:active {
-    //background-color: $blue-dark;
-    //border-color: $blue-dark;
-
-    svg {
-      fill: $grey-light;
-    }
-  }
+  flex-shrink: 0;
+  color: $grey;
 
   &_disabled {
-    border-color: #94a2a6;
     pointer-events: none;
-
-    svg {
-      fill: #94a2a6;
-    }
-  }
-
-  &_next {
-    transform: rotate(180deg);
+    opacity: 0.2;
   }
 
   &-lock {
@@ -62,28 +17,29 @@
 
 .default-swiper-navigation {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 10px;
+  padding: 10px 0;
 
   &__fraction {
     width: 25px;
-    //@include text-18;
-  }
-
-  .swiper-pagination-progressbar {
-    position: relative;
-    border-radius: 45px;
-    background-color: #c9c9c9;
-    height: 5px;
-
-    .swiper-pagination-progressbar-fill {
-      //background-color: $blue-dark-2;
-      border-radius: 45px;
-    }
+    font-size: 16px;
+    line-height: 110%;
   }
 
   &.hidden {
     display: none;
+  }
+}
+
+.default-swiper-pagination {
+  font-size: 20px;
+  width: auto;
+  .swiper-pagination-current {
+    margin-right: -4px;
+  }
+  .swiper-pagination-total {
+    margin-left: -4px;
   }
 }
