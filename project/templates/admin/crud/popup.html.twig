@@ -1,0 +1,35 @@
+{{ include('@EasyAdmin/crud/action.html.twig') }}
+
+<!-- Modal -->
+<div class="modal fade" id="customModal" tabindex="-1" role="dialog" aria-labelledby="customModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div data-controller="subscription-type">
+                <div data-subscription-type-target="results">test</div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok 😀</button>
+                <form action="{{ action.linkUrl }}" method="POST">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Push</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Это стимулус  subscription_type_controller.js для попапа... выводим в попап данные с /api/subscription/type
+
+import {Controller} from '@hotwired/stimulus';
+
+export default class extends Controller {
+static targets = ['results']
+
+async connect() {
+    this.resultsTarget.innerHTML = await fetch(`/api/subscription/type`).then(res => res.text());
+    }
+}
+-->

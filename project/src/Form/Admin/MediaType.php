@@ -56,5 +56,4 @@ class MediaType extends AbstractType
                 ->addViolation();
         }
     }
-
 }
