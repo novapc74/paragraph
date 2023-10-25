@@ -38,7 +38,7 @@ async connect() {
 	public function configureActions(Actions $actions): Actions
 	{
 		$getSubscriberTypes = Action::new('get subscriber type', 'Типы подписок')
-			->setTemplatePath('admin/custom_action.html.twig')
+			->setTemplatePath('admin/crud/popup.html.twig')
 			->setHtmlAttributes([
 				'data-bs-toggle' => 'modal',
 				'data-bs-target' => '#customModal',
