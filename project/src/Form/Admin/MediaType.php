@@ -42,8 +42,8 @@ class MediaType extends AbstractType
             return;
         }
 
-        if (!in_array($file->getMimeType(), ['image/jpg', 'image/jpeg', 'image/png', 'video/mp4'])) {
-            $context->buildViolation(sprintf('%s -- не допустимое расширение, допустимые: jpg, jpeg, png, mp4', $file->getMimeType()))
+        if (!in_array($file->getMimeType(), Media::getAvailableExtensions())) {
+            $context->buildViolation(sprintf('%s -- не допустимое расширение, допустимые: %s', $file->getMimeType(), implode(', ', Media::getAvailableExtensions())))
                 ->atPath('imageFile')
                 ->addViolation();
         }

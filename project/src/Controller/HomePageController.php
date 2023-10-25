@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Product;
 use App\Entity\PropertyGroup;
 use App\Entity\ProductModification;
 use App\Entity\ProductPropertyValue;
