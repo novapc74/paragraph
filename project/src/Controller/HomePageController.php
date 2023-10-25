@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
 use App\Entity\PropertyGroup;
+use App\Entity\ProductModification;
 use App\Entity\ProductPropertyValue;
 use App\Repository\ProductRepository;
 use App\Repository\PropertyGroupRepository;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,5 +39,18 @@ class HomePageController extends AbstractController
 			'propertyGroups' => $propertyGroups,
 			'product' => $product,
 		]);
+	}
+
+	#[Route('/modification/{id}', name: 'app_product_modification')]
+	public function showProductModification(Request $request, ?ProductModification $modification): JsonResponse
+	{
+		if ($request->isXmlHttpRequest() && $modification) {
+
+			return $this->json($modification, 200, [], [
+				AbstractNormalizer::GROUPS => ['modification:item']
+			]);
+		}
+
+		return $this->json(['success' => false, 'message' => sprintf('для модификации "%s" сделайте запрос с заголовком XmlHttpRequest', $modification)], 404);
 	}
 }

@@ -58,9 +58,11 @@
 
                 <ul>
                     {% for modification in product.modifications %}
-                        <li style="color: {{ modification.color.hex }}">{{ modification.color.title }}</li>
+                        <li style="color: {{ modification.color.hex }}"><a href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a></li>
+
                         {% for imageData in modification.gallery %}
-                            <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}" alt="картинка для модификации {{ modification.color.title }}">
+                            <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
+                                 alt="картинка для модификации {{ modification.color.title }}">
                         {% endfor %}
                     {% endfor %}
                 </ul>
