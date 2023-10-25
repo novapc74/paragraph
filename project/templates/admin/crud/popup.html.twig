@@ -32,4 +32,22 @@ async connect() {
     this.resultsTarget.innerHTML = await fetch(`/api/subscription/type`).then(res => res.text());
     }
 }
+
+В круде:
+
+	public function configureActions(Actions $actions): Actions
+	{
+		$getSubscriberTypes = Action::new('get subscriber type', 'Типы подписок')
+			->setTemplatePath('admin/custom_action.html.twig')
+			->setHtmlAttributes([
+				'data-bs-toggle' => 'modal',
+				'data-bs-target' => '#customModal',
+			])
+			->createAsGlobalAction()
+			->linkToCrudAction('getSubscriberTypes')
+		;
+
+		return parent::configureActions($actions)
+			->add('index', $getSubscriberTypes);
+	}
 -->
