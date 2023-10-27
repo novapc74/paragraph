@@ -32,3 +32,6 @@ yarn-error.log
 
 src/Controller/TestController.php
 templates/test/*
+###> symfony/asset-mapper ###
+/public/assets/
+###< symfony/asset-mapper ###

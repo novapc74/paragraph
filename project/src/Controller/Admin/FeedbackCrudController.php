@@ -47,8 +47,10 @@ class FeedbackCrudController extends AbstractCrudController
 			->linkToCrudAction('getSubscriberTypes')
 			->setCssClass('btn btn-warning');
 
+		#TODO тут не все стили в попапе выводятся... разобраться с js в админ части...
 		return parent::configureActions($actions)
-			->add('index', $getSubscriberTypes);
+//			->add('index', $getSubscriberTypes)
+			;
 	}
 
 	public function configureFields(string $pageName): iterable
