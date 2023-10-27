@@ -4,6 +4,6 @@ export default class extends Controller {
     static targets = ['results']
 
     async connect() {
-        this.resultsTarget.innerHTML = await fetch(`/api/subscription/type`).then(res => res.text());
+        this.resultsTarget.innerHTML = await fetch(`/api/feedback/emails`).then(res => res.text());
     }
 }

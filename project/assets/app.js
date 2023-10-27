@@ -1,4 +1,5 @@
 import './bootstrap.js';
+
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -18,3 +19,4 @@ requireAll(require.context('./app/src/images', true, /\.png|jpg|gif|svg$/));
 
 
 import './app/src/js/main'
+

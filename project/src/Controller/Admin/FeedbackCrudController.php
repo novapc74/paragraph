@@ -76,7 +76,7 @@ class FeedbackCrudController extends AbstractCrudController
 		];
 	}
 
-	#[Route('/api/subscription/type')]
+	#[Route('/api/feedback/emails')]
 	public function getFeedbackEmails(FeedbackRepository $feedbackRepository): Response
 	{
 		$emails = [];
