@@ -58,6 +58,7 @@
                     <li>Текст блока:{{ productBlock.text }}</li>
                     <li>Категория: {{ productBlock.product.category.title }}</li>
                     <li>Продукт: {{ productBlock.product.title }}</li>
+                    <li><a href="#">[подробнее]</a></li>
                     <li><img src="{{ vich_uploader_asset(productBlock.image) | imagine_filter_cache('banner_md') }}"
                              alt=""></li>
                 {% endfor %}
