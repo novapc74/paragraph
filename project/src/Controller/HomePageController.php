@@ -41,7 +41,8 @@ class HomePageController extends AbstractController
 			'isHome' => true,
 			'propertyGroups' => $propertyGroups,
 			'product' => $product,
-            'productBlockType' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Продукт']])
+            'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Продукт']]),
+            'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Интерьер']]),
 		]);
 	}
 

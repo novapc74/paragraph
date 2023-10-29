@@ -43,15 +43,21 @@ class PageBlock implements HasMediaInterface
     private ?string $type = null;
 
     private const PRODUCT_BLOCK_TYPE = 'product-block-type';
+    private const INTERIOR_BLOCK_TYPE = 'interior-block-type';
+
 
     #[ArrayShape([
         'Продукт' => 'string',
+        'Интерьер' => 'string',
     ])]
-    public static function getAvailableType(): array
+    public static function getAvailableType(string $type = null): array|string
     {
-        return [
+        $data = [
             'Продукт' => self::PRODUCT_BLOCK_TYPE,
+            'Интерьер' => self::INTERIOR_BLOCK_TYPE,
         ];
+
+        return $type ? array_flip($data)[$type] : $data;
     }
 
     public function __construct()

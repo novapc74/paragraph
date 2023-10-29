@@ -3,21 +3,32 @@
 namespace App\Controller\Admin;
 
 use App\Entity\PageBlock;
+use App\Entity\Product;
 use App\Form\Admin\MediaType;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PageBlockCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
         return PageBlock::class;
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setEntityLabelInSingular('Блок')
+            ->setPageTitle('new', 'Новый блок')
+            ->setPageTitle('edit', fn(PageBlock $pageBlock) => sprintf('Редактировать блок: " %s "', PageBlock::getAvailableType($pageBlock->getType())))
+            ->setEntityLabelInPlural('Блоки');
     }
 
     public function configureFields(string $pageName): iterable
@@ -48,6 +59,7 @@ class PageBlockCrudController extends AbstractCrudController
             AssociationField::new('product', 'Продукт')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+            ->setHelp('Для блока <span style="color: red">"ИНТЕРЬЕР"</span> продукты не нужны.')
             ,
             FormField::addRow(),
             TextField::new('newImage', 'Картинка')
@@ -61,6 +73,9 @@ class PageBlockCrudController extends AbstractCrudController
                     'by_reference' => false,
                     'error_bubbling' => false,
                     'mapped' => true,
+                    'constraints' => [
+                        new NotBlank(),
+                    ]
                 ])
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
