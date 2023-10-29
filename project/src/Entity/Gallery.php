@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
+use App\Entity\Trait\HasMediaInterface;
+use App\Entity\Trait\HasMediaTrait;
 use App\Repository\GalleryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 #[ORM\Entity(repositoryClass: GalleryRepository::class)]
 #[Vich\Uploadable]
-class Gallery
+class Gallery implements HasMediaInterface
 {
+    use HasMediaTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -26,6 +29,9 @@ class Gallery
 
     #[ORM\ManyToOne(inversedBy: 'gallery')]
     private ?ProductModification $productModification = null;
+
+    #[ORM\ManyToOne(targetEntity: PageBlock::class, cascade: ['persist'], inversedBy: 'Gallery')]
+    private ?PageBlock $pageBlock = null;
 
     public function getId(): ?int
     {
@@ -81,6 +87,35 @@ class Gallery
     public function setProductModification(?ProductModification $productModification): static
     {
         $this->productModification = $productModification;
+
+        return $this;
+    }
+
+    public function getPageBlock(): ?PageBlock
+    {
+        return $this->pageBlock;
+    }
+
+    public function setPageBlock(?PageBlock $pageBlock): static
+    {
+        $this->pageBlock = $pageBlock;
+
+        return $this;
+    }
+
+    public static function allMediaFields(): array
+    {
+        return ['image'];
+    }
+
+    public function getNewImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    public function setNewImage(?Media $image): self
+    {
+        $this->uploadNewMedia($image, 'image');
 
         return $this;
     }

@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\PageBlock;
 use App\Entity\User;
 use App\Entity\Color;
 use App\Entity\Review;
@@ -30,13 +31,12 @@ class DashboardController extends AbstractDashboardController
         return $this->render('@EasyAdmin/page/content.html.twig');
     }
 
-	public function configureAssets(): Assets
-	{
-		return Assets::new()
-			->addWebpackEncoreEntry('admin')
-//			->addJsFile('/build/ckeditor/ckeditor.js?v=1.1')
-			;
-	}
+    public function configureAssets(): Assets
+    {
+        return Assets::new()
+            ->addWebpackEncoreEntry('admin')//			->addJsFile('/build/ckeditor/ckeditor.js?v=1.1')
+            ;
+    }
 
     public function configureDashboard(): Dashboard
     {
@@ -72,5 +72,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Товары', 'fa-brands fa-product-hunt', Product::class);
         yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
         yield MenuItem::linkToCrud('Названия свойства', 'fa-solid fa-barcode', Property::class);
+
+        yield MenuItem::section('Блоки на главной');
+        yield MenuItem::linkToCrud('Тип блока', 'fa-solid fa-block', PageBlock::class);
     }
 }

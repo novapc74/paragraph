@@ -31,7 +31,4 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 src/Controller/TestController.php
-templates/test/*
-###> symfony/asset-mapper ###
-/public/assets/
-###< symfony/asset-mapper ###
+templates/test

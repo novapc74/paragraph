@@ -3,8 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
-use App\Entity\Property;
-use App\Form\Admin\GalleryType;
 use App\Form\Admin\ProductPropertyValueType;
 use App\Form\Admin\StoreFormType;
 use App\Form\ProductModificationType;
@@ -16,9 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\Validator\Constraints\Callback;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
 class ProductCrudController extends AbstractCrudController
 {
