@@ -23,36 +23,36 @@ class PageBlockCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            ChoiceField::new('type')
+            ChoiceField::new('type', 'Тип блока')
                 ->setChoices(PageBlock::getAvailableType())
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
+//            FormField::addRow(),
+//            TextField::new('title')
+//                ->setTextAlign('center')
+//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+//            ,
             FormField::addRow(),
-            TextField::new('title')
+            TextareaField::new('text', 'Текст')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
-            FormField::addRow(),
-            TextareaField::new('text')
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-            ,
-            FormField::addRow(),
-            TextareaField::new('html')
-                ->setFormType(CKEditorType::class)
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-            ,
+//            FormField::addRow(),
+//            TextareaField::new('html')
+//                ->setFormType(CKEditorType::class)
+//                ->setTextAlign('center')
+//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+//            ,
             FormField::addRow(),
             AssociationField::new('product', 'Продукт')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
-            TextField::new('newImage')
-            ->onlyOnIndex()
-            ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
+            TextField::new('newImage', 'Картинка')
+                ->onlyOnIndex()
+                ->setTemplatePath('admin/crud/assoc_image.html.twig')
             ,
             FormField::addPanel('Картинка')
                 ->setProperty('newImage')

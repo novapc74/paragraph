@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\PageBlock;
 use App\Entity\PropertyGroup;
 use App\Entity\ProductModification;
 use App\Entity\ProductPropertyValue;
+use App\Repository\PageBlockRepository;
 use App\Repository\ProductRepository;
 use App\Repository\PropertyGroupRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +19,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class HomePageController extends AbstractController
 {
 	#[Route('/', name: 'app_home_page')]
-	public function index(PropertyGroupRepository $groupRepository, ProductRepository $productRepository): Response
+	public function index(PropertyGroupRepository $groupRepository,
+                          ProductRepository $productRepository,
+                          PageBlockRepository $pageBlockRepository): Response
 	{
 		$propertyGroups = [];
 		if ($product = $productRepository->findOneBy([])) {
@@ -37,6 +41,7 @@ class HomePageController extends AbstractController
 			'isHome' => true,
 			'propertyGroups' => $propertyGroups,
 			'product' => $product,
+            'productBlockType' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Продукт']])
 		]);
 	}
 

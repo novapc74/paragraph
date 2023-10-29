@@ -1,0 +1,11 @@
+{% if  attribute(entity.instance, field.property) is defined %}
+    {% set image = attribute(entity.instance, field.property) %}
+{% else %}
+    {% set image = entity.instance.image %}
+{% endif %}
+
+    {% if image.imageName ?? null is not null %}
+        <img src="{{ vich_uploader_asset(image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
+             alt="{{ image.mimeType }}">
+    {% endif %}
+

@@ -74,6 +74,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Названия свойства', 'fa-solid fa-barcode', Property::class);
 
         yield MenuItem::section('Блоки на главной');
-        yield MenuItem::linkToCrud('Тип блока', 'fa-solid fa-block', PageBlock::class);
+        yield MenuItem::linkToCrud('Тип блока', 'fa-solid fa-cube', PageBlock::class);
     }
 }

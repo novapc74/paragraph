@@ -2,6 +2,7 @@
 {# @var contact \App\Entity\Contact #}
 {# @var property \App\Entity\ProductPropertyValue #}
 {# @var modification \App\Entity\ProductModification #}
+{# @var productBlock \App\Entity\PAgeBlock #}
 
 {% extends 'layouts/default.html.twig' %}
 
@@ -49,6 +50,23 @@
 
     <hr>
 
+    <section>
+
+        {% if productBlockType | length %}
+            <ul>
+                {% for productBlock in productBlockType %}
+                    <li>Текст блока:{{ productBlock.text }}</li>
+                    <li>Категория: {{ productBlock.product.category.title }}</li>
+                    <li>Продукт: {{ productBlock.product.title }}</li>
+                    <li><img src="{{ vich_uploader_asset(productBlock.image) | imagine_filter_cache('banner_md') }}"
+                             alt=""></li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </section>
+
+    <hr>
+
     <section class="section" style="height: 100vh">
         <div class="container">
             {% if propertyGroups | length %}
@@ -58,7 +76,9 @@
 
                 <ul>
                     {% for modification in product.modifications %}
-                        <li style="color: {{ modification.color.hex }}"><a href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a></li>
+                        <li style="color: {{ modification.color.hex }}"><a
+                                    href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>
+                        </li>
 
                         {% for imageData in modification.gallery %}
                             <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
