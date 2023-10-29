@@ -1,0 +1,55 @@
+<section class="section section_light about" id="about">
+    <div class="about__wrapper">
+        <div class="container">
+            <div class="about__grid">
+                <div class="about__content">
+                    <h2 class="section__heading">о нас</h2>
+                    <h3 class="about__title">PARAGRAPH&nbsp;&mdash; это стильные и&nbsp;функциональные канцелярские товары
+                        для хранения документов.</h3>
+                    <p class="about__description">
+                        Наша продукция&nbsp;&mdash; это стильный и&nbsp;функциональный порядок в&nbsp;вашем доме и&nbsp;офисе.
+                        Мы&nbsp;осознанно отказались от&nbsp;производства вертикальных накопителей, поставляемых в&nbsp;сложенном
+                        состоянии, понимая, что они не&nbsp;могут гарантировать отсутствие перекосов и&nbsp;деформаций после
+                        их&nbsp;приведения в&nbsp;собранное состояние.
+                    </p>
+                </div>
+            </div>
+            <div class="about__grid about__grid_images">
+                <div class="about__image about__image_left">
+                    <img src="{{ asset('build/images/about-1.jpg') }}" alt="Папка регистратор">
+                </div>
+                <div class="about__image about__image_right">
+                    <img src="{{ asset('build/images/about-2.jpg') }}" alt="Лоток для бумаг">
+                </div>
+            </div>
+        </div>
+        <div class="about__bg"></div>
+        <div class="about__lines">
+            {% set items = ['надежные', 'стильные', 'функциональные', 'качественные', 'доступные', 'надежные', 'стильные', 'функциональные', 'качественные', 'доступные', 'надежные', 'стильные', 'функциональные', 'качественные', 'доступные'] %}
+            <div class="about__line about-line">
+                <div class="about-line__item">
+                    {% for item in items %}
+                        <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+                <div class="about-line__item">
+                    {% for item in items %}
+                        <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="about__line about-line about-line_reverse">
+                <div class="about-line__item">
+                    {% for item in items %}
+                        <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+                <div class="about-line__item">
+                    {% for item in items %}
+                        <span>{{ item }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

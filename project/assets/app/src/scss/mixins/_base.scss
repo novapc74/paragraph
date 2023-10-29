@@ -41,3 +41,11 @@
   font-family: $ff-numeric;
   line-height: 100%;
 }
+
+@mixin drop-bg {
+  display: block;
+  position: absolute;
+  background-image: url(../../images/drop-bg.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+}

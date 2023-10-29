@@ -1,5 +1,15 @@
 @import "../vars";
 @import "../mixins/base";
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .hero {
   &__container {
     position: relative;
@@ -17,11 +27,7 @@
   &__bg {
     display: none;
     @media screen and (min-width: 1024px) {
-      display: block;
-      position: absolute;
-      background-image: url(../../images/drop-bg.png);
-      background-repeat: no-repeat;
-      background-size: contain;
+      @include drop-bg;
       top: -15px;
       bottom: 0;
       right: -70px;
@@ -48,10 +54,16 @@
       gap: 60px;
     }
     @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
       margin-bottom: 50px;
     }
   }
 
+  &_active.swiper-slide {
+    pointer-events: auto;
+  }
   &_active &__top, &_active &__image {
     opacity: 1;
   }
@@ -99,9 +111,6 @@
   }
 
   &__content {
-    @media screen and (min-width: 1024px) {
-      max-width: 50%;
-    }
     @media screen and (min-width: 1366px) {
       padding-right: 142px;
     }
@@ -136,8 +145,11 @@
     @media screen and (min-width: 1366px) {
       height: 494px;
     }
+
     img {
+      opacity: 0;
       @include absolute-100;
+      animation: fade .3s ease forwards;
     }
   }
 }
