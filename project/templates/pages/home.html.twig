@@ -2,7 +2,6 @@
 {# @var contact \App\Entity\Contact #}
 {# @var property \App\Entity\ProductPropertyValue #}
 {# @var modification \App\Entity\ProductModification #}
-{# @var productBlock \App\Entity\PAgeBlock #}
 
 {% extends 'layouts/default.html.twig' %}
 
@@ -15,7 +14,7 @@
 
 {% block content %}
 
-    {% include 'components/sections/hero.html.twig' %}
+    {% include 'components/sections/hero.html.twig' with {blocks: productBlockType} %}
 
     <section class="section" style="height: 100vh">
         <div class="container">
@@ -46,24 +45,6 @@
             </ul>
 
         </div>
-    </section>
-
-    <hr>
-
-    <section>
-
-        {% if productBlockType | length %}
-            <ul>
-                {% for productBlock in productBlockType %}
-                    <li>Текст блока:{{ productBlock.text }}</li>
-                    <li>Категория: {{ productBlock.product.category.title }}</li>
-                    <li>Продукт: {{ productBlock.product.title }}</li>
-                    <li><a href="#">[подробнее]</a></li>
-                    <li><img src="{{ vich_uploader_asset(productBlock.image) | imagine_filter_cache('banner_md') }}"
-                             alt=""></li>
-                {% endfor %}
-            </ul>
-        {% endif %}
     </section>
 
     <hr>
