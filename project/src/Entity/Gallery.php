@@ -24,14 +24,11 @@ class Gallery implements HasMediaInterface
     #[ORM\Column(nullable: true)]
     private ?int $sort = 0;
 
-    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'gallery')]
-    private ?Product $product = null;
-
-    #[ORM\ManyToOne(inversedBy: 'gallery')]
-    private ?ProductModification $productModification = null;
-
     #[ORM\ManyToOne(targetEntity: PageBlock::class, cascade: ['persist'], inversedBy: 'Gallery')]
     private ?PageBlock $pageBlock = null;
+
+    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'gallery')]
+    private ?Product $product = null;
 
     public function getId(): ?int
     {
@@ -40,7 +37,7 @@ class Gallery implements HasMediaInterface
 
     public function __toString(): string
     {
-        return 'test';
+        return $this?->getImage()?->getImageName() ?? 'test';
     }
 
     public function getImage(): ?Media
@@ -63,30 +60,6 @@ class Gallery implements HasMediaInterface
     public function setSort(?int $sort): static
     {
         $this->sort = $sort;
-
-        return $this;
-    }
-
-    public function getProduct(): ?Product
-    {
-        return $this->product;
-    }
-
-    public function setProduct(?Product $product): static
-    {
-        $this->product = $product;
-
-        return $this;
-    }
-
-    public function getProductModification(): ?ProductModification
-    {
-        return $this->productModification;
-    }
-
-    public function setProductModification(?ProductModification $productModification): static
-    {
-        $this->productModification = $productModification;
 
         return $this;
     }
@@ -116,6 +89,18 @@ class Gallery implements HasMediaInterface
     public function setNewImage(?Media $image): self
     {
         $this->uploadNewMedia($image, 'image');
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): static
+    {
+        $this->product = $product;
 
         return $this;
     }

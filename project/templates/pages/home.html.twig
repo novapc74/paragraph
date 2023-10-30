@@ -1,7 +1,7 @@
 {# @var socialNetwork \App\Entity\SocialNetwork #}
 {# @var contact \App\Entity\Contact #}
 {# @var property \App\Entity\ProductPropertyValue #}
-{# @var modification \App\Entity\ProductModification #}
+{# @var modification \App\Entity\Product #}
 
 {% extends 'layouts/default.html.twig' %}
 
@@ -59,7 +59,7 @@
                 <p>полное описание: {{ product.fullDescription }}</p>
 
                 <ul>
-                    {% for modification in product.modifications %}
+                    {% for modification in product.childProducts %}
                         <li style="color: {{ modification.color.hex }}"><a
                                     href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>
                         </li>

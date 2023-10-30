@@ -3,17 +3,25 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Form\Admin\GalleryType;
 use App\Form\Admin\ProductPropertyValueType;
 use App\Form\Admin\StoreFormType;
+use App\Form\ChildProductType;
 use App\Form\ProductModificationType;
+use Doctrine\ORM\QueryBuilder;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
+use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Gedmo\Tree\RepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProductCrudController extends AbstractCrudController
@@ -47,7 +55,7 @@ class ProductCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
-            AssociationField::new('category', 'Категория')
+            TextField::new('sku', 'Артикул')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
@@ -79,7 +87,7 @@ class ProductCrudController extends AbstractCrudController
                 ->renderExpanded()
             ,
             FormField::addTab('Маркетплейс'),
-            CollectionField::new('stores', 'Маркетплейсы')
+            CollectionField::new('marketPlaces', 'Маркетплейсы')
                 ->setEntryType(StoreFormType::class)
                 ->setFormTypeOptions([
                     'by_reference' => false,
@@ -88,14 +96,32 @@ class ProductCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->renderExpanded()
             ,
-            FormField::addTab('Модификации'),
-            CollectionField::new('modifications', 'Модификации')
-                ->setEntryType(ProductModificationType::class)
+            FormField::addTab('Галерея'),
+            CollectionField::new('gallery', 'Галерея')
+                ->setEntryType(GalleryType::class)
                 ->setFormTypeOptions([
                     'by_reference' => false,
                     'error_bubbling' => false,
                 ])
-            ->setTemplatePath('admin/crud/assoc_description.html.twig')
+                ->renderExpanded()
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
+            ,
+            FormField::addTab('Модификации'),
+            CollectionField::new('childProducts', 'Модификации')
+                ->setEntryType(ChildProductType::class)
+                ->setFormTypeOptions([
+                    'by_reference' => false,
+                    'error_bubbling' => false,
+                ])
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
         ];
+    }
+
+    public function createIndexQueryBuilder(SearchDto $searchDto, EntityDto $entityDto, FieldCollection $fields, FilterCollection $filters): QueryBuilder
+    {
+        return parent::createIndexQueryBuilder($searchDto, $entityDto, $fields, $filters)
+            ->where('entity.parentProduct is null');
     }
 }

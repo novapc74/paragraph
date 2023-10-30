@@ -34,22 +34,6 @@ class PropertyGroupFixtures extends BaseFixture implements DependentFixtureInter
                     $propertyGroup->addProperty($this->getReference('Property_7'));
                     break;
             }
-//            if ($count === 0) {
-//                $propertyGroup->addProperty($this->getReference('Property_0'));
-//                $propertyGroup->addProperty($this->getReference('Property_1'));
-//            }
-//
-//            if ($count === 1) {
-//                $propertyGroup->addProperty($this->getReference('Property_2'));
-//                $propertyGroup->addProperty($this->getReference('Property_3'));
-//                $propertyGroup->addProperty($this->getReference('Property_4'));
-//                $propertyGroup->addProperty($this->getReference('Property_5'));
-//                $propertyGroup->addProperty($this->getReference('Property_6'));
-//            }
-//
-//            if ($count === 2) {
-//                $propertyGroup->addProperty($this->getReference('Property_7'));
-//            }
 
             $propertyGroup
                 ->setTitle(self::PROPERTY_GROUP_TITLE[$count])

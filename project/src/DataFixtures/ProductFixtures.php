@@ -12,12 +12,13 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
     {
         $this->createEntity(Product::class, 1, function (Product $product) {
             $product
-                ->setTitle('Nero')
+                ->setTitle('Вертикальный накопитель "Paragraph"')
+                ->setSku('N090-01')
                 ->setShortDescription('Элегантный вертикальный накопитель А4 из 2-мм картона с дизайнерской обложкой. Организация и стиль в одном.')
                 ->setFullDescription('Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deserunt dolorem dolores ea ipsam libero minima optio perspiciatis quod, sit. Beatae consequuntur deleniti deserunt fugit ipsa minus quia quod sunt!')
-                ->setCategory($this->getReference('Category_0'))
-                ->addStore($this->getReference('Store_0'))
-                ->addStore($this->getReference('Store_1'));
+                ->addMarketPlace($this->getReference('Store_0'))
+                ->addMarketPlace($this->getReference('Store_1'))
+                ->setColor($this->getReference('Color_0'));
         });
 
         $manager->flush();
@@ -26,7 +27,6 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            CategoryFixtures::class,
             StoreFixtures::class,
             ColorFixtures::class,
         ];

@@ -23,8 +23,9 @@ class Store
     #[ORM\Column(length: 255)]
     private ?string $link = null;
 
-    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'stores')]
+    #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'marketPlaces')]
     private ?Product $product = null;
+
 
     public function getId(): ?int
     {

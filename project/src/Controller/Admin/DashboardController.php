@@ -68,7 +68,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Меры измерения', 'fa-solid fa-scale-balanced', Measure::class);
 
         yield MenuItem::section('каталог');
-        yield MenuItem::linkToCrud('Категории', 'fa-solid fa-tree', Category::class);
         yield MenuItem::linkToCrud('Товары', 'fa-brands fa-product-hunt', Product::class);
         yield MenuItem::linkToCrud('Группы свойств', 'fa-solid fa-layer-group', PropertyGroup::class);
         yield MenuItem::linkToCrud('Названия свойства', 'fa-solid fa-barcode', Property::class);

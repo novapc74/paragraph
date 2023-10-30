@@ -10,8 +10,8 @@
                         <div class="swiper-slide hero-swiper__slide hero-slide">
                             <div class="hero-slide__top">
                                 <div class="hero-slide__header">
-                                    <h3 class="hero-slide__heading">{{ block.product.category.title }}</h3>
-                                    <h4 class="hero-slide__title">{{ block.product.title }}</h4>
+                                    <h3 class="hero-slide__heading">{{ block.product.title }}</h3>
+                                    <h4 class="hero-slide__title">{{ block.product.color.title }}</h4>
                                 </div>
                                 <div class="hero-slide__content">
                                     <p class="hero-slide__description">{{ block.text }}</p>
@@ -19,7 +19,6 @@
                                 </div>
                             </div>
                             <div class="hero-slide__image">
-{#                                <img src="{{ asset('build/images/hero-1.png') }}" alt="">#}
                                 <img src="{{ vich_uploader_asset(block.image) | imagine_filter_cache('banner_md') }}"
                                      alt="картинка для продукта - {{ block.product.title }}">
                             </div>
