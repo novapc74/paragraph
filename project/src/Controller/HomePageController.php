@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\PageBlock;
+use App\Entity\Product;
 use App\Entity\PropertyGroup;
 use App\Entity\ProductModification;
 use App\Entity\ProductPropertyValue;
@@ -47,7 +48,7 @@ class HomePageController extends AbstractController
 	}
 
 	#[Route('/modification/{id}', name: 'app_product_modification')]
-	public function showProductModification(Request $request, ?ProductModification $modification): JsonResponse
+	public function showProductModification(Request $request, ?Product $modification): JsonResponse
 	{
 		if ($request->isXmlHttpRequest() && $modification) {
 
