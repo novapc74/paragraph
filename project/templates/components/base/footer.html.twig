@@ -1,84 +1,66 @@
-<footer class="footer text-14 text-14_300">
+<footer class="footer">
     <div class="container footer__container">
-        <div class="footer__top">
-            {% if isHome %}
-                <div class="logo footer__logo">
-                    {% include 'components/base/logo.html.twig' %}
+        <div class="footer__top footer-top">
+            <div class="footer-top__left">
+                {% if isHome %}
+                    <div class="logo footer__logo">
+                        <svg>
+                            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#logo"></use>
+                        </svg>
+                    </div>
+                {% else %}
+                    <a href="{{ path('app_home_page') }}" class="logo footer__logo">
+                        <svg>
+                            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#logo"></use>
+                        </svg>
+                    </a>
+                {% endif %}
+                <nav class="footer__nav">
+                    <ul class="footer__list">
+                        <li class="footer__item">
+                            <a href="/#about" class="default-link default-link_white footer__link">О нас</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="/#catalog" class="default-link default-link_white footer__link">Каталог (<span class="numeric">3</span>)</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="#" class="default-link default-link_white footer__link">Наше производство</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="/#review" class="default-link default-link_white footer__link">Отзывы</a>
+                        </li>
+                        <li class="footer__item">
+                            <a href="/#contacts" class="default-link default-link_white footer__link">Контакты</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            {% if socialNetworks and socialNetworks | length %}
+                <div class="footer-top__right">
+                    <ul class="footer__list footer__list_socials">
+                        {% for socialNetwork in socialNetworks %}
+                            <li class="footer__item footer__item_social">
+                                <a href="{{ socialNetwork.link }}" class="default-link default-link_white footer__link footer__link_social">{{ socialNetwork.name }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            {% else %}
-                <a href="{{ path('app_home') }}" class="logo footer__logo">
-                    {% include 'components/base/logo.html.twig' %}
-                </a>
             {% endif %}
-
-            <nav class="footer__nav">
-                <div class="dropdown-menu footer__menu footer-menu" data-dropdown>
-                    <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
-                        <span class="text-16 footer-menu__title">Информация</span>
-                        <span class="dropdown-menu__btn footer-menu__btn"></span>
-                    </div>
-                    <ul class="dropdown-menu__inner footer-menu__list" style="--count: 2">
-                        <li class="default-link footer-menu__item"><a href="{{ path('app_about') }}" class="footer-menu__link">О нас</a></li>
-                        <li class="default-link footer-menu__item"><a href="{{ path('app_contact') }}" class="footer-menu__link">Контакты</a></li>
-                    </ul>
-                </div>
-                {% if serviceList() | length %}
-                    <div class="dropdown-menu footer__menu footer-menu" data-dropdown>
-                        <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
-                            <span class="text-16 footer-menu__title">Услуги</span>
-                            <span class="dropdown-menu__btn footer-menu__btn"></span>
-                        </div>
-                        <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ serviceList() | length }}">
-                            {% for service in serviceList() %}
-                                <li class="default-link footer-menu__item"><a href="/service/{{ service.slug }}" class="footer-menu__link">{{ service.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                {% if socials %}
-                    <div class="dropdown-menu footer__menu footer-menu" data-dropdown>
-                        <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
-                            <span class="text-16 footer-menu__title">Соцсети</span>
-                            <span class="dropdown-menu__btn footer-menu__btn"></span>
-                        </div>
-                        <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ socials | length }}">
-                            {% for social in socials %}
-                                <li class="default-link footer-menu__item"><a href="{{ social.link }}" class="footer-menu__link">{{ social.name }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-                <address class="dropdown-menu footer__menu footer__menu_contacts footer-menu" data-dropdown>
-                    <div class="dropdown-menu__header footer-menu__header" data-open-dropdown>
-                        <span class="text-16 footer-menu__title">Контакты</span>
-                        <span class="dropdown-menu__btn footer-menu__btn"></span>
-                    </div>
-                    <ul class="dropdown-menu__inner footer-menu__list" style="--count: {{ contacts.phone | length + 1 }}">
-                        {% if contacts.phone %}
-                            {% for phone in contacts.phone %}
-                                <li class="default-link footer-menu__item"><a href="tel:{{ phone | filterPhoneMask }}" class="footer-menu__link">{{ phone }}</a></li>
-                            {% endfor %}
-                        {% endif %}
-                        {% if contacts.email %}
-                            <li class="default-link footer-menu__item"><a href="mailto:{{ contacts.email }}" class="footer-menu__link">{{ contacts.email }}</a></li>
-                        {% endif %}
-                    </ul>
-                </address>
-            </nav>
         </div>
-        <div class="footer__bottom footer-bottom">
-            <div class="footer-bottom__left">
-                <span class="footer__copyright">© Сити Сервис {{ 'now' | date('Y') }}</span>
-                <a href="{{ path('app_policy') }}" class="default-link footer__policy">Политика конфиденциальности</a>
+        <div class="footer__bottom">
+            <div class="footer__info">
+                {% if contact.inn %}
+                    <span class="footer__inn">ИНН {{ contact.inn }}</span>
+                    <span class="footer__copyright">© {{ 'now' | date('Y') }} Параграф</span>
+                {% endif %}
             </div>
-            <div class="footer-bottom__right">
-                <a href="#" class="footer__made-by">
-                    <span>Made by</span>
-                    <svg>
-                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pf-logo"></use>
-                    </svg>
-                </a>
-            </div>
+            <a href="{{ path('app_policy') }}" class="footer__policy">Политика конфиденциальности</a>
+            <a href="mailto:PalmsAndFerns.Team@gmail.com" class="footer__made-by">
+                <span>Made by</span>
+                <svg>
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#pf-logo"></use>
+                </svg>
+            </a>
         </div>
     </div>
 </footer>

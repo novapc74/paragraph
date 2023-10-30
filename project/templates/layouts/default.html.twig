@@ -49,9 +49,9 @@
     {% block content %}{% endblock %}
 </main>
 
-{#{% block footer %}#}
-{#    {% include 'components/base/footer.html.twig' %}#}
-{#{% endblock %}#}
+{% block footer %}
+    {% include 'components/base/footer.html.twig' %}
+{% endblock %}
 
 {#{% include 'components/base/mobile-header.html.twig' %}#}
 {#{% include 'components/popups/feedback-popup.html.twig' %}#}

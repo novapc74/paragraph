@@ -52,38 +52,18 @@
     }
   }
 
-  &__header {
-    margin-bottom: 20px;
-    @media screen and (min-width: 1024px) {
-      margin-bottom: 30px;
-    }
-    @media screen and (min-width: 1366px) {
-      margin-bottom: 50px;
-    }
-  }
-
   &__heading {
-    //@include text-18;
-    text-transform: uppercase;
-    line-height: 100%;
-    display: flex;
-    align-items: center;
+    @include base-title;
+    font-size: 18px;
+    line-height: 130%;
     margin-bottom: 20px;
 
     &:before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      //background-color: $yellow;
-      margin-right: 10px;
+      content: '/';
     }
 
-    @media screen and (min-width: 1024px) {
-      margin-bottom: 42px;
-    }
     @media screen and (min-width: 1366px) {
-      margin-bottom: 52px;
+      margin-bottom: 25px;
     }
   }
 
