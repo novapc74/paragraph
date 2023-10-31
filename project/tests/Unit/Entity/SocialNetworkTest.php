@@ -11,14 +11,16 @@ class SocialNetworkTest extends TestCase
     /**
      * @dataProvider titleProvider
      */
-    public function testCanCreateAndUpdate($title, $link): void
+    public function testCanCreateSocialNetwork($title, $link): void
     {
         $socialNetwork = (new SocialNetwork())
             ->setName($title)
             ->setLink($link);
 
-        self::assertSame($title, $socialNetwork->getName(), 'а тут описание теста, ждем полного совпадения');
-        self::assertSame($link, $socialNetwork->getLink(), 'а тут описание теста, ждем полного совпадения');
+        $message = 'Ожидается полное совпадение';
+
+        self::assertSame($title, $socialNetwork->getName(), $message);
+        self::assertSame($link, $socialNetwork->getLink(), $message);
     }
 
     public function titleProvider(): Generator
