@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Entity\Trait\HasMediaInterface;
 use App\Entity\Trait\HasMediaTrait;
+use App\Enum\PageBlockType;
 use App\Repository\PageBlockRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -42,10 +43,6 @@ class PageBlock implements HasMediaInterface
     #[ORM\Column(length: 255)]
     private ?string $type = null;
 
-    private const PRODUCT_BLOCK_TYPE = 'product-block-type';
-    private const INTERIOR_BLOCK_TYPE = 'interior-block-type';
-
-
     #[ArrayShape([
         'Продукт' => 'string',
         'Интерьер' => 'string',
@@ -53,8 +50,8 @@ class PageBlock implements HasMediaInterface
     public static function getAvailableType(string $type = null): array|string
     {
         $data = [
-            'Продукт' => self::PRODUCT_BLOCK_TYPE,
-            'Интерьер' => self::INTERIOR_BLOCK_TYPE,
+            'Продукт' => PageBlockType::PRODUCT_BLOCK_TYPE->value,
+            'Интерьер' => PageBlockType::INTERIOR_BLOCK_TYPE->value,
         ];
 
         return $type ? array_flip($data)[$type] : $data;
@@ -64,7 +61,6 @@ class PageBlock implements HasMediaInterface
     {
         $this->Gallery = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
