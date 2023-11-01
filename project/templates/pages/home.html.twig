@@ -2,6 +2,7 @@
 {# @var contact \App\Entity\Contact #}
 {# @var property \App\Entity\ProductPropertyValue #}
 {# @var modification \App\Entity\Product #}
+{# @var product \App\Entity\Product #}
 
 {% extends 'layouts/default.html.twig' %}
 
@@ -14,53 +15,91 @@
 
 {% block content %}
 
-    {{ dump(propertyGroups(product)) }}
+    {% for product in products %}
+        {{ dump(propertyGroups(product)) }}
+        <section class="section" style="height: 100vh">
+            <div class="container">
+                {% if propertyGroups(product) | length %}
+                    <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>
+                    <p>короткое описание: {{ product.shortDescription }}</p>
+                    <p>полное описание: {{ product.fullDescription }}</p>
+
+                    <ul>
+                        {% for modification in product.childProducts %}
+                            <li style="color: {{ modification.color.hex }}"><a
+                                        href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>
+                            </li>
+
+                            {% for imageData in modification.gallery %}
+                                <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
+                                     alt="картинка для модификации {{ modification.color.title }}">
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+
+                    <ul id="contacts">
+                        {% for group_name, property_group in propertyGroups(product) %}
+                            <li>{{ group_name }}</li>
+                            <ul>
+                                {% for property in property_group %}
+                                    <li>{{ property.productProperty.title }} - {{ property.value }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endfor %}
+                    </ul>
+
+                {% endif %}
+            </div>
+        </section>
+
+    {% endfor %}
 
     {% if main_blocks | length %}
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
     {% endif %}
+
     {% include 'components/sections/about.html.twig' %}
 
 
-{#    <hr>#}
+    {#    <hr> #}
 
-{#    <section class="section" style="height: 100vh">#}
-{#        <div class="container">#}
-{#            {% if propertyGroups() | length %}#}
-{#                <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>#}
-{#                <p>короткое описание: {{ product.shortDescription }}</p>#}
-{#                <p>полное описание: {{ product.fullDescription }}</p>#}
+    {#    <section class="section" style="height: 100vh"> #}
+    {#        <div class="container"> #}
+    {#            {% if propertyGroups() | length %} #}
+    {#                <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3> #}
+    {#                <p>короткое описание: {{ product.shortDescription }}</p> #}
+    {#                <p>полное описание: {{ product.fullDescription }}</p> #}
 
-{#                <ul>#}
-{#                    {% for modification in product.modifications %}#}
-{#                        <li style="color: {{ modification.color.hex }}"><a#}
-{#                                    href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>#}
-{#                        </li>#}
+    {#                <ul> #}
+    {#                    {% for modification in product.modifications %} #}
+    {#                        <li style="color: {{ modification.color.hex }}"><a #}
+    {#                                    href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a> #}
+    {#                        </li> #}
 
-{#                        {% for imageData in modification.gallery %}#}
-{#                            <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"#}
-{#                                 alt="картинка для модификации {{ modification.color.title }}">#}
-{#                        {% endfor %}#}
-{#                    {% endfor %}#}
-{#                </ul>#}
+    {#                        {% for imageData in modification.gallery %} #}
+    {#                            <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}" #}
+    {#                                 alt="картинка для модификации {{ modification.color.title }}"> #}
+    {#                        {% endfor %} #}
+    {#                    {% endfor %} #}
+    {#                </ul> #}
 
-{#                <ul id="contacts">#}
-{#                    {% for group_name, property_group in propertyGroups %}#}
-{#                        <li>{{ group_name }}</li>#}
-{#                        <ul>#}
-{#                            {% for property in property_group %}#}
-{#                                <li>{{ property.productProperty.title }} - {{ property.value }}</li>#}
-{#                            {% endfor %}#}
-{#                        </ul>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
+    {#                <ul id="contacts"> #}
+    {#                    {% for group_name, property_group in propertyGroups %} #}
+    {#                        <li>{{ group_name }}</li> #}
+    {#                        <ul> #}
+    {#                            {% for property in property_group %} #}
+    {#                                <li>{{ property.productProperty.title }} - {{ property.value }}</li> #}
+    {#                            {% endfor %} #}
+    {#                        </ul> #}
+    {#                    {% endfor %} #}
+    {#                </ul> #}
 
-{#            {% endif %}#}
-{#        </div>#}
-{#    </section>#}
+    {#            {% endif %} #}
+    {#        </div> #}
+    {#    </section> #}
     {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
 
-{#    {{ dump(interior_blocks) }}#}
+    {#    {{ dump(interior_blocks) }} #}
 
     <section class="section" style="height: 100vh">
         <div class="container">
@@ -95,38 +134,4 @@
 
     <hr>
 
-    <section class="section" style="height: 100vh">
-        <div class="container">
-            {% if propertyGroups | length %}
-                <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>
-                <p>короткое описание: {{ product.shortDescription }}</p>
-                <p>полное описание: {{ product.fullDescription }}</p>
-
-                <ul>
-                    {% for modification in product.childProducts %}
-                        <li style="color: {{ modification.color.hex }}"><a
-                                    href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>
-                        </li>
-
-                        {% for imageData in modification.gallery %}
-                            <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
-                                 alt="картинка для модификации {{ modification.color.title }}">
-                        {% endfor %}
-                    {% endfor %}
-                </ul>
-
-                <ul id="contacts">
-                    {% for group_name, property_group in propertyGroups %}
-                        <li>{{ group_name }}</li>
-                        <ul>
-                            {% for property in property_group %}
-                                <li>{{ property.productProperty.title }} - {{ property.value }}</li>
-                            {% endfor %}
-                        </ul>
-                    {% endfor %}
-                </ul>
-
-            {% endif %}
-        </div>
-    </section>
 {% endblock %}

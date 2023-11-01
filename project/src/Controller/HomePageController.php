@@ -25,23 +25,9 @@ class HomePageController extends AbstractController
                           ProductRepository $productRepository,
                           PageBlockRepository $pageBlockRepository): Response
 	{
-		$propertyGroups = [];
-		if ($product = $productRepository->findOneBy([])) {
-
-			array_map(
-				function (PropertyGroup $group) use (&$propertyGroups, $product) {
-					$propertyGroups[$group->getTitle()] = array_filter(
-						$product->getProductProperties()->toArray(),
-						fn(ProductPropertyValue $productPropertyValue) => $productPropertyValue->getProduct() === $product && $productPropertyValue->getProductProperty()->getPropertyGroup() === $group);
-				},
-				$groupRepository->findByProduct($product)
-			);
-		}
-
 		return $this->render('pages/home.html.twig', [
 			'isHome' => true,
-			'propertyGroups' => $propertyGroups,
-			'product' => $product,
+			'products' => $productRepository->findBy([],[], 10),
             'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::product_block_type->name]),
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
 		]);
