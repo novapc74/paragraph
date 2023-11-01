@@ -2,8 +2,8 @@
 
 namespace App\Enum;
 
-enum PageBlockType: string
+enum PageBlockType
 {
-    case PRODUCT_BLOCK_TYPE = 'product-block-type';
-    case INTERIOR_BLOCK_TYPE = 'interior-block-type';
+    case product_block_type;
+    case interior_block_type;
 }

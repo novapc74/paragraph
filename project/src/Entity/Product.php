@@ -49,6 +49,9 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Store::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
     private Collection $marketPlaces;
 
+    #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]
+    private ?Category $category = null;
+
     public function __construct()
     {
         $this->productProperties = new ArrayCollection();
@@ -252,6 +255,18 @@ class Product implements ExplodeDescriptionInterface
             $this->title = $parentProduct->getTitle();
             $this->description = $parentProduct->getDescription();
         }
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): static
+    {
+        $this->category = $category;
+
+        return $this;
     }
 
 }

@@ -4,8 +4,9 @@ namespace App\Controller;
 
 use App\Entity\PageBlock;
 use App\Entity\Product;
+use App\Enum\EnumTest;
+use App\Enum\PageBlockType;
 use App\Entity\PropertyGroup;
-use App\Entity\ProductModification;
 use App\Entity\ProductPropertyValue;
 use App\Repository\PageBlockRepository;
 use App\Repository\ProductRepository;
@@ -42,8 +43,8 @@ class HomePageController extends AbstractController
 			'isHome' => true,
 			'propertyGroups' => $propertyGroups,
 			'product' => $product,
-            'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Продукт']]),
-            'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlock::getAvailableType()['Интерьер']]),
+            'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::product_block_type->name]),
+            'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
 		]);
 	}
 

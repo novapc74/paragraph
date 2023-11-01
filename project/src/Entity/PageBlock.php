@@ -50,8 +50,8 @@ class PageBlock implements HasMediaInterface
     public static function getAvailableType(string $type = null): array|string
     {
         $data = [
-            'Продукт' => PageBlockType::PRODUCT_BLOCK_TYPE->value,
-            'Интерьер' => PageBlockType::INTERIOR_BLOCK_TYPE->value,
+            'Продукт' => PageBlockType::product_block_type->name,
+            'Интерьер' => PageBlockType::interior_block_type->name,
         ];
 
         return $type ? array_flip($data)[$type] : $data;
