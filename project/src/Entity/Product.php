@@ -64,10 +64,10 @@ class Product implements ExplodeDescriptionInterface
     #[SerializedName('images')]
     public function getGalleryCollection(): array
     {
-        return array_map(fn(Gallery $gallery) => [
+        return [
             'color' => $this->getColor()->getTitle(),
-            'image' => $this->getMediaCachePath($gallery->getImage()),
-        ], $this->getGallery()->toArray());
+            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage()), $this->getGallery()->toArray())
+        ];
     }
 
     public function getId(): ?int

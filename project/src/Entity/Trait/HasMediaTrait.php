@@ -2,8 +2,8 @@
 
 namespace App\Entity\Trait;
 
-use App\Entity\Media;
 use TypeError;
+use App\Entity\Media;
 
 trait HasMediaTrait
 {
@@ -38,6 +38,7 @@ trait HasMediaTrait
 	{
 		$string = str_replace('_', ' ', $string);
 		$string = ucwords($string);
+
 		return str_replace(' ', '', $string);
 	}
 }
