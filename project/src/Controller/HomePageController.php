@@ -38,7 +38,6 @@ class HomePageController extends AbstractController
 			);
 		}
 
-
 		return $this->render('pages/home.html.twig', [
 			'isHome' => true,
 			'propertyGroups' => $propertyGroups,

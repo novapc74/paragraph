@@ -14,6 +14,8 @@
 
 {% block content %}
 
+    {{ dump(propertyGroups(product)) }}
+
     {% if main_blocks | length %}
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
     {% endif %}
@@ -24,7 +26,7 @@
 
 {#    <section class="section" style="height: 100vh">#}
 {#        <div class="container">#}
-{#            {% if propertyGroups | length %}#}
+{#            {% if propertyGroups() | length %}#}
 {#                <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>#}
 {#                <p>короткое описание: {{ product.shortDescription }}</p>#}
 {#                <p>полное описание: {{ product.fullDescription }}</p>#}
