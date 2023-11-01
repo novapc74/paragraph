@@ -1,0 +1,27 @@
+.paragraph {
+  &__title {
+    font-size: 33px;
+  }
+
+  &__swiper-container {
+  }
+
+  &__swiper {
+  }
+
+  &__navigation {
+  }
+
+  &__pagination {
+  }
+}
+
+.paragraph-swiper {
+  &__wrapper {
+  }
+
+  &__slide {
+    width: 520px;
+    height: 570px;
+  }
+}

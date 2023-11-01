@@ -1,4 +1,5 @@
 import Swiper from 'swiper/bundle';
+import leadingZeroFormat from "../utils/leadingZeroFormat";
 // import {addClass, removeClass} from "../utils/classMethods";
 
 export default function swipers() {
@@ -21,8 +22,44 @@ export default function swipers() {
                 type: 'fraction',
                 // currentClass: 'swiper-pagination-current numeric',
                 // totalClass: 'swiper-pagination-total numeric',
-                formatFractionCurrent: number => number < 10 ? '0' + number : number,
-                formatFractionTotal: number => number < 10 ? '0' + number : number
+                formatFractionCurrent: leadingZeroFormat,
+                formatFractionTotal: leadingZeroFormat
+            },
+        })
+    }
+
+    const paragraph = document.querySelector('.paragraph')
+    if (hero) {
+        new Swiper('.paragraph__swiper', {
+            slidesPerView: 2,
+            centeredSlides: true,
+            loop: true,
+            // slideActiveClass: 'paragraph-slide_active',
+            speed: 1500,
+            effect: 'creative',
+            creativeEffect: {
+                limitProgress: 2,
+                prev: {
+                    translate: ["100%", 0, -1000],
+                    shadow: true,
+                },
+                next: {
+                    translate: ["-100%", 0, -1000],
+                    shadow: true,
+                },
+            },
+            navigation: {
+                disabledClass: 'swiper-button_disabled',
+                prevEl: '.paragraph__navigation .swiper-button_prev',
+                nextEl: '.paragraph__navigation .swiper-button_next'
+            },
+            pagination: {
+                el: '.paragraph__pagination',
+                type: 'fraction',
+                // currentClass: 'swiper-pagination-current numeric',
+                // totalClass: 'swiper-pagination-total numeric',
+                formatFractionCurrent: leadingZeroFormat,
+                formatFractionTotal: leadingZeroFormat
             },
         })
     }
