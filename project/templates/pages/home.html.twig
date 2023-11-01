@@ -15,6 +15,15 @@
 
 {% block content %}
 
+    {% if main_blocks | length %}
+        {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
+    {% endif %}
+
+    {% include 'components/sections/about.html.twig' %}
+
+    {% include 'components/sections/paragraph.html.twig' %}
+
+
     {% for product in products %}
         <section class="section" style="height: 100vh">
             <div class="container">
@@ -53,14 +62,6 @@
         </section>
 
     {% endfor %}
-
-    {% if main_blocks | length %}
-        {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
-    {% endif %}
-
-    {% include 'components/sections/about.html.twig' %}
-
-
     {#    <hr> #}
 
     {#    <section class="section" style="height: 100vh"> #}
@@ -97,41 +98,7 @@
     {#            {% endif %} #}
     {#        </div> #}
     {#    </section> #}
-    {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
 
     {#    {{ dump(interior_blocks) }} #}
-
-    <section class="section" style="height: 100vh">
-        <div class="container">
-            <h1>Paragraph</h1>
-
-            <h2 style="color: #7c2d12">Контакты</h2>
-            <ul>
-                <li>Название: {{ contact.title }}</li>
-                <li>Email: {{ contact.email }}</li>
-                <li>Адрес: {{ contact.address }}</li>
-                <li>
-                    <ul>
-                        Телефоны:
-                        {% for phone in contact.phone %}
-                            <li>{{ phone }}</li>
-                        {% endfor %}
-                    </ul>
-                </li>
-                <li>ИНН: {{ contact.inn }}</li>
-                <li>Координаты на карте Яндекс: {{ contact.coordinates }}</li>
-            </ul>
-
-            <h2 style="color: #7c2d12">Соц.сети</h2>
-            <ul>
-                {% for socialNetwork in socialNetworks %}
-                    <li>{{ socialNetwork.name }} - {{ socialNetwork.link }}</li>
-                {% endfor %}
-            </ul>
-
-        </div>
-    </section>
-
-    <hr>
 
 {% endblock %}
