@@ -1,0 +1,96 @@
+@import "../vars";
+
+.semicircles {
+  &__wrapper {
+    position: relative;
+  }
+
+  &__content {
+    display: grid;
+    gap: 30px;
+    @media screen and (min-width: 768px) {
+      gap: 20px;
+      padding: 50px 0;
+    }
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 138px 0;
+    }
+    @media screen and (min-width: 1366px) {
+      padding: 90px 0;
+    }
+  }
+
+  &__text {
+    text-align: center;
+    justify-self: center;
+    max-width: 335px;
+    @media screen and (min-width: 1024px) {
+      max-width: 230px;
+    }
+    @media screen and (min-width: 1024px) {
+      max-width: 255px;
+    }
+    &_center {
+      color: $cream;
+      font-size: 25px;
+      font-weight: 500;
+      line-height: 120%;
+      text-transform: uppercase;
+      max-width: 580px;
+
+      @media screen and (min-width: 768px) {
+        font-size: 35px;
+      }
+      @media screen and (min-width: 1024px) {
+        max-width: 436px;
+      }
+      @media screen and (min-width: 1366px) {
+        font-size: 42px;
+        max-width: 535px;
+      }
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    opacity: 0.35;
+
+    img {
+      width: 175vw;
+
+      &:nth-child(1) {
+        margin-bottom: 80px;
+      }
+
+      &:nth-child(2) {
+        transform-origin: center;
+        transform: rotate(180deg);
+      }
+
+      @media screen and (min-width: 768px) {
+        width: 120vw;
+
+        &:nth-child(1) {
+          margin-bottom: 90px;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 934px;
+      }
+
+      @media screen and (min-width: 1366px) {
+        &:nth-child(1) {
+          margin-bottom: 50px;
+        }
+      }
+    }
+  }
+}

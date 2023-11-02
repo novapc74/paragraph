@@ -1,6 +1,7 @@
 @import "mixins/font-face";
 
 @include font-face("Raleway-Paragraph", "raleway-400", 400, normal);
+@include font-face("Raleway-Paragraph", "raleway-400-italic", 400, italic);
 @include font-face("Raleway-Paragraph", "raleway-500", 500, normal);
 @include font-face("Inter-Paragraph", "inter-400", 400, normal);
 @include font-face("Cormorant-Paragraph", "cormorant-600", 600, normal);

@@ -1,0 +1,99 @@
+@import "../vars";
+@import "../mixins/base";
+
+.interior {
+  &__header {
+    margin-bottom: 35px;
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__title {
+    color: $blue;
+    font-size: 25px;
+    line-height: 110%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+    }
+    @media screen and (min-width: 1366px) {
+      font-size: 34px;
+    }
+  }
+
+  &__navigation {
+    padding: 0;
+    margin-top: 15px;
+    @media screen and (min-width: 1366px) {
+      margin-top: 20px;
+    }
+  }
+}
+
+.interior-swiper {
+  &__wrapper {
+    @media screen and (min-width: 1024px) {
+      align-items: center;
+    }
+  }
+}
+
+.interior-slide {
+  @media screen and (min-width: 1024px) {
+    height: 552px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 20px;
+    }
+  }
+
+  &__count {
+    line-height: 100%;
+    font-style: italic;
+    @media screen and (min-width: 1366px) {
+      font-size: 16px;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    line-height: 110%;
+  }
+
+  &__image {
+    position: relative;
+    padding-top: 90%;
+    @media screen and (min-width: 768px) {
+      padding-top: 0;
+      height: 650px;
+    }
+    @media screen and (min-width: 1024px) {
+      height: 320px;
+      transition: height 1s ease;
+    }
+
+    img {
+      @include absolute-100;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &_next &__image {
+      height: 510px;
+    }
+  }
+
+}

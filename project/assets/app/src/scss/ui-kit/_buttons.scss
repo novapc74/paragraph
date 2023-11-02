@@ -12,6 +12,7 @@
   text-align: center;
   transition: color 1.5s cubic-bezier(.22, 1, .36, 1), border-color .3s ease;
   cursor: pointer;
+  user-select: none;
   overflow: hidden;
 
   &__bg {
@@ -56,7 +57,6 @@
   &:disabled {
     opacity: 0.2;
     pointer-events: none;
-    user-select: none;
   }
 }
 
@@ -71,6 +71,7 @@
   color: $white;
   transition: background-color .3s ease;
   cursor: pointer;
+  user-select: none;
   overflow: hidden;
 
   &__bg {
@@ -98,6 +99,11 @@
   &:active &__bg {
     fill: $black;
   }
+
+  &:disabled {
+    opacity: 0.2;
+    pointer-events: none;
+  }
 }
 
 .text-button {
@@ -105,6 +111,7 @@
   font-weight: 400;
   line-height: 1;
   transition: color .3s ease;
+  user-select: none;
   cursor: pointer;
 
   &:before {
@@ -181,6 +188,7 @@
   width: 24px;
   height: 24px;
   cursor: pointer;
+  user-select: none;
   transition: tramsform .3s ease;
 
   svg {
