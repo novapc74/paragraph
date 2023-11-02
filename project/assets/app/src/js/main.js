@@ -1,8 +1,8 @@
 import swipers from "./base/swipers";
 import {addClass, removeClass} from "./utils/classMethods";
+import animations from "./base/animations";
 
 document.addEventListener('DOMContentLoaded', () => {
-    swipers()
     if(document.querySelector('[data-header]')) {
         let scrollValue = 0
         const header = document.querySelector('[data-header]')
@@ -12,4 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scrollValue = st === 0 ? 0 : st;
         })
     }
+    swipers()
+    animations()
 })

@@ -21,47 +21,53 @@
 
     {% include 'components/sections/about.html.twig' %}
 
-    {% include 'components/sections/paragraph.html.twig' %}
+{#    {% include 'components/sections/paragraph.html.twig' %}#}
+
+    {% include 'components/sections/semicircles.html.twig' %}
+
+    {% if interior_blocks | length %}
+        {% include 'components/sections/interior.html.twig' with {blocks: interior_blocks} %}
+    {% endif %}
 
 
-    {% for product in products %}
-        <section class="section" style="height: 100vh">
-            <div class="container">
-                {% if propertyGroups(product) | length %}
+{#    {% for product in products %}#}
+{#        <section class="section" style="height: 100vh">#}
+{#            <div class="container">#}
+{#                {% if propertyGroups(product) | length %}#}
 
-                    <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>
-                    <p>короткое описание: {{ product.shortDescription }}</p>
-                    <p>полное описание: {{ product.fullDescription }}</p>
+{#                    <h3>Свойства товара <span style="color: darkred">{{ product.title }}</span></h3>#}
+{#                    <p>короткое описание: {{ product.shortDescription }}</p>#}
+{#                    <p>полное описание: {{ product.fullDescription }}</p>#}
 
-                    <ul>
-                        {% for modification in product.childProducts %}
-                            <li style="color: {{ modification.color.hex }}"><a
-                                        href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>
-                            </li>
+{#                    <ul>#}
+{#                        {% for modification in product.childProducts %}#}
+{#                            <li style="color: {{ modification.color.hex }}"><a#}
+{#                                        href="{{ path('app_product_modification', { id: modification.id }) }}">{{ modification.color.title }}</a>#}
+{#                            </li>#}
 
-                            {% for imageData in modification.gallery %}
-                                <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"
-                                     alt="картинка для модификации {{ modification.color.title }}">
-                            {% endfor %}
-                        {% endfor %}
-                    </ul>
+{#                            {% for imageData in modification.gallery %}#}
+{#                                <img src="{{ vich_uploader_asset(imageData.image, 'imageFile') | imagine_filter_cache('admin_thumbnail') }}"#}
+{#                                     alt="картинка для модификации {{ modification.color.title }}">#}
+{#                            {% endfor %}#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
 
-                    <ul id="contacts">
-                        {% for group_name, property_group in propertyGroups(product) %}
-                            <li>{{ group_name }}</li>
-                            <ul>
-                                {% for property in property_group %}
-                                    <li>{{ property.productProperty.title }} - {{ property.value }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% endfor %}
-                    </ul>
+{#                    <ul id="contacts">#}
+{#                        {% for group_name, property_group in propertyGroups(product) %}#}
+{#                            <li>{{ group_name }}</li>#}
+{#                            <ul>#}
+{#                                {% for property in property_group %}#}
+{#                                    <li>{{ property.productProperty.title }} - {{ property.value }}</li>#}
+{#                                {% endfor %}#}
+{#                            </ul>#}
+{#                        {% endfor %}#}
+{#                    </ul>#}
 
-                {% endif %}
-            </div>
-        </section>
+{#                {% endif %}#}
+{#            </div>#}
+{#        </section>#}
 
-    {% endfor %}
+{#    {% endfor %}#}
     {#    <hr> #}
 
     {#    <section class="section" style="height: 100vh"> #}

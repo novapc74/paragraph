@@ -63,4 +63,24 @@ export default function swipers() {
             },
         })
     }
+
+    const interior = document.querySelector('.interior')
+    if (hero) {
+        new Swiper('.interior__swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            slideNextClass: 'interior-slide_next',
+            speed: 1000,
+            navigation: {
+                disabledClass: 'swiper-button_disabled',
+                prevEl: '.interior__navigation .swiper-button_prev',
+                nextEl: '.interior__navigation .swiper-button_next'
+            },
+            breakpoints: {
+                1024: {
+                    slidesPerView: 2,
+                }
+            }
+        })
+    }
 }
