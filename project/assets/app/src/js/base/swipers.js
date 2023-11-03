@@ -29,24 +29,20 @@ export default function swipers() {
     }
 
     const paragraph = document.querySelector('.paragraph')
-    if (hero) {
+    if (paragraph) {
         new Swiper('.paragraph__swiper', {
-            slidesPerView: 2,
+            slidesPerView: 1,
+            initialSlide: 2,
             centeredSlides: true,
-            loop: true,
-            // slideActiveClass: 'paragraph-slide_active',
-            speed: 1500,
-            effect: 'creative',
-            creativeEffect: {
-                limitProgress: 2,
-                prev: {
-                    translate: ["100%", 0, -1000],
-                    shadow: true,
-                },
-                next: {
-                    translate: ["-100%", 0, -1000],
-                    shadow: true,
-                },
+            grabCursor: true,
+            slideActiveClass: 'paragraph-swiper__slide_active',
+            speed: 1000,
+            effect: 'coverflow',
+            coverflowEffect: {
+                rotate: 15,
+                stretch: 75,
+                depth: 300,
+                modifier: 1,
             },
             navigation: {
                 disabledClass: 'swiper-button_disabled',
@@ -61,14 +57,23 @@ export default function swipers() {
                 formatFractionCurrent: leadingZeroFormat,
                 formatFractionTotal: leadingZeroFormat
             },
+            breakpoints: {
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
         })
     }
 
     const interior = document.querySelector('.interior')
-    if (hero) {
+    if (interior) {
         new Swiper('.interior__swiper', {
             slidesPerView: 1,
             spaceBetween: 20,
+            grabCursor: true,
             slideNextClass: 'interior-slide_next',
             speed: 1000,
             navigation: {

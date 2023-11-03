@@ -1,27 +1,80 @@
+@import "../vars";
+@import "../mixins/base";
+
 .paragraph {
   &__title {
+    font-family: $ff-title;
     font-size: 33px;
-  }
-
-  &__swiper-container {
-  }
-
-  &__swiper {
+    font-weight: 600;
+    line-height: 110%;
+    text-transform: uppercase;
+    color: $blue;
+    margin-bottom: 30px;
+    width: max-content;
+    margin-left: auto;
+    margin-right: auto;
+    @media screen and (min-width: 768px) {
+      font-size: 95px;
+      margin-bottom: 20px;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 120px;
+      margin-bottom: 30px;
+    }
   }
 
   &__navigation {
-  }
-
-  &__pagination {
+    @media screen and (min-width: 768px) {
+      padding: 0;
+      margin-top: 15px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-top: 30px;
+    }
+    @media screen and (min-width: 1366px) {
+      margin-top: 25px;
+    }
   }
 }
 
 .paragraph-swiper {
-  &__wrapper {
-  }
-
   &__slide {
-    width: 520px;
-    height: 570px;
+    position: relative;
+    padding-top: 110%;
+    opacity: 0;
+    transition: opacity .4s ease;
+    &::before {
+      content: '';
+      @include absolute-100;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.60);
+      transition: opacity .4s ease;
+    }
+    img {
+      @include absolute-100;
+    }
+    &_active {
+      opacity: 1;
+      &:before {
+        opacity: 0;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      opacity: 1;
+      padding-top: 0;
+      width: 450px;
+      height: 547px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 316px;
+      height: 481px;
+    }
+    @media screen and (min-width: 1366px) {
+      width: 394px;
+      height: 594px;
+    }
+    &_active::before {
+      opacity: 0;
+    }
   }
 }
