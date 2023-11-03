@@ -16,10 +16,10 @@
             </div>
             <div class="about__grid about__grid_images">
                 <div class="about__image about__image_left">
-                    <img src="{{ asset('build/images/about-1.jpg') }}" alt="Папка регистратор">
+                    <img src="{{ asset('build/images/about-1.jpg') | imagine_filter_cache('medium') }}" alt="Папка регистратор" loading="lazy">
                 </div>
                 <div class="about__image about__image_right">
-                    <img src="{{ asset('build/images/about-2.jpg') }}" alt="Лоток для бумаг">
+                    <img src="{{ asset('build/images/about-2.jpg') | imagine_filter_cache('medium') }}" alt="Лоток для бумаг" loading="lazy">
                 </div>
             </div>
         </div>

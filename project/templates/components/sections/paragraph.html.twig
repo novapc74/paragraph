@@ -6,21 +6,12 @@
         <div class="paragraph__swiper-container">
             <div class="swiper paragraph__swiper paragraph-swiper">
                 <div class="swiper-wrapper paragraph-swiper__wrapper">
-                    <div class="swiper-slide paragraph-swiper__slide">
-                        <img src="{{ asset('build/images/about-2.jpg') }}" alt="">
-                    </div>
-                    <div class="swiper-slide paragraph-swiper__slide">
-                        <img src="{{ asset('build/images/about-2.jpg') }}" alt="">
-                    </div>
-                    <div class="swiper-slide paragraph-swiper__slide">
-                        <img src="{{ asset('build/images/about-2.jpg') }}" alt="">
-                    </div>
-                    <div class="swiper-slide paragraph-swiper__slide">
-                        <img src="{{ asset('build/images/about-2.jpg') }}" alt="">
-                    </div>
-                    <div class="swiper-slide paragraph-swiper__slide">
-                        <img src="{{ asset('build/images/about-2.jpg') }}" alt="">
-                    </div>
+                    {% for i in 1..5 %}
+                        <div class="swiper-slide paragraph-swiper__slide">
+                            <img src="{{ asset("build/images/paragraph-#{i}.jpg") | imagine_filter_cache('medium') }}" loading="lazy" alt="">
+                            <span class="paragraph-swiper__overlay"></span>
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
             <div class="default-swiper-navigation paragraph__navigation">
