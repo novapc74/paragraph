@@ -3,26 +3,22 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
-use App\Form\Admin\GalleryType;
-use App\Form\Admin\ProductPropertyValueType;
-use App\Form\Admin\StoreFormType;
-use App\Form\ChildProductType;
-use App\Form\ProductModificationType;
 use Doctrine\ORM\QueryBuilder;
-use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
-use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
+use App\Form\Admin\GalleryType;
+use App\Form\Admin\ChildProductType;
+use App\Form\Admin\ProductPropertyValueType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Gedmo\Tree\RepositoryInterface;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FieldCollection;
+use EasyCorp\Bundle\EasyAdminBundle\Collection\FilterCollection;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -86,28 +82,18 @@ class ProductCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->renderExpanded()
             ,
-            FormField::addTab('Маркетплейс'),
-            CollectionField::new('marketPlaces', 'Маркетплейсы')
-                ->setEntryType(StoreFormType::class)
-                ->setFormTypeOptions([
-                    'by_reference' => false,
-                    'error_bubbling' => false,
-                ])
-                ->setTextAlign('center')
-                ->renderExpanded()
-            ,
-            FormField::addTab('Галерея'),
-            CollectionField::new('gallery', 'Галерея')
-                ->setEntryType(GalleryType::class)
-                ->setFormTypeOptions([
-                    'by_reference' => false,
-                    'error_bubbling' => false,
-                ])
-                ->renderExpanded()
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-                ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
-            ,
+//            FormField::addTab('Галерея'),
+//            CollectionField::new('gallery', 'Галерея')
+//                ->setEntryType(GalleryType::class)
+//                ->setFormTypeOptions([
+//                    'by_reference' => false,
+//                    'error_bubbling' => false,
+//                ])
+//                ->renderExpanded()
+//                ->setTextAlign('center')
+//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+//                ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
+//            ,
             FormField::addTab('Модификации'),
             CollectionField::new('childProducts', 'Модификации')
                 ->setEntryType(ChildProductType::class)

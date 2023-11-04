@@ -77,7 +77,7 @@ class Product implements ExplodeDescriptionInterface
 
     public function __toString(): string
     {
-        return $this->getTitle() . ' - ' . $this?->getColor()->getTitle() ?? 'новый продукт';
+        return $this->getTitle() . ' - ' . $this?->getColor()?->getTitle() ?? 'новый продукт';
     }
 
     public function getDescription(): string

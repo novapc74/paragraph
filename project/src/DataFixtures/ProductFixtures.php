@@ -16,8 +16,8 @@ class ProductFixtures extends BaseFixture implements DependentFixtureInterface
                 ->setTitle('Вертикальный накопитель "Paragraph"')
                 ->setDescription('Элегантный вертикальный накопитель А4 из 2-мм картона с дизайнерской обложкой. Организация и стиль в одном.<-#%#->Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad deserunt dolorem dolores ea ipsam libero minima optio perspiciatis quod, sit. Beatae consequuntur deleniti deserunt fugit ipsa minus quia quod sunt!')
                 ->addMarketPlace($this->getReference('Store_0'))
-                ->addMarketPlace($this->getReference('Store_1'))
-                ->setColor($this->getReference('Color_0'));
+//                ->setColor($this->getReference('Color_0'))
+                ->addMarketPlace($this->getReference('Store_1'));
         });
 
         $manager->flush();

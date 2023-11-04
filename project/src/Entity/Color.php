@@ -22,6 +22,9 @@ class Color
     #[ORM\Column(length: 10)]
     private ?string $hex = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $modernTitle = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -40,6 +43,18 @@ class Color
     public function setHex(string $hex): static
     {
         $this->hex = $hex;
+
+        return $this;
+    }
+
+    public function getModernTitle(): ?string
+    {
+        return $this->modernTitle;
+    }
+
+    public function setModernTitle(?string $modernTitle): static
+    {
+        $this->modernTitle = $modernTitle;
 
         return $this;
     }
