@@ -35,6 +35,12 @@ class ColorCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
+            TextField::new('modernTitle', 'Модное название')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setHelp('Название вида <span style="color: #0c4a6e">NERO</span>')
+            ,
+            FormField::addRow(),
             SlugField::new('slug', 'Идентификатор')
                 ->setTargetFieldName('title')
                 ->setTextAlign('center')
@@ -44,7 +50,7 @@ class ColorCrudController extends AbstractCrudController
             TextField::new('hex', 'HEX кодировка')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-                ->formatValue(fn($value) => '<i style="color:' . $value . ';">' . $value. '</i>')
+                ->formatValue(fn($value) => '<i style="color:' . $value . ';">' . $value . '</i>')
             ,
             FormField::addRow(),
             IntegerField::new('position', 'Позиция')
