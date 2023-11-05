@@ -1,0 +1,99 @@
+<div class="product-card">
+    <div class="product-card__images">
+        <div class="swiper product-card__swiper product-card-swiper">
+            <div class="swiper-wrapper product-card-swiper__wrapper">
+                <div class="swiper-slide product-card-swiper__slide">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="swiper product-card__thumbs product-card-thumbs">
+            <div class="swiper-wrapper product-card-thumbs__wrapper">
+                <div class="swiper-slide product-card-thumbs__slide">
+                    <img src="" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product-card__body">
+        <h3 class="product-card__heading">{{ product.title }}</h3>
+        <h4 class="product-card__title"></h4>
+        <p class="product-card__description">
+            {{ product.shortDescription | raw }}
+        </p>
+        <div class="product-card__colors product-colors">
+            <div class="product-colors__header">
+                <span class="product-colors__title">Цвет:</span>
+                <span class="product-colors__current"></span>
+            </div>
+            <ul class="product-colors__list">
+                <li class="product-colors__item"></li>
+            </ul>
+        </div>
+        <ul class="product-card__dropdowns">
+            <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
+                <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
+                    <span class="title-16-18 product-card-dropdown__title">Описание</span>
+                    <span class="dropdown__btn"></span>
+                </div>
+                <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
+                    <div class="product-card-dropdown__content" data-dropdown-content>
+                        {{ product.fullDescription | raw }}
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
+                <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
+                    <span class="title-16-18 product-card-dropdown__title">Материал</span>
+                    <span class="dropdown__btn"></span>
+                </div>
+                <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
+                    <div class="product-card-dropdown__content" data-dropdown-content>
+                        {{ product.fullDescription | raw }}
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
+                <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
+                    <span class="title-16-18 product-card-dropdown__title">Габариты</span>
+                    <span class="dropdown__btn"></span>
+                </div>
+                <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
+                    <div class="product-card-dropdown__content" data-dropdown-content>
+                        {{ product.fullDescription | raw }}
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
+                <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
+                    <span class="title-16-18 product-card-dropdown__title">Дполнительная информация</span>
+                    <span class="dropdown__btn"></span>
+                </div>
+                <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
+                    <div class="product-card-dropdown__content" data-dropdown-content>
+                        {{ product.fullDescription | raw }}
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="product-card__offer">
+            <span>Купить товары оптом</span>
+            <button class="filled-button">
+                <span>Оставить заявку</span>
+                <svg class="filled-button__bg">
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#button-bg"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="product-card__marketplaces product-card-marketplaces">
+            <span class="product-card-marketplaces__title">
+                Наша продукция на сайтах партнеров
+            </span>
+            <ul class="product-card-marketplaces__list">
+                <li class="product-card-marketplaces__item">
+                    <a class="product-card-marketplaces__link" href="#" data-market="wb"></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

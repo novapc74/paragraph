@@ -29,6 +29,10 @@
         {% include 'components/sections/interior.html.twig' with {blocks: interior_blocks} %}
     {% endif %}
 
+    {% if products | length %}
+        {% include 'components/sections/catalog.html.twig' with {products} %}
+    {% endif %}
+
 
 {#    {% for product in products %}#}
 {#        <section class="section" style="height: 100vh">#}

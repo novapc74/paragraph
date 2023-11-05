@@ -1,0 +1,169 @@
+@import "../vars";
+@import "../mixins/base";
+
+.product-card {
+  display: grid;
+  gap: 20px;
+  @media screen and (min-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  &__images {
+  }
+
+  &__swiper {
+    margin-bottom: 15px;
+  }
+
+  &__thumbs {
+  }
+
+  &__body {
+    @media screen and (min-width: 1024px) {
+      padding-left: 40px;
+    }
+  }
+
+  &__heading {
+    margin-bottom: 10px;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+    color: $black;
+    font-family: $ff-secondary;
+    font-size: 65px;
+    font-weight: 300;
+    line-height: 110%;
+    text-transform: uppercase;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+  }
+
+  &__colors {
+    margin-bottom: 20px;
+  }
+
+  &__dropdowns {
+    margin-bottom: 30px;
+  }
+
+  &__dropdown {
+    &:not(:last-child) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__offer {
+    margin-bottom: 30px;
+
+    span {
+      display: block;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__marketplaces {
+  }
+}
+
+.product-card-swiper {
+  &__slide {
+    position: relative;
+    padding-top: 100%;
+
+    img {
+      @include absolute-100;
+    }
+  }
+}
+
+.product-card-thumbs {
+  &__slide {
+    width: 69px;
+    height: 69px;
+    transition: background-color .4s ease, padding .4s ease;
+
+    &_active {
+      padding: 4px;
+      background-color: $cream;
+    }
+  }
+}
+
+.product-colors {
+  &__header {
+    display: flex;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-right: 5px;
+    opacity: 0.6;
+  }
+
+  &__current {
+  }
+
+  &__list {
+  }
+
+  &__item {
+    width: 34px;
+    height: 34px;
+    padding: 2px;
+    border-radius: 50%;
+    border: 2px solid $cream;
+    cursor: pointer;
+    &:not(:last-child) {
+      margin-right: 8px;
+    }
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      background-color: var(--color);
+    }
+  }
+}
+
+.product-card-dropdown {
+  &__header {
+
+  }
+
+  &__title {
+    color: $black;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(64, 64, 64, 0.20);
+  }
+
+  &__inner {
+  }
+
+  &__content {
+  }
+}
+
+.product-card-marketplaces {
+  &__title {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  &__list {
+    display: grid;
+    gap: 10px;
+  }
+
+  &__item {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
