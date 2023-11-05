@@ -1,0 +1,12 @@
+<section class="section section_light catalog">
+    <div class="container">
+        <h2 class="section__heading">каталог продукции</h2>
+        <ul class="catalog__list">
+            <li class="catalog__item">
+                {% for product in products %}
+                    {% include "components/product-card.html.twig" with {product} %}
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</section>
