@@ -20,7 +20,7 @@ class HomePageController extends AbstractController
     {
         return $this->render('pages/home.html.twig', [
             'isHome' => true,
-            'products' => $productRepository->findAll(),
+            'products' => $productRepository->findBy(['parentProduct' => null]),
             'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::product_block_type->name]),
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
         ]);

@@ -32,7 +32,7 @@ class Color
 
     public function __toString(): string
     {
-        return $this->getTitle() ?? 'новый цвет';
+        return "{$this->getModernTitle()} - {$this->getTitle()}";
     }
 
     public function getHex(): ?string

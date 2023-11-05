@@ -28,7 +28,7 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\Column(type: Types::TEXT)]
     private string $description;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $sku = null;
 
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: ProductPropertyValue::class, cascade: ['persist', 'remove'], orphanRemoval: true)]

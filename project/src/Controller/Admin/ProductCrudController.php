@@ -51,11 +51,6 @@ class ProductCrudController extends AbstractCrudController
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ,
             FormField::addRow(),
-            TextField::new('sku', 'Артикул')
-                ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-            ,
-            FormField::addRow(),
             TextareaField::new('shortDescription', 'Короткое описание')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
@@ -82,18 +77,6 @@ class ProductCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->renderExpanded()
             ,
-//            FormField::addTab('Галерея'),
-//            CollectionField::new('gallery', 'Галерея')
-//                ->setEntryType(GalleryType::class)
-//                ->setFormTypeOptions([
-//                    'by_reference' => false,
-//                    'error_bubbling' => false,
-//                ])
-//                ->renderExpanded()
-//                ->setTextAlign('center')
-//                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-//                ->setTemplatePath('admin/crud/assoc_gallery.html.twig')
-//            ,
             FormField::addTab('Модификации'),
             CollectionField::new('childProducts', 'Модификации')
                 ->setEntryType(ChildProductType::class)
