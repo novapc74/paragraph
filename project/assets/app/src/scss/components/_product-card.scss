@@ -7,6 +7,7 @@
   @media screen and (min-width: 1024px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
   &__images {
   }
 
@@ -57,11 +58,6 @@
 
   &__offer {
     margin-bottom: 30px;
-
-    span {
-      display: block;
-      margin-bottom: 15px;
-    }
   }
 
   &__marketplaces {
@@ -107,24 +103,46 @@
   }
 
   &__list {
+    display: flex;
   }
 
   &__item {
     width: 34px;
     height: 34px;
-    padding: 2px;
+    padding: 4px;
     border-radius: 50%;
     border: 2px solid $cream;
     cursor: pointer;
+    user-select: none;
+    transition: border-color .3s ease;
+
     &:not(:last-child) {
       margin-right: 8px;
     }
+
     &::before {
       content: '';
+      display: block;
       width: 100%;
       height: 100%;
+      border-radius: 50%;
       background-color: var(--color);
     }
+
+    &_active {
+      border-color: var(--color);
+    }
+
+    &:not(&_active):active {
+      border-color: $brown;
+    }
+
+    @media screen and (min-width: 1024px) {
+      &:not(&_active):hover {
+        border-color: $brown;
+      }
+    }
+
   }
 }
 
@@ -143,6 +161,17 @@
   }
 
   &__content {
+  }
+}
+
+.product-card-offer {
+  &__title {
+    display: block;
+    margin-bottom: 15px;
+  }
+
+  &__btn {
+    width: 100%;
   }
 }
 
