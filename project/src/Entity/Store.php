@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\StoreRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,7 +19,7 @@ class Store
     private ?string $title = null;
 
     #[Assert\Url]
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(type: Types::TEXT)]
     private ?string $link = null;
 
     #[ORM\ManyToOne(targetEntity: Product::class, cascade: ['persist'], inversedBy: 'marketPlaces')]

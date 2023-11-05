@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Entity\Trait\CacheMediaPathTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
 use App\Entity\Trait\IdentifierTrait;
+use App\Entity\Trait\CacheMediaPathTrait;
 use Doctrine\Common\Collections\Collection;
 use App\Entity\Trait\ExplodeDescriptionTrait;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -66,7 +66,7 @@ class Product implements ExplodeDescriptionInterface
     {
         return [
             'color' => $this->getColor()->getTitle(),
-            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage()), $this->getGallery()->toArray())
+            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage(), 'medium'), $this->getGallery()->toArray())
         ];
     }
 
