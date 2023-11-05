@@ -131,6 +131,7 @@
             <h5 style="color: red">Модификации товара</h5>
             <ul>
                 {% for modification in product.childProducts %}
+                    <li>ID для запроса галереи: {{ modification.id }}</li>
                     <li>Артикул: {{ modification.sku }}</li>
                     <li>Модное название: {{ modification.color.modernTitle ?? modification.color.title }}</li>
                     <li>Цвет: {{ modification.color.title }}</li>
