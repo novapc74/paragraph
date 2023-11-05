@@ -3,6 +3,7 @@
 {# @var market \App\Entity\Store #}
 {# @var property \App\Entity\ProductPropertyValue #}
 {#  @var marketPlace \App\Entity\Store #}
+{#  @var current \App\Entity\Product #}
 
 {% set current = product.childProducts[0] %}
 
@@ -17,7 +18,7 @@
                             <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
                                     type="image/jpeg">
                             <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
-                                 alt="{{ modification.title }}" loading="lazy">
+                                 alt="{{ current.title }}" loading="lazy">
                         </picture>
                     </div>
                 {% endfor %}
@@ -32,7 +33,7 @@
                             <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
                                     type="image/jpeg">
                             <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
-                                 alt="{{ modification.title }}" loading="lazy">
+                                 alt="{{ current.title }}" loading="lazy">
                         </picture>
                     </div>
                 {% endfor %}
@@ -125,7 +126,6 @@
             <h5 style="color: red">Свойства товара:</h5>
             <ul>
                 {% for groupName, productPropertyValues in propertyGroups(product) %}
-                    {{ dump(groupName, productPropertyValues) }}
                     <span>{{ groupName }}:</span>
                     <ul>
                         {% for property in  productPropertyValues %}
@@ -150,7 +150,6 @@
                         <h5 style="color: red">Маркетплейсы:</h5>
                         <ul>
                             {% for marketPlace in modification.marketPlaces %}
-                                {{ dump(marketPlace) }}
                                 <li><a href="{{ marketPlace.link }}">{{ marketPlace.title }}</a></li>
                             {% endfor %}
                         </ul>
