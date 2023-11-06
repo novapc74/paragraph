@@ -4,7 +4,9 @@
         <ul class="catalog__list">
             <li class="catalog__item">
                 {% for product in products %}
-                    {% include "components/product-card.html.twig" with {product} %}
+                    {% if product.childProducts | length and product.childProducts[0] %}
+                        {% include "components/product-card.html.twig" with {product, current: product.childProducts[0]} %}
+                    {% endif %}
                 {% endfor %}
             </li>
         </ul>

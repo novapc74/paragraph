@@ -10,8 +10,8 @@ export function resetActiveClass(parent, className, activeClass, reset = true) {
         reset ? removeClass(el, activeClass) : addClass(el, activeClass)
     )
 }
-export function toggleActiveClass(elem, className, activeClass) {
-    const elements = [...document.querySelectorAll(className)]
+export function toggleActiveClass(elem, parent, className, activeClass) {
+    const elements = [...parent.querySelectorAll(className)]
     elements.forEach(
         (el) =>
             el.classList.contains(activeClass) &&

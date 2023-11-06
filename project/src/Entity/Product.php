@@ -61,12 +61,13 @@ class Product implements ExplodeDescriptionInterface
     }
 
     #[Groups(['modification:item'])]
-    #[SerializedName('images')]
+    #[SerializedName('product')]
     public function getGalleryCollection(): array
     {
         return [
             'color' => $this->getColor()->getTitle(),
-            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage(), 'medium'), $this->getGallery()->toArray())
+            'title' => $this->getColor()->getModernTitle(),
+            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage()), $this->getGallery()->toArray())
         ];
     }
 

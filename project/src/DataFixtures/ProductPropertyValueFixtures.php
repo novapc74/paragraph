@@ -17,7 +17,7 @@ class ProductPropertyValueFixtures extends BaseFixture implements DependentFixtu
         '32 см',
         '9 см',
         '31 см',
-        'картон; Дизайнерская бумага',
+        'Картон, дизайнерская бумага',
     ];
 
     protected function loadData(ObjectManager $manager): void
