@@ -18,10 +18,10 @@ class MarketPlaceFormType extends AbstractType
                 'label' => 'Ссылка',
             ])
             ->add('title', ChoiceType::class, [
-                'label' => 'Названмие',
+                'label' => 'Название',
                 'choices' => [
-                    'OZONE' => 'ozone',
-                    'WB' => 'wb',
+                    'ozon' => 'ozon',
+                    'wildberries' => 'wb',
                 ]
             ]);
     }

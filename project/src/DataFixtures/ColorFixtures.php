@@ -10,39 +10,45 @@ class ColorFixtures extends BaseFixture
     private const COLOR_DATA = [
         [
             'title' => 'Черный',
-            'modernTitle' => 'NERO',
+            'modernTitle' => 'nero',
             'slug' => 'black',
             'hex' => '#000000'
         ],
         [
             'title' => 'Синий',
-            'modernTitle' => 'BLUE NOTE',
+            'modernTitle' => 'blu notte',
             'slug' => 'blue',
             'hex' => '#0000FF'
         ],
         [
-            'title' => 'Красный',
-            'slug' => 'red',
-            'hex' => '#FF0000',
-            'modernTitle' => 'BORDEAUX',
+            'title' => 'Бордовый',
+            'slug' => 'burgundy',
+            'hex' => '#9B2D30',
+            'modernTitle' => 'bordeaux',
         ],
         [
-            'title' => 'Темно-лососевый',
-            'slug' => 'dark-salmon',
-            'hex' => '#E9967A',
-            'modernTitle' => 'KRAFT',
-        ],
-        [
-            'title' => 'Темно-оранжевый',
-            'slug' => 'dark-orange',
-            'hex' => '#FF8C00',
-            'modernTitle' => 'NERO',
+            'title' => 'Бежевый',
+            'slug' => 'beige',
+            'hex' => '#F5F5DC',
+            'modernTitle' => 'kraft',
         ],
         [
             'title' => 'Белый',
             'slug' => 'white',
             'hex' => '#FFFFFF',
-            'modernTitle' => 'NEVE',
+            'modernTitle' => 'neve',
+        ],
+        [
+            'title' => 'Антрацит',
+            'slug' => 'anthracite',
+            'hex' => '#45464С',
+            'modernTitle' => 'anthracite',
+        ],
+        [
+            'title' => 'Темно-коричневый',
+            'slug' => 'dark_brown',
+            'hex' => '#654321',
+            'modernTitle' => 'dark brown',
         ],
     ];
 
