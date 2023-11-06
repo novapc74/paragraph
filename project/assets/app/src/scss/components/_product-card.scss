@@ -2,16 +2,21 @@
 @import "../mixins/base";
 
 .product-card {
-  display: grid;
-  gap: 20px;
   @media screen and (min-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
   }
 
   &__images {
+    margin-bottom: 20px;
+    @media screen and (min-width: 1024px) {
+      width: calc(50% - 10px);
+      margin-bottom: 0;
+      margin-right: 20px;
+    }
   }
 
   &__swiper {
+    width: 100%;
     margin-bottom: 15px;
   }
 
@@ -20,6 +25,9 @@
 
   &__body {
     @media screen and (min-width: 1024px) {
+      width: calc(50% - 10px);
+    }
+    @media screen and (min-width: 1366px) {
       padding-left: 40px;
     }
   }
@@ -73,17 +81,60 @@
       @include absolute-100;
     }
   }
+
+  @media screen and (min-width: 1024px) {
+    padding-top: 0;
+    height: 540px;
+  }
+  @media screen and (min-width: 1366px) {
+    height: 630px;
+  }
 }
 
 .product-card-thumbs {
+  &__wrapper {
+    justify-content: space-between;
+    @media screen and (min-width: 1024px) {
+      justify-content: initial;
+    }
+
+  }
   &__slide {
     width: 69px;
     height: 69px;
-    transition: background-color .4s ease, padding .4s ease;
-
+    cursor: pointer;
+    transition: transform .4s ease;
+    &:before {
+      content: '';
+      @include absolute-100;
+      z-index: 1;
+      border: 4px solid $cream;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .4s ease;
+    }
     &_active {
-      padding: 4px;
-      background-color: $cream;
+      &:before {
+        opacity: 1;
+      }
+    }
+    &:not(&_active):active {
+      transform: scale(0.95);
+    }
+    @media screen and (min-width: 768px) {
+      width: 174px;
+      height: 174px;
+    }
+    @media screen and (min-width: 1024px) {
+      width: 109px;
+      height: 109px;
+      &:not(&_active):hover {
+        transform: scale(0.95);
+      }
+    }
+    @media screen and (min-width: 1366px) {
+      width: 140px;
+      height: 140px;
     }
   }
 }
@@ -97,9 +148,6 @@
   &__title {
     margin-right: 5px;
     opacity: 0.6;
-  }
-
-  &__current {
   }
 
   &__list {
@@ -129,11 +177,11 @@
       background-color: var(--color);
     }
 
-    &_active {
+    &.active {
       border-color: var(--color);
     }
 
-    &:not(&_active):active {
+    &:not(&.active):active {
       border-color: $brown;
     }
 
@@ -147,27 +195,78 @@
 }
 
 .product-card-dropdown {
-  &__header {
+  border-bottom: 1px solid rgba(64, 64, 64, 0.20);
+  padding-bottom: 10px;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   &__title {
     color: $black;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(64, 64, 64, 0.20);
   }
 
-  &__inner {
+  &__btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    transition: transform .4s ease;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    &::before, &::after {
+      content: '';
+      width: 75%;
+      height: 1px;
+      background-color: $black;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: width .4s .4s ease, background-color .4s ease;
+    }
+
+    &::after {
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
   }
 
-  &__content {
+  @media screen and (min-width: 1024px) {
+    &__header:hover &__title {
+      color: $grey;
+    }
+    &__header:hover &__btn {
+      &::before, &::after {
+        background-color: $grey;
+      }
+    }
+  }
+
+  &__header:active &__title {
+    color: $grey;
+  }
+
+  &__header:active &__btn {
+    &::before, &::after {
+      background-color: $grey;
+    }
+  }
+
+  &.active &__btn {
+    transform: rotate(90deg);
+
+    &::before {
+      width: 0;
+    }
   }
 }
 
 .product-card-offer {
   &__title {
     display: block;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
   }
 
   &__btn {
@@ -184,15 +283,22 @@
   &__list {
     display: grid;
     gap: 10px;
-  }
-
-  &__item {
-    border: 1px solid rgba(0, 0, 0, 0.2);
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &__link {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    transition: border-color .3s ease;
+    @media screen and (min-width: 768px) {
+      &:hover {
+        border: 1px solid $black;
+      }
+    }
   }
 }

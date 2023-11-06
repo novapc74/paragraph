@@ -5,8 +5,6 @@
 {#  @var marketPlace \App\Entity\Store #}
 {#  @var current \App\Entity\Product #}
 
-{% set current = product.childProducts[0] %}
-
 <div class="product-card" id="product-{{ current.id }}">
     <div class="product-card__images">
         <div class="swiper product-card__swiper product-card-swiper">
@@ -15,9 +13,9 @@
                     <div class="swiper-slide product-card-swiper__slide">
                         <picture>
                             {#                                    <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}" type="image/webp"> #}
-                            <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                            <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
                                     type="image/jpeg">
-                            <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                            <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
                                  alt="{{ current.title }}" loading="lazy">
                         </picture>
                     </div>
@@ -41,7 +39,7 @@
         </div>
     </div>
     <div class="product-card__body">
-        <h3 class="product-card__heading">{{ product.category.title }}</h3>
+        <h3 class="product-card__heading">{{ product.title }}</h3>
         <h4 class="product-card__title">{{ current.color.modernTitle }}</h4>
         <p class="product-card__description">
             {{ product.shortDescription }}
@@ -55,18 +53,18 @@
                 </div>
                 <ul class="product-colors__list">
                     {% for modification in product.childProducts %}
-                        <li class="product-colors__item{% if loop.index == 1 %} product-colors__item_active{% endif %}"
-                            style="--color: {{ modification.color.hex }}"></li>
+                        <li class="product-colors__item{% if loop.index == 1 %} active{% endif %}"
+                            style="--color: {{ modification.color.hex }}" data-id="{{ modification.id }}"></li>
                     {% endfor %}
                 </ul>
             </div>
         {% endif %}
 
         <ul class="product-card__dropdowns">
-            <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
+            <li class="dropdown product-card__dropdown product-card-dropdown active" data-dropdown>
                 <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
                     <span class="title-16-18 product-card-dropdown__title">Описание</span>
-                    <span class="dropdown__btn"></span>
+                    <span class="product-card-dropdown__btn"></span>
                 </div>
                 <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
                     <div class="product-card-dropdown__content" data-dropdown-content>
@@ -78,7 +76,7 @@
                 <li class="dropdown product-card__dropdown product-card-dropdown" data-dropdown>
                     <div class="dropdown__header product-card-dropdown__header" data-open-dropdown>
                         <span class="title-16-18 product-card-dropdown__title">{{ groupName }}</span>
-                        <span class="dropdown__btn"></span>
+                        <span class="product-card-dropdown__btn"></span>
                     </div>
                     <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
                         <div class="product-card-dropdown__content" data-dropdown-content>
@@ -108,10 +106,12 @@
                 Наша продукция на сайтах партнеров
             </span>
             <ul class="product-card-marketplaces__list">
-                <li class="product-card-marketplaces__item">
-                    <a class="product-card-marketplaces__link" href=""
-                       data-market="wb">wb</a>
-                </li>
+                {% for marketPlace in current.marketPlaces %}
+                    <li class="product-card-marketplaces__item">
+                        <a class="product-card-marketplaces__link" href="{{ marketPlace.link }}" target="_blank"
+                           data-market="{{ marketPlace.title }}">{{ marketPlace.title }}</a>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
@@ -155,15 +155,6 @@
                         </ul>
                     </li>
 
-                    <li>
-                        <h5 style="color: red">Галерея:</h5>
-                        <ul>
-                            {% for gallery in modification.gallery %}
-                                <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('middle_banner') }}"
-                                     alt="{{ modification.title }}">
-                            {% endfor %}
-                        </ul>
-                    </li>
                 {% endfor %}
             </ul>
         </li>
