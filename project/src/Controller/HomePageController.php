@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Gallery;
 use App\Entity\Product;
+use App\Entity\Store;
 use App\Enum\PageBlockType;
 use App\Repository\ProductRepository;
 use App\Repository\PageBlockRepository;
@@ -10,7 +12,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomePageController extends AbstractController
@@ -31,8 +32,16 @@ class HomePageController extends AbstractController
     {
         if ($request->isXmlHttpRequest() && $modification) {
 
-            return $this->json($modification, 200, [], [
-                AbstractNormalizer::GROUPS => ['modification:item']
+            $marketplaces = [];
+            array_map(function (Store $store) use (&$marketplaces) {
+                $marketplaces[$store->getTitle()] = $store->getLink();
+            }, $modification->getMarketPlaces()->toArray());
+
+            return $this->json([
+                'color' => $modification->getColor()->getTitle(),
+                'title' => $modification->getColor()->getModernTitle(),
+                'images' => array_map(fn(Gallery $gallery) => $modification->getMediaCachePath($gallery->getImage()), $modification->getGallery()->toArray()),
+                'marketplaces' => $marketplaces,
             ]);
         }
 

@@ -11,8 +11,6 @@ use Doctrine\Common\Collections\Collection;
 use App\Entity\Trait\ExplodeDescriptionTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\Entity\Trait\ExplodeDescriptionInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Serializer\Annotation\SerializedName;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ORM\HasLifecycleCallbacks]
@@ -58,17 +56,6 @@ class Product implements ExplodeDescriptionInterface
         $this->gallery = new ArrayCollection();
         $this->childProducts = new ArrayCollection();
         $this->marketPlaces = new ArrayCollection();
-    }
-
-    #[Groups(['modification:item'])]
-    #[SerializedName('product')]
-    public function getGalleryCollection(): array
-    {
-        return [
-            'color' => $this->getColor()->getTitle(),
-            'title' => $this->getColor()->getModernTitle(),
-            'images' => array_map(fn(Gallery $gallery) => $this->getMediaCachePath($gallery->getImage()), $this->getGallery()->toArray())
-        ];
     }
 
     public function getId(): ?int
