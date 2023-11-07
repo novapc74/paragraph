@@ -33,4 +33,12 @@
         {% include 'components/sections/catalog.html.twig' with {products} %}
     {% endif %}
 
+    {% include 'components/sections/contacts.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=66e7f852-a2c4-46fc-b4f3-254ece42aa13&lang=ru_RU"
+            type="text/javascript" defer>
+    </script>
 {% endblock %}

@@ -108,54 +108,14 @@
                 {% for marketPlace in current.marketPlaces %}
                     <li class="product-card-marketplaces__item">
                         <a class="product-card-marketplaces__link" href="{{ marketPlace.link }}" target="_blank"
-                           data-market="{{ marketPlace.title }}">{{ marketPlace.title }}</a>
+                           data-market="{{ marketPlace.title }}">
+                            <svg class="product-card-marketplaces__logo product-card-marketplaces__logo_{{ marketPlace.title }}">
+                                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#{{ marketPlace.title }}-logo"></use>
+                            </svg>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
     </div>
 </div>
-
-<ul>
-    {% for product in products %}
-        <li>Название категории: {{ product.category.title }}</li>
-        <li>Короткое описание: {{ product.shortDescription }}</li>
-        <li>Расширенное описание: {{ product.fullDescription }}</li>
-        <li>
-            <h5 style="color: red">Свойства товара:</h5>
-            <ul>
-                {% for groupName, productPropertyValues in propertyGroups(product) %}
-                    <span>{{ groupName }}:</span>
-                    <ul>
-                        {% for property in  productPropertyValues %}
-                            <li>
-                                {{ property.productProperty.title }} - {{ property.value }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endfor %}
-            </ul>
-        </li>
-        <li>
-            <h5 style="color: red">Модификации товара</h5>
-            <ul>
-                {% for modification in product.childProducts %}
-                    <li>ID для запроса галереи: {{ modification.id }}</li>
-                    <li>Артикул: {{ modification.sku }}</li>
-                    <li>Модное название: {{ modification.color.modernTitle ?? modification.color.title }}</li>
-                    <li>Цвет: {{ modification.color.title }}</li>
-                    <li style="color: {{ modification.color.hex }}">Цвет HEX: {{ modification.color.hex }}</li>
-                    <li>
-                        <h5 style="color: red">Маркетплейсы:</h5>
-                        <ul>
-                            {% for marketPlace in modification.marketPlaces %}
-                                <li><a href="{{ marketPlace.link }}">{{ marketPlace.title }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>

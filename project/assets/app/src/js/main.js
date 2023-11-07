@@ -3,6 +3,8 @@ import {addClass, removeClass} from "./utils/classMethods";
 import animations from "./base/animations";
 import dropdowns from "./base/dropdowns";
 import {Product} from "./components/Product";
+import forms from "./base/forms";
+import maps from "./base/maps";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -22,4 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     swipers()
     animations()
     dropdowns()
+    forms()
+    maps()
 })

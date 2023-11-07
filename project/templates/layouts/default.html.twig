@@ -29,7 +29,7 @@
     <meta property="og:url" content="{{ app.request.uri }}">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="Paragraph"/>
-{#    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">#}
+    {#    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}"> #}
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -53,15 +53,13 @@
     {% include 'components/base/footer.html.twig' %}
 {% endblock %}
 
-{#{% include 'components/base/mobile-header.html.twig' %}#}
-{#{% include 'components/popups/feedback-popup.html.twig' %}#}
-{#{% include 'components/popups/response-popup.html.twig' %}#}
+{# {% include 'components/base/mobile-header.html.twig' %} #}
+{# {% include 'components/popups/feedback-popup.html.twig' %} #}
+{# {% include 'components/popups/response-popup.html.twig' %} #}
+
+{{ encore_entry_script_tags('app') }}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{#    <script src="https://api-maps.yandex.ru/2.1/?apikey=66e7f852-a2c4-46fc-b4f3-254ece42aa13&lang=ru_RU"#}
-{#            type="text/javascript">#}
-{#    </script>#}
 {% endblock %}
 </body>
 </html>

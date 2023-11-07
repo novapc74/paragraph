@@ -1,21 +1,37 @@
-{{ form_start(form) }}
+{{ form_start(form, {
+    'attr': {
+        'class': 'feedback-form'
+    },
+}) }}
 
-    {{ form_label(form.name, 'Название', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.name, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.name) }}
+<div class="feedback-form__inputs">
+    <label class="default-input feedback-form__input">
+        {{ form_widget(form.feedback.name) }}
+    </label>
+    <label class="default-input feedback-form__input numeric">
+        {{ form_widget(form.feedback.phone) }}
+    </label>
+    <label class="default-input default-input_textarea feedback-form__input">
+        {{ form_widget(form.feedback.comment) }}
+    </label>
+</div>
 
-    {{ form_label(form.email, 'Почта', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.email, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.email) }}
+<label class="default-checkbox feedback-form__checkbox">
+    {{ form_widget(form.feedback.agreeTerm) }}
+    <span class="default-checkbox__checkbox">
+        <svg>
+            <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#check-icon"></use>
+        </svg>
+    </span>
+    <span class="feedback-form__policy">
+        Согласие на обработку персональных данных
+    </span>
+</label>
 
-    {{ form_label(form.phone, 'Телефон', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.phone, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.phone) }}
+<div class="my-custom-class-for-errors">
+    {{ form_errors(form) }}
+</div>
 
-    {{ form_label(form.agreeTerm, 'Согласен или нет', {'label_attr': {'class': 'foo'}}) }}
-    {{ form_widget(form.agreeTerm, {'attr': {'class': 'name_field'}}) }}
-    {{ form_errors(form.agreeTerm) }}
-
-    <button type="submit">Отправить</button>
+<button type="submit" class="text-button feedback-form__submit">Отправить</button>
 
 {{ form_end(form) }}
