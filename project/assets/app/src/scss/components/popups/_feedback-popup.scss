@@ -1,16 +1,30 @@
 @import "../../vars";
 .feedback-popup {
-  &__title {
-    margin-bottom: 20px;
-    color: $blue;
-    span {
-      white-space: nowrap;
+  .default-popup__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (min-width: 768px) {
+      display: block;
     }
   }
-  &__text {
-    margin-bottom: 30px;
+  &__body {
+    width: 100%;
+    @media screen and (min-width: 768px) {
+      padding-top: 60px;
+    }
+    @media screen and (min-width: 1024px) {
+      padding-top: 0;
+    }
   }
-  &__form {
-
+  &__title {
+    margin-bottom: 15px;
+    line-height: 100%;
+  }
+  &__text {
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 25px;
+    }
   }
 }

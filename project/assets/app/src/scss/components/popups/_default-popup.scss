@@ -1,6 +1,5 @@
 /* стили для попапа */
 @import "../../vars";
-@import "../../mixins/base";
 
 .default-popup {
   position: fixed;
@@ -20,7 +19,7 @@
 
   &__overlay {
     @include absolute-100;
-    background-color: rgba(0, 0, 0, 0.6);
+    background: rgba(41, 41, 41, 0.70);
     opacity: 0;
     pointer-events: none;
   }
@@ -32,63 +31,55 @@
 
   &__body {
     width: 100%;
-    padding: 60px 20px;
+    height: 100dvh;
+    padding: 20px;
     position: absolute;
     z-index: 1;
     bottom: 0;
     left: 0;
-    transform: translateY(25%);
     background-color: $white;
-    border-radius: 10px 10px 0 0;
     opacity: 0;
     pointer-events: none;
+    transform: scale(1.2);
     transition: opacity .4s ease, transform .6s ease;
     @media screen and (min-width: 1024px) {
       position: relative;
-      width: 642px;
-      border-radius: 10px;
-      padding: 60px 70px;
+      height: auto;
+      max-width: 558px;
+      padding: 40px 50px;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%) scale(1.2);
     }
-    @media screen and (min-width: 1366px) {
-      padding: 90px 72px;
-    }
   }
 
   &.active &__body {
-    transform: translateY(0);
+    transform: scale(1);
     @media screen and (min-width: 1024px) {
       transform: translate(-50%, -50%) scale(1.0);
     }
   }
 
-  &__close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-
-    svg {
-      width: 44px;
-      height: 44px;
-      stroke: $blue;
-    }
-
-    &:active {
-      //stroke: $blue-dark;
-    }
-
+  &__title {
+    font-family: $ff-title;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 130%;
+    text-transform: uppercase;
     @media screen and (min-width: 768px) {
-      top: 20px;
-      right: 20px;
+      font-size: 40px;
     }
     @media screen and (min-width: 1024px) {
-      &:hover {
-        svg {
-          //stroke: $blue-dark-2;
-        }
-      }
+      font-size: 30px;
     }
+    @media screen and (min-width: 1366px) {
+      font-size: 40px;
+    }
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
   }
 }

@@ -1,6 +1,6 @@
 import Swiper from "swiper/bundle";
 import axios from "axios";
-import {toggleActiveClass} from "../utils/classMethods";
+import {addClass, toggleActiveClass} from "../utils/classMethods";
 
 export class Product {
     constructor(product) {
@@ -31,10 +31,13 @@ export class Product {
     #initSwipers() {
         this.thumbs = new Swiper(this.product.querySelector('.product-card-thumbs'), {
             slidesPerView: 4,
-            spaceBetween: 'auto',
+            spaceBetween: 10,
             breakpoints: {
+                768: {
+                    direction: 'vertical'
+                },
                 1024: {
-                    spaceBetween: 10
+                    direction: 'horizontal'
                 }
             }
         })
@@ -58,9 +61,11 @@ export class Product {
             })
             if (data) {
                 toggleActiveClass(color, this.product, '.product-colors__item', 'active')
-                this.title.textContent = data.product.title
-                this.color.textContent = data.product.color
-                this.#resetSwipers(data.product.images)
+                this.title.textContent = data.title
+                this.color.textContent = data.color
+                this.wb && (this.wb.href = data.marketplaces.wb)
+                this.ozon && (this.ozon.href = data.marketplaces.ozon)
+                this.#resetSwipers(data.images)
             }
         } catch (e) {
             console.log(e)
@@ -89,5 +94,6 @@ export class Product {
         })
         this.swiper.update()
         this.thumbs.update()
+        addClass(this.thumbs.slides[this.swiper.activeIndex], 'product-card-thumbs__slide_active')
     }
 }

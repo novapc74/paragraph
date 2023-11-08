@@ -8,12 +8,14 @@
 
 {% block meta %}
     <meta property="og:title"
-          content="PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов.">
+          content="PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов">
     <meta property="og:description"
           content="Наша продукция - это стильный и функциональный порядок в вашем доме и офисе. Мы осознанно отказались от производства вертикальных накопителей, поставляемых в сложенном состоянии, понимая, что они не могут гарантировать отсутствие перекосов и деформаций после их приведения в собранное состояние.">
 {% endblock %}
 
 {% block content %}
+
+    <h1 class="invisible">PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов</h1>
 
     {% if main_blocks | length %}
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
@@ -33,4 +35,12 @@
         {% include 'components/sections/catalog.html.twig' with {products} %}
     {% endif %}
 
+    {% include 'components/sections/contacts.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=66e7f852-a2c4-46fc-b4f3-254ece42aa13&lang=ru_RU"
+            type="text/javascript" defer>
+    </script>
 {% endblock %}

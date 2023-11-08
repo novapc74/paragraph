@@ -19,14 +19,13 @@
 @import "components/base/section";
 //@import "components/base/mobile-header";
 //
-//// формы
-//@import "components/forms/feedback-form";
+// формы
+@import "components/forms/feedback-form";
 //
-//// popups
-//@import "components/popups/default-popup";
-//@import "components/popups/feedback-popup";
-//@import "components/popups/response-popup";
-//@import "components/popups/review-popup";
+// popups
+@import "components/popups/default-popup";
+@import "components/popups/feedback-popup";
+@import "components/popups/response-popup";
 //
 // подключение секций
 @import "sections/hero";
@@ -34,6 +33,7 @@
 @import "sections/paragraph";
 @import "sections/semicircles";
 @import "sections/interior";
+@import "sections/contacts";
 @import "components/product-card";
 //// service
 //@import "sections/service/expertise";

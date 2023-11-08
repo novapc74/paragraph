@@ -1,14 +1,12 @@
 @import "../../vars";
 .response-popup {
+  .default-popup__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   &__title {
-    margin-bottom: 20px;
-    color: $blue;
-    span {
-      white-space: nowrap;
-    }
-    @media screen and (min-width: 1024px) {
-      margin-bottom: 10px;
-    }
+    text-align: center;
     &.hidden {
       display: none;
     }
