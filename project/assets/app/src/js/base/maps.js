@@ -14,6 +14,14 @@ export default function maps() {
                 });
 
                 map.behaviors.disable('scrollZoom')
+                map.controls.add('zoomControl', {
+                    size: "small",
+                    position: {
+                        top: mapWrapper.offsetHeight / 2 - 61 / 2,
+                        right: 10,
+                        left: 'auto'
+                    }
+                });
 
                 const address = new ymaps.Placemark(
                     mapWrapper.dataset.coords.split(','),

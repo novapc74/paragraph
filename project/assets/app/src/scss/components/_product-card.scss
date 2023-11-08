@@ -12,6 +12,7 @@
 
 .product-card {
   @media screen and (min-width: 1024px) {
+    position: relative;
     display: flex;
   }
 
@@ -22,8 +23,10 @@
       height: 726px;
     }
     @media screen and (min-width: 1024px) {
+      position: sticky;
+      top: 15px;
       display: block;
-      height: auto;
+      height: max-content;
       width: calc(50% - 10px);
       margin-bottom: 0;
       margin-right: 20px;
@@ -265,6 +268,13 @@
 
     &::after {
       transform: translate(-50%, -50%) rotate(90deg);
+    }
+  }
+
+  &__content {
+    li:not(:last-child) {
+      display: block;
+      margin-bottom: 10px;
     }
   }
 
