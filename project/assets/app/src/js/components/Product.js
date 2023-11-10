@@ -44,7 +44,8 @@ export class Product {
         this.swiper = new Swiper(this.product.querySelector('.product-card-swiper'), {
             slidesPerView: 1,
             effect: 'fade',
-            speed: 1500,
+            allowTouchMove: false,
+            speed: 1000,
             thumbs: {
                 swiper: this.thumbs,
                 slideThumbActiveClass: 'product-card-thumbs__slide_active'

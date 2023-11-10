@@ -1,0 +1,151 @@
+@import "../mixins/base";
+.manufacture {
+  font-size: 14px;
+  @media screen and (min-width: 1366px) {
+    font-size: 18px;
+  }
+  &__content {
+    display: grid;
+    gap: 40px;
+    @media screen and (min-width: 768px) {
+      gap: 50px;
+    }
+    @media screen and (min-width: 1024px) {
+      gap: 80px;
+    }
+  }
+  &__block {
+    display: grid;
+    gap: 20px;
+    &_first {
+      @media screen and (min-width: 768px) {
+        grid-template-columns: 62% 1fr;
+        .manufacture__text-block {
+          display: block;
+          p {
+            margin-top: 15px;
+          }
+        }
+      }
+      @media screen and (min-width: 1024px) {
+        grid-template-columns: auto 1fr;
+      }
+    }
+
+    &_second {
+      .manufacture__text-block:nth-child(2) {
+        p {
+          justify-self: flex-end;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(2, 1fr);
+        .manufacture__text-block:nth-child(2) {
+          padding-bottom: 82px;
+          align-self: flex-end;
+          p {
+            grid-row: 1;
+            align-self: flex-end;
+          }
+        }
+      }
+      @media screen and (min-width: 1366px) {
+        margin-left: 110px;
+      }
+    }
+
+    &_third {
+      .manufacture__text-block {
+        @media screen and (min-width: 768px) {
+          grid-template-columns: 62% 1fr;
+        }
+        @media screen and (min-width: 1024px) {
+          grid-template-columns: auto 1fr;
+        }
+      }
+    }
+
+    &_text {
+      font-size: 16px;
+      line-height: 110%;
+      @media screen and (min-width: 1024px) {
+        width: 465px;
+      }
+      @media screen and (min-width: 1366px) {
+        font-size: 24px;
+        width: 480px;
+        margin-left: 110px;
+      }
+    }
+  }
+
+  &__image {
+    position: relative;
+    padding-top: 62%;
+    height: 0;
+    img {
+      @include absolute-100;
+    }
+
+    &_vertical {
+      padding-top: 130%;
+    }
+    @media screen and (min-width: 768px) {
+      padding-top: 64%;
+      &_medium {
+        padding-top: 68%;
+      }
+      &_vertical {
+        padding-top: 136%;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      padding-top: 0;
+      width: 675px;
+      height: 380px;
+      &_small {
+        width: 255px;
+        height: 153px;
+      }
+      &_medium {
+        width: 465px;
+        height: 310px;
+      }
+      &_vertical {
+        width: 465px;
+        height: 630px;
+      }
+    }
+    @media screen and (min-width: 1366px) {
+      width: 790px;
+      height: 470px;
+      &_small {
+        width: 390px;
+        height: 232px;
+      }
+      &_medium {
+        width: 590px;
+        height: 310px;
+      }
+      &_vertical {
+        width: 480px;
+        height: 680px;
+      }
+    }
+  }
+
+  &__text-block {
+    display: grid;
+    gap: 15px;
+    p {
+      max-width: 220px;
+      @media screen and (min-width: 768px) {
+        max-width: 255px;
+      }
+      @media screen and (min-width: 1366px) {
+        max-width: 300px;
+      }
+    }
+  }
+}

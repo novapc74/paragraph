@@ -1,4 +1,4 @@
-<section class="section contacts">
+<section class="section contacts" id="contacts">
     <div class="container contacts__container">
 
         <div class="contacts__form">
@@ -14,27 +14,30 @@
         <div class="contacts__map-container">
             <div class="contacts__map" id="map" data-coords="{{ contact.coordinates }}"
                  data-icon="{{ asset('build/images/map-icon.svg') }}"></div>
-            <ul class="contacts__baloon">
-                {% if contact.address %}
-                    <li class="contacts__item contacts-item">
-                        <h3 class="contacts-item__title">Адрес</h3>
-                        <a href="#" target="_blank" class="contacts-item__value">{{ contact.address }}</a>
-                    </li>
-                {% endif %}
-                {% if contact.email %}
-                    <li class="contacts__item contacts-item">
-                        <h3 class="contacts-item__title">Электронная почта</h3>
-                        <a href="mailto:{{ contact.email }}" class="contacts-item__value">{{ contact.email }}</a>
-                    </li>
-                {% endif %}
-                {% if contact.phone %}
-                    <li class="contacts__item contacts-item">
-                        <h3 class="contacts-item__title">Телфон</h3>
-                        <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
-                           class="contacts-item__value numeric">{{ contact.phone[0] }}</a>
-                    </li>
-                {% endif %}
-            </ul>
+            <address>
+                <ul class="contacts__baloon">
+                    {% if contact.address %}
+                        <li class="contacts__item contacts-item">
+                            <h3 class="contacts-item__title">Адрес</h3>
+                            <a href="https://yandex.ru/maps/-/CDeqfUok" target="_blank"
+                               class="contacts-item__value">{{ contact.address }}</a>
+                        </li>
+                    {% endif %}
+                    {% if contact.email %}
+                        <li class="contacts__item contacts-item">
+                            <h3 class="contacts-item__title">Электронная почта</h3>
+                            <a href="mailto:{{ contact.email }}" class="contacts-item__value">{{ contact.email }}</a>
+                        </li>
+                    {% endif %}
+                    {% if contact.phone %}
+                        <li class="contacts__item contacts-item">
+                            <h3 class="contacts-item__title">Телфон</h3>
+                            <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
+                               class="contacts-item__value numeric">{{ contact.phone[0] }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </address>
         </div>
     </div>
 </section>

@@ -14,10 +14,10 @@ class ContactFixtures extends BaseFixture implements DependentFixtureInterface
             $contact
                 ->setTitle('ООО "Пром-Стандарт"')
                 ->setEmail('paragraph-home@mail.ru')
-                ->setPhone(['+7 (999) 777-66-66'])
-                ->setAddress('Москва, ул. Вятская, д. 70')
+                ->setPhone(['+7 (980) 144-27-72'])
+                ->setAddress('140406 Московская обл., г. Коломна, Окский проспект, 76')
                 ->setInn('7714384027')
-                ->setCoordinates('55.802341, 37.582125');
+                ->setCoordinates('55.071169, 38.799046');
         });
 
         $manager->flush();

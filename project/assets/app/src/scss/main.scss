@@ -33,17 +33,9 @@
 @import "sections/paragraph";
 @import "sections/semicircles";
 @import "sections/interior";
+@import "sections/manufacture";
 @import "sections/contacts";
 @import "components/product-card";
-//// service
-//@import "sections/service/expertise";
-//@import "sections/service/cases";
-//@import "sections/service/products";
-//// contacts
-//@import "sections/contacts/contacts";
-//@import "sections/contacts/branches";
-//// about
-//@import "sections/about/about-info";
-//@import "sections/about/licenses";
-//// 404
-//@import "404";
+
+// 404
+@import "404";

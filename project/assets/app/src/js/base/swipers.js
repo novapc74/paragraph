@@ -30,9 +30,10 @@ export default function swipers() {
 
     const paragraph = document.querySelector('.paragraph')
     if (paragraph) {
+        const initialSlide = Math.floor(paragraph.querySelectorAll('.paragraph-swiper__slide').length / 2)
         new Swiper('.paragraph__swiper', {
             slidesPerView: 1,
-            initialSlide: 2,
+            initialSlide,
             centeredSlides: true,
             grabCursor: true,
             slideActiveClass: 'paragraph-swiper__slide_active',
@@ -43,6 +44,7 @@ export default function swipers() {
                 stretch: 75,
                 depth: 300,
                 modifier: 1,
+                slideShadows: true,
             },
             navigation: {
                 disabledClass: 'swiper-button_disabled',
@@ -64,7 +66,7 @@ export default function swipers() {
                 1024: {
                     slidesPerView: 3,
                 }
-            }
+            },
         })
     }
 
