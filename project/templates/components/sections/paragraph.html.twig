@@ -6,9 +6,9 @@
         <div class="paragraph__swiper-container">
             <div class="swiper paragraph__swiper paragraph-swiper">
                 <div class="swiper-wrapper paragraph-swiper__wrapper">
-                    {% for i in 1..5 %}
+                    {% for i in 1..13 %}
                         <div class="swiper-slide paragraph-swiper__slide">
-                            <img src="{{ asset("build/images/paragraph-#{i}.jpg") | imagine_filter_cache('medium') }}" loading="lazy" alt="">
+                            <img src="{{ asset("build/images/paragraph-#{i}.jpg") }}" loading="lazy" alt="paragraph collection">
                             <span class="paragraph-swiper__overlay"></span>
                         </div>
                     {% endfor %}
