@@ -41,10 +41,14 @@ class AppExtension extends AbstractExtension
     public function getRating(): float
     {
         $reviews = $this->reviewRepository->findAll();
-        $reviewCount = count($reviews);
-        $ratingCollection = array_map(fn(Review $review) => $review->getRating(), $reviews);
 
-        return round(array_sum($ratingCollection) / $reviewCount, 1);
+        if ($reviewCount = count($reviews)) {
+            $ratingCollection = array_map(fn(Review $review) => $review->getRating(), $reviews);
+
+            return round(array_sum($ratingCollection) / $reviewCount, 1);
+        }
+
+        return 0;
     }
 
     public function getPropertyGroups(Product $product): array
