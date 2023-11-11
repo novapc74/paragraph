@@ -2,17 +2,19 @@
 
 namespace App\Twig;
 
-use App\Entity\Contact;
-use App\Entity\Product;
-use App\Entity\ProductPropertyValue;
-use App\Entity\PropertyGroup;
-use App\Repository\ContactRepository;
-use App\Repository\ProductRepository;
-use App\Repository\PropertyGroupRepository;
-use App\Repository\SocialNetworkRepository;
-use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use App\Entity\Review;
+use App\Entity\Contact;
+use App\Entity\Product;
+use App\Entity\PropertyGroup;
+use App\Entity\ProductPropertyValue;
+use App\Repository\ReviewRepository;
+use App\Repository\ContactRepository;
+use App\Repository\ProductRepository;
+use Twig\Extension\AbstractExtension;
+use App\Repository\PropertyGroupRepository;
+use App\Repository\SocialNetworkRepository;
 
 class AppExtension extends AbstractExtension
 {
@@ -21,7 +23,8 @@ class AppExtension extends AbstractExtension
     public function __construct(private readonly ContactRepository       $contactRepository,
                                 private readonly SocialNetworkRepository $socialNetworkRepository,
                                 private readonly ProductRepository       $productRepository,
-                                private readonly PropertyGroupRepository $propertyGroupRepository)
+                                private readonly PropertyGroupRepository $propertyGroupRepository,
+                                private readonly ReviewRepository        $reviewRepository)
     {
     }
 
@@ -30,8 +33,18 @@ class AppExtension extends AbstractExtension
         return [
             new TwigFunction('contact', [$this, 'getContact']),
             new TwigFunction('socialNetworks', [$this, 'getSocialNetworks']),
-            new TwigFunction('propertyGroups', [$this, 'getPropertyGroups'])
+            new TwigFunction('propertyGroups', [$this, 'getPropertyGroups']),
+            new TwigFunction('rating', [$this, 'getRating']),
         ];
+    }
+
+    public function getRating(): float
+    {
+        $reviews = $this->reviewRepository->findAll();
+        $reviewCount = count($reviews);
+        $ratingCollection = array_map(fn(Review $review) => $review->getRating(), $reviews);
+
+        return round(array_sum($ratingCollection) / $reviewCount, 1);
     }
 
     public function getPropertyGroups(Product $product): array
