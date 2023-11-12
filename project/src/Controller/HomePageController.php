@@ -21,13 +21,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'app_home_page')]
-    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository): Response
+    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository, ReviewRepository $reviewRepository): Response
     {
         return $this->render('pages/home.html.twig', [
             'isHome' => true,
             'products' => $productRepository->findBy(['parentProduct' => null]),
             'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::product_block_type->name]),
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
+            'reviews' => $reviewRepository->findBy([], [], 3),
         ]);
     }
 
