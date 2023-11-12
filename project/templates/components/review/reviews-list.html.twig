@@ -1,0 +1,5 @@
+{% for review in reviews %}
+    <li class="reviews__item fade">
+        {% include 'components/review/review.html.twig' with { review } %}
+    </li>
+{% endfor %}

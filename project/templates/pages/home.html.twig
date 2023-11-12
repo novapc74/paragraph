@@ -6,12 +6,14 @@
 
 {% extends 'layouts/default.html.twig' %}
 
+{% block title %}Paragraph | Продажа канцелярских товаров для хранения документов{% endblock %}
 
 {% block meta %}
     <meta property="og:title"
           content="PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов">
     <meta property="og:description"
           content="Наша продукция - это стильный и функциональный порядок в вашем доме и офисе. Мы осознанно отказались от производства вертикальных накопителей, поставляемых в сложенном состоянии, понимая, что они не могут гарантировать отсутствие перекосов и деформаций после их приведения в собранное состояние.">
+    <link rel="canonical" href="https://paragraph-store.ru"/>
 {% endblock %}
 
 {% block content %}
@@ -38,9 +40,11 @@
 
     {% include 'components/sections/manufacture.html.twig' %}
 
-    {% include 'components/sections/contacts.html.twig' %}
+    {% if reviews | length %}
+        {% include 'components/sections/reviews.html.twig' with { reviews } %}
+    {% endif %}
 
-    {{ dump(reviews) }}
+    {% include 'components/sections/contacts.html.twig' %}
 
 {% endblock %}
 

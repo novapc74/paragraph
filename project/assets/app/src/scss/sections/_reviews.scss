@@ -1,0 +1,97 @@
+@import "../vars";
+.reviews {
+  &__body {
+    display: grid;
+    gap: 20px;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media screen and (min-width: 1024px) {
+      grid-template-columns: 1fr 585px;
+    }
+    @media screen and (min-width: 1366px) {
+      grid-template-columns: 1fr 720px;
+    }
+  }
+
+  &__rating {
+    display: flex;
+    align-items: center;
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 30px;
+  }
+
+  &__item {
+    opacity: 0;
+  }
+
+  &__pagination {
+    margin-top: 30px;
+  }
+}
+
+.reviews-rating {
+  &__value {
+    margin-right: 15px;
+    color: $blue;
+    font-family: $ff-secondary;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 110%;
+    text-transform: uppercase;
+    @media screen and (min-width: 768px) {
+      display:
+              block;
+      margin-right: 0;
+      margin-bottom: 15px;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 80px;
+      margin-bottom: 0;
+    }
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+}
+
+.reviews-pagination {
+  display: flex;
+  justify-content: center;
+  &__item {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    border: 3px solid transparent;
+    font-size: 16px;
+    font-weight: 500;
+    color: $black;
+    transition: border-color .3s ease, color .3s ease;
+    cursor: pointer;
+    user-select: none;
+
+    &.active {
+      border-color: $blue;
+      color: $blue;
+      pointer-events: none;
+    }
+
+    @media screen and (min-width: 1024px) {
+      &:not(.active):hover {
+        color: $blue-light;
+      }
+    }
+  }
+}

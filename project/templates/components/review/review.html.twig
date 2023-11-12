@@ -1,13 +1,15 @@
 <div class="review">
     <div class="review__info">
+        <span class="review__author">{{ review.title }}</span>
         <div class="review__rating">
             {% for item in 1..5 %}
                 <span class="review__star{% if loop.index <= review.rating %} review__star_active{% endif %}">
-
+                    <svg>
+                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#star-icon"></use>
+                    </svg>
                 </span>
             {% endfor %}
         </div>
-        <span class="review__author">{{ review.title }}</span>
     </div>
     <div class="review__content">
         <span class="review__title">{{ review.subTitle }}</span>

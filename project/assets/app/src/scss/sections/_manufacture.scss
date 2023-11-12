@@ -139,12 +139,12 @@
     display: grid;
     gap: 15px;
     p {
-      max-width: 220px;
+      max-width: 300px;
       @media screen and (min-width: 768px) {
-        max-width: 255px;
+        max-width: 345px;
       }
       @media screen and (min-width: 1366px) {
-        max-width: 300px;
+        max-width: 445px;
       }
     }
   }

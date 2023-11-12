@@ -1,4 +1,4 @@
-<section class="section contacts" id="contacts">
+<section class="section contacts" id="contacts" data-nav-section>
     <div class="container contacts__container">
 
         <div class="contacts__form">
@@ -20,7 +20,7 @@
                         <li class="contacts__item contacts-item">
                             <h3 class="contacts-item__title">Адрес</h3>
                             <a href="https://yandex.ru/maps/-/CDeqfUok" target="_blank"
-                               class="contacts-item__value">{{ contact.address }}</a>
+                               class="contacts-item__value">{{ contact.address | striptags }}</a>
                         </li>
                     {% endif %}
                     {% if contact.email %}

@@ -1,0 +1,23 @@
+<section class="section section_light reviews" id="reviews" data-nav-section>
+    <div class="container">
+        <h3 class="section__heading">отзывы ({{ reviews | length }})</h3>
+        <div class="reviews__body">
+            <div class="reviews__rating reviews-rating">
+                <span class="reviews-rating__value">{{ rating() | number_format(1) }}</span>
+                <span class="reviews-rating__title">оценка на основе отзывов</span>
+            </div>
+            <div class="reviews__wrapper">
+                <ul class="reviews__list">
+                    {% include 'components/review/reviews-list.html.twig' %}
+                </ul>
+                <div class="reviews__pagination reviews-pagination" data-total="{{ reviewPageCount() }}">
+                    {% for page in 1..reviewPageCount() %}
+                        <span class="reviews-pagination__item numeric{% if loop.index == 1 %} active{% endif %}" data-page="{{ loop.index }}">
+                            {{ loop.index }}
+                        </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

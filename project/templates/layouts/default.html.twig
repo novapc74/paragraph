@@ -22,14 +22,14 @@
     {#    <link sizes="167x167" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-167x167.svg') }}"> #}
     {#    <link sizes="180x180" rel="apple-touch-icon" href="{{ asset('favicon/apple-touch-icon-180x180.svg') }}"> #}
 
-    <title>{% block title %}PARAGRAPH{% endblock %}</title>
+    <title>{% block title %}Paragraph{% endblock %}</title>
     <meta name="description"
           content="{% block description %}PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов.{% endblock %}">
     {% block meta %}{% endblock %}
     <meta property="og:url" content="{{ app.request.uri }}">
     <meta property="og:type" content="article">
-    <meta property="og:site_name" content="Paragraph"/>
-    {#    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}"> #}
+    <meta property="og:site_name" content="paragraph-store.ru"/>
+    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
@@ -53,7 +53,7 @@
     {% include 'components/base/footer.html.twig' %}
 {% endblock %}
 
-{# {% include 'components/base/mobile-header.html.twig' %} #}
+{% include 'components/base/mobile-header.html.twig' %}
 {% include 'components/popups/feedback-popup.html.twig' %}
 {% include 'components/popups/response-popup.html.twig' %}
 

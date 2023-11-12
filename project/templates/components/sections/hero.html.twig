@@ -9,15 +9,15 @@
                         <div class="hero-slide__top">
                             <div class="hero-slide__header">
                                 <h3 class="hero-slide__heading">{{ block.product.title }}</h3>
-                                <h4 class="hero-slide__title">{{ block.product.color.title }}</h4>
+                                <h4 class="hero-slide__title">{{ block.product.color.modernTitle }}</h4>
                             </div>
                             <div class="hero-slide__content">
                                 <p class="hero-slide__description">{{ block.text }}</p>
-                                <a href="#{{ block.product.id }}" class="text-button hero-slide__link">подробнее</a>
+                                <a href="/#catalog" class="text-button hero-slide__link">подробнее</a>
                             </div>
                         </div>
                         <div class="hero-slide__image">
-                            <img class="fade" src="{{ vich_uploader_asset(block.image) | imagine_filter_cache('banner_md') }}"
+                            <img class="fade" src="{{ vich_uploader_asset(block.image) }}"
                                  alt="картинка для продукта - {{ block.product.title }}">
                         </div>
                     </div>

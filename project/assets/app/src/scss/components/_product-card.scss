@@ -1,15 +1,6 @@
 @import "../vars";
 @import "../mixins/base";
 
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .product-card {
   @media screen and (min-width: 1024px) {
     position: relative;
@@ -36,6 +27,7 @@
   &__swiper {
     width: 100%;
     margin-bottom: 15px;
+
     @media screen and (min-width: 768px) {
       flex: 1;
       margin-bottom: 0;
