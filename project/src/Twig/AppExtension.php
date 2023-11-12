@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use App\Enum\ReviewOnPage;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use App\Entity\Review;
@@ -35,9 +36,21 @@ class AppExtension extends AbstractExtension
             new TwigFunction('socialNetworks', [$this, 'getSocialNetworks']),
             new TwigFunction('propertyGroups', [$this, 'getPropertyGroups']),
             new TwigFunction('rating', [$this, 'getRating']),
+            new TwigFunction('reviewPageCount', [$this, 'getReviewPageCount']),
         ];
     }
 
+    public function getReviewPageCount(): int
+    {
+        $reviews = $this->reviewRepository->findAll();
+        if ($count = count($reviews)) {
+            $data = $count / ReviewOnPage::REVIEW_ON_ONE_PAGE->value;
+
+            return $data < 1 ? 1 : ceil($data) ;
+        }
+
+        return 0;
+    }
     public function getRating(): float
     {
         $reviews = $this->reviewRepository->findAll();
