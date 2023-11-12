@@ -8,8 +8,12 @@ use App\Entity\Store;
 use App\Enum\PageBlockType;
 use App\Repository\ProductRepository;
 use App\Repository\PageBlockRepository;
+use App\Repository\ReviewRepository;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,5 +50,27 @@ class HomePageController extends AbstractController
         }
 
         return $this->json(['success' => false, 'message' => sprintf('для модификации "%s" сделайте запрос с заголовком XmlHttpRequest', $modification)], 404);
+    }
+
+    #[Route('/review', name: 'app_review', methods: ['GET'])]
+    public function getReview(ReviewRepository $reviewRepository, PaginatorInterface $paginator, Request $request): Response
+    {
+        if (!$request->isXmlHttpRequest()) {
+            return $this->json(['error' => 'there is not XmlHttpRequest']);
+        }
+
+        $reviews = $reviewRepository->findAll();
+        $currentPage = $request->query->getInt('page', 1);
+
+        $pagination = $paginator->paginate(
+            $reviews,
+            $currentPage,
+            3
+        );
+
+        return $this->render('components/review/review.html.twig', [
+            'reviews' => $pagination,
+            'currentPage' => $currentPage,
+        ]);
     }
 }
