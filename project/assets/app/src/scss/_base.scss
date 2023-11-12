@@ -1,10 +1,12 @@
 @import "vars";
 @import "mixins/base";
+
 html {
   &.no-scroll {
     overflow: hidden;
   }
 }
+
 body {
   font-family: $ff-text;
   color: $grey;
@@ -38,6 +40,24 @@ img {
   @media screen and (min-width: 1366px) {
     padding-top: 62px;
   }
+
+  &__title {
+    color: $black;
+    font-size: 25px;
+    line-height: 110%;
+    padding: 32px 0;
+    @media screen and (min-width: 728px) {
+      padding: 30px 0;
+    }
+    @media screen and (min-width: 1024px) {
+      font-size: 30px;
+      padding: 50px 0 35px;
+    }
+    @media screen and (min-width: 1366px) {
+      font-size: 40px;
+      padding: 55px 0 35px;
+    }
+  }
 }
 
 .container {
@@ -60,41 +80,43 @@ img {
   }
 }
 
-.map {
-  &__container {
-    height: 290px;
-    @media screen and (min-width: 768px) {
-      height: 630px;
-    }
-    @media screen and (max-width: 1023px) {
-      padding: 0;
-      width: 100vw;
-    }
-    @media screen and (min-width: 1024px) {
-      height: 551px;
-    }
-    @media screen and (min-width: 1366px) {
-      height: 570px;
-    }
-  }
-}
-
 .policy {
   max-width: 773px;
+  padding-bottom: 40px;
+
   &__block {
     margin-bottom: 40px;
   }
+
   &__title {
+    color: $blue;
+    font-size: 20px;
+    font-weight: 400;
     margin-bottom: 20px;
   }
 }
 
 .invisible {
-  clip: rect(1px,1px,1px,1px);
+  clip: rect(1px, 1px, 1px, 1px);
   clip-path: inset(50%);
   height: 1px;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+// animations
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade {
+  animation: fade .3s ease forwards;
 }

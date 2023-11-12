@@ -1,25 +1,35 @@
-<section class="section section_light about" id="about">
+<section class="section section_light about" id="about" data-nav-section>
     <div class="about__wrapper">
         <div class="container">
             <div class="about__grid">
                 <div class="about__content">
                     <h2 class="section__heading">о нас</h2>
-                    <h3 class="about__title">PARAGRAPH&nbsp;&mdash; это стильные и&nbsp;функциональные канцелярские товары
+                    <h3 class="about__title">PARAGRAPH&nbsp;&mdash; это стильные и&nbsp;функциональные канцелярские
+                        товары
                         для хранения документов.</h3>
-                    <p class="about__description">
-                        Наша продукция&nbsp;&mdash; это стильный и&nbsp;функциональный порядок в&nbsp;вашем доме и&nbsp;офисе.
-                        Мы&nbsp;осознанно отказались от&nbsp;производства вертикальных накопителей, поставляемых в&nbsp;сложенном
-                        состоянии, понимая, что они не&nbsp;могут гарантировать отсутствие перекосов и&nbsp;деформаций после
-                        их&nbsp;приведения в&nbsp;собранное состояние.
-                    </p>
+                    <div class="about__description">
+                        <span>Наша продукция поможет организовать порядок в вашем доме и офисе:</span>
+                        <ul>
+                            <li>
+                                - папки с резинками и вертикальные накопители – для хранения документов, семейных
+                                архивов и каталогов;
+                            </li>
+                            <li>
+                                - коробки с крышками – для хранения мелочей, которые важно не потерять и которые всегда
+                                будут лежать «на своем месте».
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="about__grid about__grid_images">
                 <div class="about__image about__image_left">
-                    <img src="{{ asset('build/images/about-1.jpg') | imagine_filter_cache('medium') }}" alt="Папка регистратор" loading="lazy">
+                    <img src="{{ asset('build/images/about-1.jpg') }}"
+                         alt="Папка регистратор" loading="lazy">
                 </div>
                 <div class="about__image about__image_right">
-                    <img src="{{ asset('build/images/about-2.jpg') | imagine_filter_cache('medium') }}" alt="Лоток для бумаг" loading="lazy">
+                    <img src="{{ asset('build/images/about-2.jpg') }}"
+                         alt="Лоток для бумаг" loading="lazy">
                 </div>
             </div>
         </div>

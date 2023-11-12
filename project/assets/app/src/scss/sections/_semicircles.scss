@@ -54,6 +54,17 @@
     }
   }
 
+  .semicircles__bg-wrapper {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
   &__bg {
     position: absolute;
     top: 50%;

@@ -15,25 +15,25 @@ class ColorFixtures extends BaseFixture
             'hex' => '#000000'
         ],
         [
-            'title' => 'Синий',
+            'title' => 'Темно-синий',
             'modernTitle' => 'blu notte',
             'slug' => 'blue',
-            'hex' => '#0000FF'
+            'hex' => '#00007e'
         ],
         [
-            'title' => 'Бордовый',
+            'title' => 'Винно-красный',
             'slug' => 'burgundy',
-            'hex' => '#9B2D30',
+            'hex' => '#9b2d30',
             'modernTitle' => 'bordeaux',
         ],
         [
-            'title' => 'Бежевый',
+            'title' => 'Капучино',
             'slug' => 'beige',
-            'hex' => '#F5F5DC',
+            'hex' => '#c0987e',
             'modernTitle' => 'kraft',
         ],
         [
-            'title' => 'Белый',
+            'title' => 'Натурально-белый',
             'slug' => 'white',
             'hex' => '#FFFFFF',
             'modernTitle' => 'neve',
@@ -41,20 +41,20 @@ class ColorFixtures extends BaseFixture
         [
             'title' => 'Антрацит',
             'slug' => 'anthracite',
-            'hex' => '#45464С',
+            'hex' => '#666666',
             'modernTitle' => 'anthracite',
         ],
         [
             'title' => 'Темно-коричневый',
             'slug' => 'dark_brown',
-            'hex' => '#654321',
+            'hex' => '#573120',
             'modernTitle' => 'dark brown',
         ],
     ];
 
     protected function loadData(ObjectManager $manager): void
     {
-        $this->createEntity(Color::class, 6, function (Color $color, $count) {
+        $this->createEntity(Color::class, 7, function (Color $color, $count) {
             $color
                 ->setTitle(self::COLOR_DATA[$count]['title'])
                 ->setModernTitle(self::COLOR_DATA[$count]['modernTitle'])

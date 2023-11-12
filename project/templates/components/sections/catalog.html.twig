@@ -1,11 +1,11 @@
-<section class="section section_light catalog" id="catalog">
+<section class="section section_light catalog" id="catalog" data-nav-section>
     <div class="container">
         <h2 class="section__heading">каталог продукции</h2>
         <ul class="catalog__list">
             <li class="catalog__item">
                 {% for product in products %}
                     {% if product.childProducts | length and product.childProducts[0] %}
-                        {% include "components/product-card.html.twig" with {product, current: product.childProducts[0]} %}
+                        {% include "components/product/product-card.html.twig" with {product, current: product.childProducts[0]} %}
                     {% endif %}
                 {% endfor %}
             </li>

@@ -14,6 +14,7 @@ export default function maps() {
                 });
 
                 map.behaviors.disable('scrollZoom')
+                window.innerWidth < 1024 && map.behaviors.disable('drag')
                 map.controls.add('zoomControl', {
                     size: "small",
                     position: {

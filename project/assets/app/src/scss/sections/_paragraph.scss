@@ -41,17 +41,12 @@
   &__slide {
     position: relative;
     padding-top: 110%;
-    opacity: 0;
-    transition: opacity .4s ease;
     &::before {
       content: '';
       @include absolute-100;
       z-index: 1;
       background-color: rgba(0, 0, 0, 0.60);
       transition: opacity .4s ease;
-    }
-    img {
-      @include absolute-100;
     }
     &_active {
       opacity: 1;

@@ -1,10 +1,13 @@
 import swipers from "./base/swipers";
-import {addClass, removeClass} from "./utils/classMethods";
+import {addClass, removeClass, toggleActiveClass} from "./utils/classMethods";
 import animations from "./base/animations";
 import dropdowns from "./base/dropdowns";
 import {Product} from "./components/Product";
 import forms from "./base/forms";
 import maps from "./base/maps";
+import axios from "axios";
+import mobile from "./base/mobile";
+import reviews from "./base/reviews";
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -26,4 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     dropdowns()
     forms()
     maps()
+    reviews()
+    mobile()
 })

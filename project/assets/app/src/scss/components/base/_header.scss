@@ -28,6 +28,9 @@
   &__logo {
     width: 128px;
     height: 32px;
+    svg {
+      transition: fill .4s ease;
+    };
     @media screen and (min-width: 1366px) {
       width: 166px;
       height: 41px;
@@ -66,6 +69,11 @@
     &_feedback {
       display: none;
     }
+    &_menu {
+      &:before {
+        content: 'Меню';
+      }
+    }
     @media screen and (min-width: 1024px) {
       width: auto;
       &_feedback {
@@ -85,6 +93,23 @@
 
   &.active {
     background-color: transparent;
+    .header__button_menu {
+      &:before {
+        content: 'Закрыть';
+      }
+    }
+    .header__logo {
+      @media screen and (min-width: 768px) {
+       svg {
+         fill: $cream-light;
+       }
+      }
+    }
+    .header__phone {
+      opacity: 0;
+      pointer-events: none;
+      user-select: none;
+    }
   }
 }
 

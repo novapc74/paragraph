@@ -69,7 +69,7 @@ class HomePageController extends AbstractController
             3
         );
 
-        return $this->render('components/review/review.html.twig', [
+        return $this->render('components/review/reviews-list.html.twig', [
             'reviews' => $pagination,
             'currentPage' => $currentPage,
         ]);
