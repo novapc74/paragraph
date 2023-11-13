@@ -43,10 +43,12 @@ class HomePageController extends AbstractController
                 $marketplaces[$store->getTitle()] = $store->getLink();
             }, $modification->getMarketPlaces()->toArray());
 
+
             return $this->json([
                 'color' => $modification->getColor()->getTitle(),
                 'title' => $modification->getColor()->getModernTitle(),
-                'images' => array_map(fn(Gallery $gallery) => $modification->getMediaCachePath($gallery->getImage()), $modification->getGallery()->toArray()),
+//                'images' => array_map(fn(Gallery $gallery) => $modification->getMediaCachePath($gallery->getImage()), $modification->getGallery()->toArray()),
+                'image' => array_map(fn(Gallery $gallery) => '/upload/media/' . $gallery->getImage()->getImageName(), $modification->getGallery()->toArray()),
                 'marketplaces' => $marketplaces,
             ]);
         }
