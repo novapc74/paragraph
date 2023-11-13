@@ -41,7 +41,7 @@
     {% include 'components/sections/manufacture.html.twig' %}
 
     {% if reviews | length %}
-        {% include 'components/sections/reviews.html.twig' with { reviews } %}
+        {% include 'components/sections/reviews.html.twig' with { reviews, reviewAllCount } %}
     {% endif %}
 
     {% include 'components/sections/contacts.html.twig' %}

@@ -29,6 +29,7 @@ class HomePageController extends AbstractController
             'main_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::product_block_type->name]),
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
             'reviews' => $reviewRepository->findBy([], [], 3),
+            'reviewAllCount' => count($reviewRepository->findAll()) ?? 0,
         ]);
     }
 
