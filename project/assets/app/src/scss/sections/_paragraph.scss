@@ -41,6 +41,9 @@
   &__slide {
     position: relative;
     padding-top: 110%;
+    img {
+      @include absolute-100;
+    }
     &::before {
       content: '';
       @include absolute-100;

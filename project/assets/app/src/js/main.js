@@ -11,6 +11,8 @@ import reviews from "./base/reviews";
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    location.hash = location.hash;
+
     if(document.querySelector('[data-header]')) {
         let scrollValue = 0
         const header = document.querySelector('[data-header]')
