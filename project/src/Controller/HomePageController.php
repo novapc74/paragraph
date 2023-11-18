@@ -2,18 +2,17 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
+use App\Entity\Store;
 use App\Entity\Gallery;
 use App\Entity\Product;
-use App\Entity\Store;
 use App\Enum\PageBlockType;
+use App\Repository\ReviewRepository;
 use App\Repository\ProductRepository;
 use App\Repository\PageBlockRepository;
-use App\Repository\ReviewRepository;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -77,4 +76,21 @@ class HomePageController extends AbstractController
             'currentPage' => $currentPage,
         ]);
     }
+
+    #[Route('/product/{id}', name: 'app_show_product')]
+    public function showProduct(Product $product): Response
+    {
+        // TODO Put to twig -> {# @var product \App\Entity\Product #}
+
+        return $this->render('path/to/product.html.twig', compact('product'));
+    }
+
+    #[Route('/category/{id}', name: 'app_show_category')]
+    public function getCategory(Category $category): Response
+    {
+        // TODO Put to twig -> {# @var category \App\Entity\Category #}
+
+        return $this->render('path/to/category.html.twig', compact('category'));
+    }
+
 }
