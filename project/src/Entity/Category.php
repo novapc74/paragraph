@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Category
 {
     use IdentifierTrait;
@@ -18,7 +19,7 @@ class Category
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class, cascade: ['persist', 'remove'], orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class, cascade: ['persist'])]
     private Collection $products;
 
     public function __construct()
@@ -64,5 +65,11 @@ class Category
         }
 
         return $this;
+    }
+
+    #[ORM\PreRemove]
+    public function preRemove(): void
+    {
+        $this->getProducts()->map(fn(Product $product) => $this->removeProduct($product));
     }
 }
