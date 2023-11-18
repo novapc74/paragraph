@@ -236,15 +236,6 @@ class Product implements ExplodeDescriptionInterface
         return $this;
     }
 
-    #[ORM\PreFlush]
-    public function preFlush(): void
-    {
-        if ($parentProduct = $this->getParentProduct()) {
-            $this->title = $parentProduct->getTitle();
-            $this->description = $parentProduct->getDescription();
-        }
-    }
-
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -257,34 +248,12 @@ class Product implements ExplodeDescriptionInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Review>
-     */
-    public function getReviews(): Collection
+    #[ORM\PreFlush]
+    public function preFlush(): void
     {
-        return $this->reviews;
-    }
-
-    public function addReview(Review $review): static
-    {
-        if (!$this->reviews->contains($review)) {
-            $this->reviews->add($review);
-            $review->setProduct($this);
+        if ($parentProduct = $this->getParentProduct()) {
+            $this->title = $parentProduct->getTitle();
+            $this->description = $parentProduct->getDescription();
         }
-
-        return $this;
     }
-
-    public function removeReview(Review $review): static
-    {
-        if ($this->reviews->removeElement($review)) {
-            // set the owning side to null (unless already changed)
-            if ($review->getProduct() === $this) {
-                $review->setProduct(null);
-            }
-        }
-
-        return $this;
-    }
-
 }
