@@ -252,6 +252,7 @@ class Product implements ExplodeDescriptionInterface
     public function preFlush(): void
     {
         if ($parentProduct = $this->getParentProduct()) {
+
             $this->title = $parentProduct->getTitle();
             $this->description = $parentProduct->getDescription();
         }

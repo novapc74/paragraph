@@ -55,7 +55,6 @@ trait ExplodeDescriptionTrait
     }
 
     #[ORM\PreFlush]
-    #[ORM\PrePersist]
     public function updateDescription(): void
     {
         $this->resolveDescription();
