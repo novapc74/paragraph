@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Category;
 use App\Entity\Country;
+use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -46,6 +47,8 @@ class CategoryCrudController extends AbstractCrudController
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-4')
                 ->setFormTypeOption('by_reference', false)
+                ->setQueryBuilder(fn(QueryBuilder $queryBuilder) => $queryBuilder->where('entity.parentProduct is null'))
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
             ,
         ];
     }
