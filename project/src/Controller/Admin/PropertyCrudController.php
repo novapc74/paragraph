@@ -46,19 +46,43 @@ class PropertyCrudController extends AbstractCrudController
 
     public function configureActions(Actions $actions): Actions
     {
-        $returnToGroup = Action::new('return to group','Вернуться к группе')
+        $returnToGroup = Action::new('return to group', 'Группа')
             ->displayIf(fn(Property $property) => $property->getPropertyGroup())
             ->displayAsLink()
             ->linkToCrudAction('returnToGroup');
 
+        $memberList = Action::new('member list', 'Список группы')
+            ->displayIf(fn(Property $property) => $property->getPropertyGroup()->getProperties()->count() > 1)
+            ->displayAsLink()
+            ->linkToCrudAction('getMemberList');
+
         return parent::configureActions($actions)
-            ->add(Crud::PAGE_INDEX, $returnToGroup);
+            ->add(Crud::PAGE_INDEX, $returnToGroup)
+            ->add(Crud::PAGE_INDEX, $memberList);
+    }
+
+    private function getEntity(AdminContext $context): Property
+    {
+        return $context->getEntity()->getInstance();
+    }
+
+    public function getMemberList(AdminContext $context): RedirectResponse
+    {
+        $currentProperty = $this->getEntity($context);
+        $idCollection = $currentProperty->getPropertyGroup()->getProperties()->map(fn(Property $property) => $property->getId())->toArray();
+
+        $url = $this->adminUrlGenerator->unsetAll()
+            ->setController(PropertyCrudController::class)
+            ->setAction(Crud::PAGE_INDEX)
+            ->set('entity_id', implode(',', $idCollection))
+            ->generateUrl();
+
+        return $this->redirect($url);
     }
 
     public function returnToGroup(AdminContext $context): RedirectResponse
     {
-        /**@var Property $property*/
-        $property = $context->getEntity()->getInstance();
+        $property = $this->getEntity($context);
         $groupId = $property->getPropertyGroup()->getId();
 
         $url = $this->adminUrlGenerator->unsetAll()
@@ -69,6 +93,7 @@ class PropertyCrudController extends AbstractCrudController
 
         return $this->redirect($url);
     }
+
     public function configureFields(string $pageName): iterable
     {
         return [
