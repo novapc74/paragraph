@@ -30,12 +30,12 @@
 
     {% include 'components/sections/semicircles.html.twig' %}
 
-    {% if interior_blocks | length %}
-        {% include 'components/sections/interior.html.twig' with {blocks: interior_blocks} %}
-    {% endif %}
-
     {% if products | length %}
         {% include 'components/sections/catalog.html.twig' with {products} %}
+    {% endif %}
+
+    {% if interior_blocks | length %}
+        {% include 'components/sections/interior.html.twig' with {blocks: interior_blocks} %}
     {% endif %}
 
     {% include 'components/sections/manufacture.html.twig' %}
