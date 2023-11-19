@@ -3,7 +3,7 @@
 namespace App\Service;
 
 use Exception;
-//use App\Entity\Feedback;
+use App\Entity\Feedback;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Notifier\Exception\TransportExceptionInterface;
@@ -17,7 +17,7 @@ class MailerService
 	{
 	}
 
-	public function resolveMailer(/*Feedback*/ $feedback): void
+	public function resolveMailer(Feedback $feedback): void
 	{
 		array_map(
         /**
@@ -41,7 +41,7 @@ class MailerService
 		}
 	}
 
-	private function makeEmail(/*Feedback*/ $feedback, string $type): TemplatedEmail
+	private function makeEmail(Feedback $feedback, string $type): TemplatedEmail
 	{
 		$email = (new TemplatedEmail())
 			->from($this->mailSender)
@@ -53,11 +53,11 @@ class MailerService
 		if ($type == 'client') {
 			$email
 				->addTo($feedback->getEmail())
-				->subject('СПКК - Ваша заявка принята.')
+				->subject('Paragraph - Ваша заявка принята.')
 				->htmlTemplate('mailer/client_email.html.twig');
 		} else {
 			$email
-				->subject('СПКК - новая заявка с сайта.')
+				->subject('Paragraph - новая заявка с сайта.')
 				->htmlTemplate('mailer/feedback_email.html.twig');
 
 			array_map(
