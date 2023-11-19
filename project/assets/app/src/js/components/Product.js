@@ -1,6 +1,6 @@
 import Swiper from "swiper/bundle";
 import axios from "axios";
-import {addClass, removeClass, toggleActiveClass} from "../utils/classMethods";
+import {addClass, toggleActiveClass} from "../utils/classMethods";
 
 export class Product {
     constructor(product) {
@@ -8,7 +8,8 @@ export class Product {
         this.title = product.querySelector('.product-card__title')
         this.color = product.querySelector('.product-colors__current')
         this.colors = [...product.querySelectorAll('.product-colors__item')]
-        this.markets = product.querySelector('.product-card-marketplaces__list')
+        this.wb = product.querySelector('[data-market="wb"]')
+        this.ozon = product.querySelector('[data-market="ozon"]')
         this.slidesContainer = this.product.querySelector('.product-card-swiper__wrapper')
         this.thumbsContainer = this.product.querySelector('.product-card-thumbs__wrapper')
         this.thumbs = null
@@ -63,28 +64,13 @@ export class Product {
                 toggleActiveClass(color, this.product, '.product-colors__item', 'active')
                 this.title.textContent = data.title
                 this.color.textContent = data.color
-                this.#resetMarketplaces(data.marketplaces)
+                this.wb && (this.wb.href = data.marketplaces.wb)
+                this.ozon && (this.ozon.href = data.marketplaces.ozon)
                 this.#resetSwipers(data.images)
             }
         } catch (e) {
             console.log(e)
         }
-    }
-
-    #resetMarketplaces(links) {
-        if(Object.entries(links).length) {
-            this.markets.innerHTML = ''
-            removeClass(this.product.querySelector('.product-card__marketplaces'), 'hidden')
-            Object.entries(links).forEach(link => {
-                const el = `<li class="product-card-marketplaces__item fade">
-                                        <a class="product-card-marketplaces__link product-card-marketplaces__link_${link[0]}" href="${link[1]}" target="_blank"></a>
-                                   </li>`
-                this.markets.insertAdjacentHTML('beforeend', el)
-            })
-            addClass(parent, 'hidden')
-            return
-        }
-        addClass(this.markets.closest('.product-card__marketplaces'), 'hidden')
     }
 
     #resetSwipers(images) {
