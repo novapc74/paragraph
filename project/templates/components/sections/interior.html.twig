@@ -27,7 +27,7 @@
                             <span class="interior-slide__title">{{ block.text }}</span>
                         </div>
                         <div class="interior-slide__image">
-                            <img src="{{ vich_uploader_asset(block.image) }}" alt="{{ block.text }}" loading="lazy">
+                            <img src="{{ vich_uploader_asset(block.image) | imagine_filter_cache('medium') }}" alt="{{ block.text }}" loading="lazy">
                         </div>
                     </div>
                 {% endfor %}

@@ -100,15 +100,19 @@
                 </svg>
             </button>
         </div>
-        <div class="product-card__marketplaces product-card-marketplaces{% if current.marketPlaces | length == 0 %} hidden{% endif %}">
+        <div class="product-card__marketplaces product-card-marketplaces">
             <span class="product-card-marketplaces__title">
                 Наша продукция на сайтах партнеров
             </span>
             <ul class="product-card-marketplaces__list">
                 {% for marketPlace in current.marketPlaces %}
-                    <li class="product-card-marketplaces__item fade">
-                        <a class="product-card-marketplaces__link product-card-marketplaces__link_{{ marketPlace.title }}"
-                           href="{{ marketPlace.link }}" target="_blank"></a>
+                    <li class="product-card-marketplaces__item">
+                        <a class="product-card-marketplaces__link" href="{{ marketPlace.link }}" target="_blank"
+                           data-market="{{ marketPlace.title }}">
+                            <svg class="product-card-marketplaces__logo product-card-marketplaces__logo_{{ marketPlace.title }}">
+                                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#{{ marketPlace.title }}-logo"></use>
+                            </svg>
+                        </a>
                     </li>
                 {% endfor %}
             </ul>
