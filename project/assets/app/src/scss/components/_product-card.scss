@@ -89,11 +89,12 @@
     }
   }
 
-  &__offer {
-    margin-bottom: 30px;
-  }
-
   &__marketplaces {
+    margin-top: 30px;
+
+    &.hidden {
+      display: none;
+    }
   }
 }
 
@@ -326,13 +327,35 @@
   }
 
   &__link {
-    height: 100%;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    transition: border-color .4s ease;
+    border: 1px solid $black;
+    opacity: 0.2;
+    transition: opacity .4s ease;
+    background-position: center;
+    background-size: 100% 23px;
+    background-repeat: no-repeat;
+
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &:active {
+      opacity: 1;
+    }
+
+
+    &_wb {
+      background-image: url(../../images/wb-logo.svg);
+    }
+
+    &_ozon {
+      background-image: url(../../images/ozon-logo.svg);
+    }
   }
 
   &__logo {
@@ -341,6 +364,7 @@
     fill: $grey;
     opacity: 0.65;
     transition: opacity .4s ease;
+
     &_ozon {
       height: 14px;
     }
