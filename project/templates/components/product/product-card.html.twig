@@ -24,7 +24,7 @@
         <div class="swiper product-card__thumbs product-card-thumbs">
             <div class="swiper-wrapper product-card-thumbs__wrapper">
                 {% for gallery in current.gallery %}
-                    <div class="swiper-slide product-card-thumbs__slide">
+                    <div class="swiper-slide product-card-thumbs__slide">А
                         <picture>
                             {#                                    <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}" type="image/webp"> #}
                             <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
@@ -67,7 +67,7 @@
                 </div>
                 <div class="dropdown__inner product-card-dropdown__inner" data-dropdown-inner>
                     <div class="product-card-dropdown__content" data-dropdown-content>
-                        {{ product.fullDescription }}
+                        {{ product.fullDescription | raw }}
                     </div>
                 </div>
             </li>

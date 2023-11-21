@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\CollectionField;
@@ -69,6 +70,7 @@ class ProductCrudController extends AbstractCrudController
                         new NotBlank(),
                     ]
                 ])
+            ->setFormType(CKEditorType::class)
             ,
             FormField::addTab('Свойства товара'),
             CollectionField::new('productProperties', 'Свойства товара')
