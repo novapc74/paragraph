@@ -5,10 +5,11 @@ import {addClass, removeClass, toggleActiveClass} from "../utils/classMethods";
 export class Product {
     constructor(product) {
         this.product = product
-        this.title = product.querySelector('.product-card__title')
-        this.color = product.querySelector('.product-colors__current')
-        this.colors = [...product.querySelectorAll('.product-colors__item')]
-        this.markets = product.querySelector('.product-card-marketplaces__list')
+        this.title = this.product.querySelector('.product-card__title')
+        this.color = this.product.querySelector('.product-colors__current')
+        this.colors = [...this.product.querySelectorAll('.product-colors__item')]
+        this.markets = this.product.querySelector('.product-card-marketplaces__list')
+        this.marketsWrapper = this.product.querySelector('.product-card__marketplaces')
         this.slidesContainer = this.product.querySelector('.product-card-swiper__wrapper')
         this.thumbsContainer = this.product.querySelector('.product-card-thumbs__wrapper')
         this.thumbs = null
@@ -74,17 +75,16 @@ export class Product {
     #resetMarketplaces(links) {
         if (Object.entries(links).length) {
             this.markets.innerHTML = ''
-            removeClass(this.product.querySelector('.product-card__marketplaces'), 'hidden')
+            removeClass(this.marketsWrapper, 'hidden')
             Object.entries(links).forEach(link => {
                 const el = `<li class="product-card-marketplaces__item fade">
                                         <a class="product-card-marketplaces__link product-card-marketplaces__link_${link[0]}" href="${link[1]}" target="_blank"></a>
                                    </li>`
                 this.markets.insertAdjacentHTML('beforeend', el)
             })
-            addClass(parent, 'hidden')
             return
         }
-        addClass(this.markets.closest('.product-card__marketplaces'), 'hidden')
+        addClass(this.marketsWrapper, 'hidden')
     }
 
     #resetSwipers(images) {

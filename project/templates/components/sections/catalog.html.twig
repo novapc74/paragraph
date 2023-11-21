@@ -2,13 +2,13 @@
     <div class="container">
         <h2 class="section__heading">каталог продукции</h2>
         <ul class="catalog__list">
-            <li class="catalog__item">
-                {% for product in products %}
+            {% for product in products %}
+                <li class="catalog__item">
                     {% if product.childProducts | length and product.childProducts[0] %}
                         {% include "components/product/product-card.html.twig" with {product, current: product.childProducts[0]} %}
                     {% endif %}
-                {% endfor %}
-            </li>
+                </li>
+            {% endfor %}
         </ul>
     </div>
 </section>
