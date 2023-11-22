@@ -9,5 +9,23 @@
         margin-bottom: 80px;
       }
     }
+
+    &:nth-child(even) {
+      @media screen and (min-width: 1024px) {
+        .product-card {
+          flex-direction: row-reverse;
+        }
+        .product-card__images {
+          margin-right: 0;
+          margin-left: 20px;
+        }
+      }
+      @media screen and (min-width: 1366px) {
+        .product-card__body {
+          padding-left: 0;
+          padding-right: 40px;
+        }
+      }
+    }
   }
 }
