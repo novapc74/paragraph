@@ -46,11 +46,12 @@ class AppExtension extends AbstractExtension
         if ($count = count($reviews)) {
             $data = $count / ReviewOnPage::REVIEW_ON_ONE_PAGE->value;
 
-            return $data < 1 ? 1 : ceil($data) ;
+            return $data < 1 ? 1 : ceil($data);
         }
 
         return 0;
     }
+
     public function getRating(): float
     {
         $reviews = $this->reviewRepository->findAll();
@@ -67,7 +68,6 @@ class AppExtension extends AbstractExtension
     public function getPropertyGroups(Product $product): array
     {
         $propertyGroups = [];
-        if ($product = $this->productRepository->findOneBy([])) {
 
             array_map(
                 function (PropertyGroup $group) use (&$propertyGroups, $product) {
@@ -77,7 +77,6 @@ class AppExtension extends AbstractExtension
                 },
                 $this->propertyGroupRepository->findByProduct($product)
             );
-        }
 
         return $propertyGroups;
     }
