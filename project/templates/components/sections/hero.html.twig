@@ -8,7 +8,7 @@
                     <div class="swiper-slide hero-swiper__slide hero-slide">
                         <div class="hero-slide__top">
                             <div class="hero-slide__header">
-                                <h3 class="hero-slide__heading">{{ block.product.title }}</h3>
+                                <h3 class="hero-slide__heading">{{ block.product.title | striptags }}</h3>
                                 <h4 class="hero-slide__title">{{ block.product.color.modernTitle }}</h4>
                             </div>
                             <div class="hero-slide__content">
