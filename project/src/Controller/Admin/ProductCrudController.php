@@ -44,6 +44,7 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('title', 'Название')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setFormType(CKEditorType::class)
             ,
             FormField::addRow(),
             SlugField::new('slug', 'Идентификатор')
@@ -70,7 +71,7 @@ class ProductCrudController extends AbstractCrudController
                         new NotBlank(),
                     ]
                 ])
-            ->setFormType(CKEditorType::class)
+                ->setFormType(CKEditorType::class)
             ,
             FormField::addTab('Свойства товара'),
             CollectionField::new('productProperties', 'Свойства товара')

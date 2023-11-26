@@ -38,7 +38,7 @@
         </div>
     </div>
     <div class="product-card__body">
-        <h3 class="product-card__heading">{{ product.title }}</h3>
+        <h3 class="product-card__heading">{{ product.title | raw }}</h3>
         <h4 class="product-card__title">{{ current.color.modernTitle }}</h4>
         <p class="product-card__description">
             {{ product.shortDescription }}
