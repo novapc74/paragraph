@@ -3,14 +3,17 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
-use App\Entity\Country;
+use App\Form\Admin\MediaType;
 use Doctrine\ORM\QueryBuilder;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
-use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use Symfony\Component\Validator\Constraints\Length;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CategoryCrudController extends AbstractCrudController
 {
@@ -41,6 +44,41 @@ class CategoryCrudController extends AbstractCrudController
                 ->setTargetFieldName('title')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+            ,
+            FormField::addRow(),
+            TextareaField::new('description', 'Описание')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setTemplatePath('admin/crud/assoc_description.html.twig')
+                ->setFormTypeOptions([
+                    'constraints' => [
+                        new NotBlank(),
+                        new Length([
+                            'min' => 20,
+                            'max' => 100,
+                        ]),
+                    ]
+                ])
+            ,
+            FormField::addRow(),
+            TextField::new('image', 'Картинка')
+                ->setTextAlign('center')
+                ->setTemplatePath('admin/crud/assoc_image.html.twig')
+                ->onlyOnIndex()
+            ,
+            FormField::addPanel('Картинка')
+                ->setProperty('image')
+                ->setFormType(MediaType::class)
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setFormTypeOptions([
+                    'error_bubbling' => false,
+                    'constraints' => [
+                        new NotBlank()
+                    ],
+                    'by_reference' => false,
+                    'mapped' => true,
+                ])
+                ->onlyOnForms()
             ,
             FormField::addTab('Продукты'),
             AssociationField::new('products', 'Продукты')
