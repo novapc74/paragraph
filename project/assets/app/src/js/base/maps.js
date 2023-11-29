@@ -5,7 +5,6 @@ export default function maps() {
             ymaps.ready(function () {
                 const iconPath = mapWrapper.dataset.icon;
                 const coords = mapWrapper.dataset.coords.split(',');
-                coords[0] = Number(coords[0]) - 0.002;
 
                 const map = new ymaps.Map("map", {
                     center: coords,

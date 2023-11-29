@@ -16,22 +16,30 @@
                  data-icon="{{ asset('build/images/map-icon.svg') }}"></div>
             <address>
                 <ul class="contacts__baloon">
+                    {% if contact.title %}
+                        <li class="contacts__item contacts-item contacts-item_title">
+                            <h3>{{ contact.title }}</h3>
+                        </li>
+                    {% endif %}
+                    {% if contact.inn %}
+                        <li class="contacts__item contacts-item">
+                            <span href="https://yandex.ru/maps/-/CDeqfUok"
+                               class="contacts-item__value">ИНН <span class="numeric">{{ contact.inn }}</span></span>
+                        </li>
+                    {% endif %}
                     {% if contact.address %}
                         <li class="contacts__item contacts-item">
-                            <h3 class="contacts-item__title">Адрес</h3>
                             <a href="https://yandex.ru/maps/-/CDeqfUok" target="_blank"
-                               class="contacts-item__value">{{ contact.address | striptags }}</a>
+                               class="contacts-item__value">{{ contact.address | raw }}</a>
                         </li>
                     {% endif %}
                     {% if contact.email %}
                         <li class="contacts__item contacts-item">
-                            <h3 class="contacts-item__title">Электронная почта</h3>
                             <a href="mailto:{{ contact.email }}" class="contacts-item__value">{{ contact.email }}</a>
                         </li>
                     {% endif %}
                     {% if contact.phone %}
                         <li class="contacts__item contacts-item">
-                            <h3 class="contacts-item__title">Телефон</h3>
                             <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
                                class="contacts-item__value numeric">{{ contact.phone[0] }}</a>
                         </li>

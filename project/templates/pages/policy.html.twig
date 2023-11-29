@@ -1,6 +1,11 @@
 {% extends 'layouts/default.html.twig' %}
 
-{% block title %}Политика конфеденциальности | PARAGRAPH{% endblock %}
+{% block title %}Paragraph | Политика конфеденциальности{% endblock %}
+<meta name="description"
+      content="{% block description %}Политика конфиденциальности на официальном сайте компании Paragraph{% endblock %}">
+{% block meta %}
+    <link rel="canonical" href="https://paragraph-store.ru/policy"/>
+{% endblock %}
 
 {% block content %}
     <div class="container">

@@ -58,7 +58,6 @@ class PageBlockCrudController extends AbstractCrudController
             FormField::addRow(),
             AssociationField::new('product', 'Продукт')
                 ->setTextAlign('center')
-                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
             ->setHelp('Для блока <span style="color: red">"ИНТЕРЬЕР"</span> продукты не нужны.')
             ,
             FormField::addRow(),
