@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector('[data-header]')
         window.addEventListener('scroll', () => {
             const st = window.scrollY || document.documentElement.scrollTop
-            st > scrollValue ? addClass(header, 'hidden') : removeClass(header, 'hidden')
+            st > scrollValue ? addClass(header, 'blur') : removeClass(header, 'blur')
             scrollValue = st === 0 ? 0 : st;
         })
     }

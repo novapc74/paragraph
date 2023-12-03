@@ -15,12 +15,15 @@
     }
     @media screen and (min-width: 1024px) {
       position: sticky;
-      top: 15px;
+      top: 75px;
       display: block;
       height: max-content;
       width: calc(50% - 10px);
       margin-bottom: 0;
       margin-right: 20px;
+    }
+    @media screen and (min-width: 1366px) {
+      top: 90px;
     }
   }
 

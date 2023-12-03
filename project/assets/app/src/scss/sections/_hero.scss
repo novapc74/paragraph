@@ -1,4 +1,4 @@
-@import "../vars";
+  @import "../vars";
 @import "../mixins/base";
 
 .hero {
@@ -68,36 +68,29 @@
 
   &__heading {
     color: $black;
-    font-size: 15px;
-    line-height: 110%; /* 16.5px */
+    font-family: $ff-secondary;
+    font-size: 25px;
+    line-height: 110%;
     text-transform: uppercase;
     margin-bottom: 20px;
     @media screen and (min-width: 1024px) {
-      font-size: 16px;
-      text-transform: none;
+      font-size: 40px;
     }
-    @media screen and (min-width: 768px) {
-      font-size: 20px;
+    @media screen and (min-width: 1366px) {
+      font-size: 50px;
     }
   }
 
   &__title {
     width: max-content;
     color: $black;
-    font-family: $ff-secondary;
-    font-size: 60px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 100%; /* 66px */
+    font-size: 16px;
     text-transform: uppercase;
-    @media screen and (min-width: 768px) {
-      font-size: 80px;
-    }
     @media screen and (min-width: 1024px) {
-      font-size: 90px;
+      font-size: 20px;
     }
     @media screen and (min-width: 1366px) {
-      font-size: 120px;
+      font-size: 25px;
     }
   }
 
@@ -123,13 +116,10 @@
 
   &__image {
     position: relative;
-    padding-top: 100%;
+    padding-top: 50%;
     opacity: 0;
     transition: opacity 1s ease;
-    @media screen and (min-width: 768px) {
-      padding-top: 0;
-      height: 658px;
-    }
+
     @media screen and (min-width: 1024px) {
       height: 450px;
     }

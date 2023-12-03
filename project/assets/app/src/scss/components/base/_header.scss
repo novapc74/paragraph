@@ -9,7 +9,7 @@
   z-index: 95;
   transform: translateY(0);
   opacity: 1;
-  transition-property: opacity, transform;
+  transition-property: opacity, transform, background-color;
   background-color: $cream-light;
   @include base-transition;
 
@@ -26,14 +26,14 @@
   }
 
   &__logo {
-    width: 128px;
-    height: 32px;
+    width: 165px;
+    height: 55px;
     svg {
       transition: fill .4s ease;
     };
     @media screen and (min-width: 1366px) {
-      width: 166px;
-      height: 41px;
+      width: 219px;
+      height: 69px;
     }
   }
 
@@ -63,6 +63,9 @@
       font-size: 12px;
       font-weight: 500;
     }
+    @media screen and (min-width: 1366px) {
+      font-size: 14px;
+    }
   }
 
   &__button {
@@ -89,6 +92,10 @@
     transform: translateY(-20px);
     opacity: 0;
     pointer-events: none;
+  }
+
+  &.blur {
+    background-color: rgba(244, 241, 233, 0.75);
   }
 
   &.active {
@@ -135,11 +142,14 @@
       top: 50%;
       transform: translateY(-50%);
       border-right: 1px solid rgba(12, 12, 12, 0.05);
-      height: 59px;
+      height: 76px;
       @media screen and (min-width: 1366px) {
         right: -30px;
-        height: 62px;
+        height: 90px;
       }
+    }
+    @media screen and (min-width: 1366px) {
+      font-size: 14px;
     }
   }
 }
