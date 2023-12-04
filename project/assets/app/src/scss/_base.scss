@@ -27,6 +27,13 @@ body {
   &::-webkit-scrollbar-track {
     background-color: transparent;
   }
+
+  &._error {
+    background-color: $black;
+    .main {
+      padding-top: 0;
+    }
+  }
 }
 
 img {

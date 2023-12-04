@@ -1,40 +1,64 @@
+@import "vars";
 .error {
-  &__container {
-    height: calc(100vh - 54px);
+  position: relative;
+  overflow: hidden;
+  &__wrapper {
+    position: relative;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    @media screen and (min-width: 1024px) {
-      height: calc(100vh - 66px);
-    }
-    @media screen and (min-width: 1366px) {
-      height: calc(100vh - 76px);
-    }
+    align-items: center;
+    justify-content: flex-end;
   }
   &__image {
-    flex: 1;
-    img {
-      object-fit: contain;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    @media screen and (min-width: 1024px) {
+      width: 40vw;
+      position: initial;
+      transform: none;
     }
   }
   &__bottom {
+    color: $white;
     text-align: center;
     padding-bottom: 40px;
-    @media screen and (min-width: 1366px) {
-      padding-bottom: 80px;
-    }
   }
   &__title {
+    font-family: $ff-title;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 130%;
+    text-transform: uppercase;
     margin-bottom: 20px;
-  }
-  &__text {
-    margin-bottom: 30px;
+    span {
+      display: inline-block;
+      margin-left: 65px;
+      font-size: 18px;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 100%;
+    }
+
+    @media screen and (min-width: 728px) {
+      font-size: 80px;
+      span {
+        font-size: 28px;
+        margin-left: 150px;
+      }
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 108px;
+      span {
+        font-size: 38px;
+      }
+    }
   }
   &__button {
-    width: 100%;
-    @media screen and (min-width: 1366px) {
-      width: 231px;
-      margin: 0 auto;
-    }
+    color: $white;
   }
 }

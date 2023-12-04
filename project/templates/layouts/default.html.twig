@@ -37,11 +37,13 @@
     {% endblock %}
 
 </head>
-<body>
 
 {% set isHome = isHome | default(false) %}
+{% set isError = isError | default(false) %}
 {% set contact = contact() %}
 {% set socialNetworks = socialNetworks() %}
+
+<body {% if isError %}class="_error"{% endif %}>
 
 {% block header %}
     {% include 'components/base/header.html.twig' %}
@@ -55,9 +57,11 @@
     {% include 'components/base/footer.html.twig' %}
 {% endblock %}
 
-{% include 'components/base/mobile-header.html.twig' %}
-{% include 'components/popups/feedback-popup.html.twig' %}
-{% include 'components/popups/response-popup.html.twig' %}
+{% block modals %}
+    {% include 'components/base/mobile-header.html.twig' %}
+    {% include 'components/popups/feedback-popup.html.twig' %}
+    {% include 'components/popups/response-popup.html.twig' %}
+{% endblock %}
 
 {{ encore_entry_script_tags('app') }}
 

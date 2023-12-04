@@ -118,6 +118,16 @@
       user-select: none;
     }
   }
+
+  &._error {
+    background-color: transparent;
+  }
+
+  &._error &__logo {
+    svg {
+      fill: $white;
+    }
+  }
 }
 
 .nav-header {

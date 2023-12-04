@@ -1,24 +1,25 @@
-{#{% extends 'layouts/default.html.twig' %}#}
+{% extends 'layouts/default.html.twig' %}
 
-{% block title %}404 | Параграф{% endblock %}
+{% block title %}404 | Страница не найдена{% endblock %}
+{% block description %}{% endblock %}
+
+{% set isError = true %}
 
 {% block content %}
     <div class="error">
         <div class="container error__container">
-            <div class="error__image">
-
-{#                <img src="{{ asset('build/images/404.png') }}" alt="404">#}
-
-            </div>
-            <div class="error__bottom">
-                <h1 class="title-24-53 error__title">Страница не найдена - 404!</h1>
-                <p class="error__text">Похоже, мы не можем найти нужную вам страницу</p>
-                <a href="/" class="default-button default-button_solid error__button">На главную</a>
+            <div class="error__wrapper">
+                <div class="error__image">
+                    <img src="{{ asset('build/images/404.svg') }}" alt="404">
+                </div>
+                <div class="error__bottom">
+                    <h1 class="title-24-53 error__title">Страница<br> <span>не</span> найдена</h1>
+                    <a href="/" class="text-button error__button">Вернуться на главную</a>
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
-
-
-{#{% block feedaback %}{% endblock %}#}
-{#{% block footer %}{% endblock %}#}
+{% block feedaback %}{% endblock %}
+{% block footer %}{% endblock %}
+{% block modals %}{% endblock %}
