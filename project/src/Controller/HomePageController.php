@@ -75,17 +75,17 @@ class HomePageController extends AbstractController
         ]);
     }
 
-    #[Route('/catalog', name: 'app_catalog')]
-    public function getCatalog(CategoryRepository $categoryRepository): Response
-    {
-        $catalog = $categoryRepository->findAll();
-
-        return $this->render('catalog/index.html.twig', compact('catalog'));
-    }
-
-    #[Route('/product/{slug}', name: 'app_product')]
-    public function getProduct(Product $product): Response
-    {
-        return $this->render('product/index.html.twig', compact('product'));
-    }
+//    #[Route('/catalog', name: 'app_catalog')]
+//    public function getCatalog(CategoryRepository $categoryRepository): Response
+//    {
+//        $catalog = $categoryRepository->findAll();
+//
+//        return $this->render('catalog/index.html.twig', compact('catalog'));
+//    }
+//
+//    #[Route('/product/{slug}', name: 'app_product')]
+//    public function getProduct(Product $product): Response
+//    {
+//        return $this->render('product/index.html.twig', compact('product'));
+//    }
 }
