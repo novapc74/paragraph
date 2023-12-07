@@ -9,6 +9,7 @@ use App\Entity\Product;
 use App\Enum\PageBlockType;
 use App\Repository\ReviewRepository;
 use App\Repository\ProductRepository;
+use App\Repository\CategoryRepository;
 use App\Repository\PageBlockRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'app_home_page')]
-    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository, ReviewRepository $reviewRepository): Response
+    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository, ReviewRepository $reviewRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('pages/home.html.twig', [
             'isHome' => true,
@@ -29,6 +30,7 @@ class HomePageController extends AbstractController
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
             'reviews' => $reviewRepository->findBy([], [], 3),
             'reviewAllCount' => count($reviewRepository->findAll()) ?? 0,
+            'categories' => $categoryRepository->findBy([], []),
         ]);
     }
 

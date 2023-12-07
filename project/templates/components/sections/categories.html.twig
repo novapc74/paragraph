@@ -1,0 +1,46 @@
+<section class="section section_light categories">
+    <div class="container">
+        <div class="categories__header">
+            <h2 class="section__heading">наш ассортимент</h2>
+            <div class="categories__description">
+                <p class="categories__text">
+                    Откройте для себя нашу коллекцию уникальных дизайнерских изделий ручной работы
+                </p>
+                <a href="/catalog" class="default-button categories__button">
+                    <span>в каталог</span>
+                    <svg class="categories__button-icon">
+                        <use xlink:href=" {{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
+                    </svg>
+                    <svg class="default-button__bg">
+                        <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#button-bg"></use>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <ul class="categories__list">
+            {% for category in categories %}
+                <li class="categories__item category-item">
+                    <div class="category-item__image">
+                        <picture>
+                            <source srcset="{{ vich_uploader_asset(category.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                                    type="image/jpeg">
+                            <img src="{{ vich_uploader_asset(category.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                                 alt="{{ category.title }}" loading="lazy">
+                        </picture>
+                    </div>
+                    <div class="category-item__body">
+                        <a href="/catalog/#{{ category.slug }}" class="category-item__title">
+                            <span>{{ category.title }}</span>
+                            <svg>
+                                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
+                            </svg>
+                        </a>
+                        <p class="category-item__description">
+                            {{ category.description }}
+                        </p>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,110 @@
+@import "../vars";
+.categories {
+  &__header {
+    margin-bottom: 40px;
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  &__description {
+  }
+
+  &__text {
+    color: $blue;
+    font-size: 25px;
+    line-height: 110%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    @media screen and (min-width: 1366px) {
+      font-size: 34px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    text-transform: uppercase;
+    span {
+      margin-right: 5px;
+    }
+    &-icon {
+      width: 12px;
+      height: 12px;
+      stroke: $black;
+      transition: stroke .3s ease;
+    }
+    @media screen and (min-width: 1024px) {
+      width: fit-content;
+      &:hover {
+        .categories__button-icon {
+          stroke: $white;
+        }
+      }
+    }
+    &:active {
+      .categories__button-icon {
+        stroke: $white;
+      }
+    }
+  }
+
+  &__list {
+    display: grid;
+    gap: 40px;
+    @media screen and (min-width: 1024px) {
+     grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+  }
+}
+
+.category-item {
+  &__image {
+    height: 425px;
+    margin-bottom: 20px;
+  }
+
+  &__body {
+    border-top: 1px solid #C8C8C8;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    font-family: $ff-secondary;
+    font-weight: 600;
+    line-height: 130%;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    transition: color .3s ease;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      stroke: $grey;
+      transition: stroke .3s ease;
+    }
+
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        color: $brown;
+        svg {
+          stroke: $brown;
+        }
+      }
+    }
+  }
+
+  &__description {
+    font-size: 18px;
+  }
+}
