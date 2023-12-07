@@ -82,4 +82,10 @@ class HomePageController extends AbstractController
 
         return $this->render('catalog/index.html.twig', compact('catalog'));
     }
+
+    #[Route('/product/{slug}', name: 'app_product')]
+    public function getProduct(Product $product): Response
+    {
+        return $this->render('product/index.html.twig', compact('product'));
+    }
 }

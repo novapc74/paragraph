@@ -11,7 +11,7 @@
             <li>
                 <ul>
                     {% for product in category.products %}
-                        <li>Продукт: {{ product.title }}</li>
+                        <li><a href="{{ path('app_product', {slug: product.slug}) }}">Продукт: {{ product.title }}</a></li>
                         <li>
                             <ul>
                                 Свойчтва:
