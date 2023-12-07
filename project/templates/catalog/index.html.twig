@@ -1,0 +1,36 @@
+{# @var category \App\Entity\Category #}
+{# @var product \App\Entity\Product #}
+{# @var productPropertyValue \App\Entity\ProductPropertyvalue #}
+
+{% extends 'layouts/default.html.twig' %}
+
+{% block content %}
+    <ul>
+        {% for category in catalog %}
+            <li>Категория: {{ category.title }}</li>
+            <li>
+                <ul>
+                    {% for product in category.products %}
+                        <li>Продукт: {{ product.title }}</li>
+                        <li>
+                            <ul>
+                                Свойчтва:
+                                {% for group in propertyGroups(product) %}
+                                    <li>
+                                        <ul>
+                                            {% for productPropertyValue in group %}
+                                                <li>{{ productPropertyValue.productProperty.title }}
+                                                    - {{ productPropertyValue.value }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
