@@ -18,6 +18,7 @@
 @import "components/base/footer";
 @import "components/base/section";
 @import "components/base/mobile-header";
+@import "components/base/breadcrumbs";
 //
 // формы
 @import "components/forms/feedback-form";
@@ -43,5 +44,6 @@
 @import "components/product-card";
 @import "components/review";
 
-// 404
+//pages
 @import "404";
+@import "pages/catalog";

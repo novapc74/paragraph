@@ -1,0 +1,18 @@
+<div class="breadcrumbs">
+    <ul class="container breadcrumbs__container">
+        {% for breadcrumb in breadcrumbs %}
+            {% if breadcrumb.url is defined %}
+                <li class="text-14 breadcrumbs__item">
+                    <a href="{{ breadcrumb.url }}">
+                        {{ breadcrumb.title }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="text-14 breadcrumbs__item breadcrumbs__item_current">
+                    {{ breadcrumb.title }}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
