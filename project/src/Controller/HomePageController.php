@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Category;
 use App\Entity\Store;
 use App\Entity\Gallery;
 use App\Entity\Product;
@@ -44,11 +43,9 @@ class HomePageController extends AbstractController
                 $marketplaces[$store->getTitle()] = $store->getLink();
             }, $modification->getMarketPlaces()->toArray());
 
-
             return $this->json([
                 'color' => $modification->getColor()->getTitle(),
                 'title' => $modification->getColor()->getModernTitle(),
-//                'images' => array_map(fn(Gallery $gallery) => $modification->getMediaCachePath($gallery->getImage()), $modification->getGallery()->toArray()),
                 'images' => array_map(fn(Gallery $gallery) => '/upload/media/' . $gallery->getImage()->getImageName(), $modification->getGallery()->toArray()),
                 'marketplaces' => $marketplaces,
             ]);
@@ -79,20 +76,17 @@ class HomePageController extends AbstractController
         ]);
     }
 
-    #[Route('/product/{id}', name: 'app_show_product')]
-    public function showProduct(Product $product): Response
-    {
-        // TODO Put to twig -> {# @var product \App\Entity\Product #}
-
-        return $this->render('path/to/product.html.twig', compact('product'));
-    }
-
-    #[Route('/category/{id}', name: 'app_show_category')]
-    public function getCategory(Category $category): Response
-    {
-        // TODO Put to twig -> {# @var category \App\Entity\Category #}
-
-        return $this->render('path/to/category.html.twig', compact('category'));
-    }
-
+//    #[Route('/catalog', name: 'app_catalog')]
+//    public function getCatalog(CategoryRepository $categoryRepository): Response
+//    {
+//        $catalog = $categoryRepository->findAll();
+//
+//        return $this->render('catalog/index.html.twig', compact('catalog'));
+//    }
+//
+//    #[Route('/product/{slug}', name: 'app_product')]
+//    public function getProduct(Product $product): Response
+//    {
+//        return $this->render('product/index.html.twig', compact('product'));
+//    }
 }
