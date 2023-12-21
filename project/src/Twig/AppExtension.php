@@ -2,17 +2,16 @@
 
 namespace App\Twig;
 
-use App\Enum\ReviewOnPage;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 use App\Entity\Review;
 use App\Entity\Contact;
 use App\Entity\Product;
+use App\Enum\ReviewOnPage;
 use App\Entity\PropertyGroup;
 use App\Entity\ProductPropertyValue;
 use App\Repository\ReviewRepository;
 use App\Repository\ContactRepository;
-use App\Repository\ProductRepository;
 use Twig\Extension\AbstractExtension;
 use App\Repository\PropertyGroupRepository;
 use App\Repository\SocialNetworkRepository;
@@ -23,7 +22,6 @@ class AppExtension extends AbstractExtension
 
     public function __construct(private readonly ContactRepository       $contactRepository,
                                 private readonly SocialNetworkRepository $socialNetworkRepository,
-                                private readonly ProductRepository       $productRepository,
                                 private readonly PropertyGroupRepository $propertyGroupRepository,
                                 private readonly ReviewRepository        $reviewRepository)
     {
@@ -69,14 +67,14 @@ class AppExtension extends AbstractExtension
     {
         $propertyGroups = [];
 
-            array_map(
-                function (PropertyGroup $group) use (&$propertyGroups, $product) {
-                    $propertyGroups[$group->getTitle()] = array_filter(
-                        $product->getProductProperties()->toArray(),
-                        fn(ProductPropertyValue $productPropertyValue) => $productPropertyValue->getProduct() === $product && $productPropertyValue->getProductProperty()->getPropertyGroup() === $group);
-                },
-                $this->propertyGroupRepository->findByProduct($product)
-            );
+        array_map(
+            function (PropertyGroup $group) use (&$propertyGroups, $product) {
+                $propertyGroups[$group->getTitle()] = array_filter(
+                    $product->getProductProperties()->toArray(),
+                    fn(ProductPropertyValue $productPropertyValue) => $productPropertyValue->getProduct() === $product && $productPropertyValue->getProductProperty()->getPropertyGroup() === $group);
+            },
+            $this->propertyGroupRepository->findByProduct($product)
+        );
 
         return $propertyGroups;
     }
