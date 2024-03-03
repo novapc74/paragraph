@@ -20,7 +20,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomePageController extends AbstractController
 {
     #[Route('/', name: 'app_home_page')]
-    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository, ReviewRepository $reviewRepository): Response
+    public function index(ProductRepository $productRepository, PageBlockRepository $pageBlockRepository, ReviewRepository $reviewRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('pages/home.html.twig', [
             'isHome' => true,
@@ -29,6 +29,7 @@ class HomePageController extends AbstractController
             'interior_blocks' => $pageBlockRepository->findBy(['type' => PageBlockType::interior_block_type->name]),
             'reviews' => $reviewRepository->findBy([], [], 3),
             'reviewAllCount' => count($reviewRepository->findAll()) ?? 0,
+            'categories' => $categoryRepository->findBy([], []),
         ]);
     }
 
@@ -75,17 +76,17 @@ class HomePageController extends AbstractController
         ]);
     }
 
-//    #[Route('/catalog', name: 'app_catalog')]
-//    public function getCatalog(CategoryRepository $categoryRepository): Response
-//    {
-//        $catalog = $categoryRepository->findAll();
-//
-//        return $this->render('catalog/index.html.twig', compact('catalog'));
-//    }
-//
-//    #[Route('/product/{slug}', name: 'app_product')]
-//    public function getProduct(Product $product): Response
-//    {
-//        return $this->render('product/index.html.twig', compact('product'));
-//    }
+    #[Route('/catalog', name: 'app_catalog')]
+    public function getCatalog(CategoryRepository $categoryRepository): Response
+    {
+        $catalog = $categoryRepository->findAll();
+
+        return $this->render('pages/catalog.html.twig', compact('catalog'));
+    }
+
+    #[Route('/product/{slug}', name: 'app_product')]
+    public function getProduct(Product $product): Response
+    {
+        return $this->render('pages/product.html.twig', compact('product'));
+    }
 }

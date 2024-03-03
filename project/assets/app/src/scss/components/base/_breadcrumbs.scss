@@ -1,0 +1,44 @@
+@import "../../vars";
+.breadcrumbs {
+  padding-top: 20px;
+  @media screen and (min-width: 1024px) {
+    padding-top: 25px;
+  }
+  @media screen and (min-width: 1366px) {
+    padding-top: 30px;
+  }
+  &__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__item {
+    display: flex;
+    color: $black;
+    font-size: 16px;
+    opacity: 0.4;
+    transition: opacity .3s ease;
+    @media screen and (min-width: 1024px) {
+      font-size: 20px;
+    }
+    &::after {
+      content: '/';
+      margin-left: 10px;
+    }
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    &_current {
+      display: flex;
+      opacity: 1;
+      pointer-events: none;
+      &::after {
+        display: none;
+      }
+    }
+    @media screen and (min-width: 1024px) {
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
