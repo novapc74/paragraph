@@ -23,7 +23,7 @@
     <h1 class="invisible">{{ product.title | striptags }}</h1>
     <section class="section section_light product-page">
         <div class="container">
-            {% include "components/product/product-card.html.twig" with {product, current: product.childProducts[0]} %}
+            {% include "components/product/product-card.html.twig" with {product, current: product.childProducts[0], isPage: true} %}
         </div>
     </section>
 {% endblock %}
