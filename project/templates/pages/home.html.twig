@@ -23,6 +23,8 @@
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
     {% endif %}
 
+    {% include 'components/sections/wholesale.html.twig' %}
+
     {% include 'components/sections/about.html.twig' %}
 
     {% include 'components/sections/paragraph.html.twig' %}
@@ -48,6 +50,14 @@
     {% endif %}
 
     {% include 'components/sections/contacts.html.twig' %}
+
+    <div class="back hidden">
+        <button class="back__btn circled-button circled-button" data-back>
+            <svg>
+                <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
+            </svg>
+        </button>
+    </div>
 
 {% endblock %}
 

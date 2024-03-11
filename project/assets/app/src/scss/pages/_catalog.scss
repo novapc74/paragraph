@@ -1,17 +1,17 @@
 @import "../vars";
 
 .catalog-page {
+
+  &.section {
+    padding-top: 40px;
+  }
+
   &__categories {
     display: grid;
-    gap: 60px;
-    @media screen and (min-width: 768px) {
-      gap: 80px;
-    }
-    @media screen and (min-width: 1024px) {
-      gap: 100px;
-    }
+    gap: 20px;
+
     @media screen and (min-width: 1366px) {
-      gap: 120px;
+      gap: 40px;
     }
   }
 
@@ -23,37 +23,32 @@
     display: grid;
     gap: 20px;
     @media screen and (min-width: 1024px) {
-      grid-template-columns: repeat(3, 1fr);
-      row-gap: 60px;
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
 
 .catalog-category {
   &__title {
-    padding-bottom: 30px;
+    padding-bottom: 20px;
     color: $black;
     font-family: $ff-secondary;
-    font-size: 30px;
+    font-size: 24px;
     line-height: 110%;
     text-transform: uppercase;
     @media screen and (min-width: 768px) {
-      font-size: 50px;
-    }
-    @media screen and (min-width: 1024px) {
-      padding-bottom: 40px;
-      font-size: 70px;
+      font-size: 32px;
     }
     @media screen and (min-width: 1366px) {
-      padding-bottom: 60px;
-      font-size: 100px;
+      padding-bottom: 40px;
+      font-size: 40px;
     }
   }
 }
 
 .catalog-product {
   &__image {
-    height: 425px;
+    height: 250px;
     margin-bottom: 20px;
   }
 
@@ -63,7 +58,7 @@
 
   &__title {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -73,6 +68,7 @@
     transition: color .3s ease;
 
     svg {
+      margin-top: 4px;
       width: 12px;
       height: 12px;
       stroke: $grey;
@@ -80,6 +76,8 @@
     }
 
     @media screen and (min-width: 1024px) {
+      padding-bottom: 0;
+      margin-bottom: 0;
       &:hover {
         color: $brown;
 

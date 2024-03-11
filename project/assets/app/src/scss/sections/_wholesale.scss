@@ -1,0 +1,78 @@
+@import "../vars";
+@import "../mixins/base";
+
+.wholesale {
+  &__container {
+
+    @media screen and (min-width: 1024px) {
+      display: grid;
+      grid-auto-flow: dense;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  &__img {
+    position: relative;
+    padding-top: 100%;
+
+    img {
+      @include absolute-100;
+    }
+
+    @media screen and (min-width: 768px) {
+      padding-top: 0;
+      aspect-ratio: 16 / 9;
+    }
+    @media screen and (min-width: 1024px) {
+      aspect-ratio: unset;
+      height: 388px;
+    }
+    @media screen and (min-width: 1366px) {
+      height: 417px;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    @media screen and (min-width: 768px) {
+      margin-bottom: 40px;
+    }
+    @media screen and (min-width: 1024px) {
+      margin-bottom: 0;
+      grid-column: 2;
+    }
+    @media screen and (min-width: 1366px) {
+      //
+    }
+  }
+
+  &__title {
+      color: $blue;
+      font-size: 25px;
+      line-height: 110%;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 25px;
+      }
+      @media screen and (min-width: 1366px) {
+        margin-bottom: 40px;
+        font-size: 34px;
+      }
+  }
+
+  &__description {
+  }
+
+  &__btn {
+    margin-top: 20px;
+
+    @media screen and (min-width: 1024px) {
+      margin-top: auto;
+      width: 190px;
+    }
+  }
+}

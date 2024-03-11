@@ -7,12 +7,6 @@
   &__content {
     display: grid;
     gap: 40px;
-    @media screen and (min-width: 768px) {
-      gap: 50px;
-    }
-    @media screen and (min-width: 1024px) {
-      gap: 80px;
-    }
   }
   &__block {
     display: grid;
@@ -103,7 +97,7 @@
     @media screen and (min-width: 1024px) {
       padding-top: 0;
       width: 675px;
-      height: 380px;
+      height: 345px;
       &_small {
         width: 255px;
         height: 153px;
@@ -114,7 +108,7 @@
       }
       &_vertical {
         width: 465px;
-        height: 630px;
+        height: 465px;
       }
     }
     @media screen and (min-width: 1366px) {

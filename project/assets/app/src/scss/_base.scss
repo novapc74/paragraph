@@ -113,6 +113,28 @@ img {
   width: 1px;
 }
 
+.back {
+  position: sticky;
+  bottom: 0;
+  right: 20px;
+  height: 0;
+  z-index: 20;
+  transform: translateY(0);
+  transition: opacity .3s ease, transform .3s ease;
+  &__btn {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  &.hidden {
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+    transform: translateY(20px);
+  }
+}
+
 // animations
 
 @keyframes fade {

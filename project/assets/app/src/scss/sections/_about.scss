@@ -24,7 +24,7 @@
 
     @media screen and (min-width: 768px) {
       &:not(:last-child) {
-        margin-bottom: 40px;
+        margin-bottom: 25px;
       }
       &_images {
         grid-template-columns: 40% auto;
@@ -44,9 +44,10 @@
   &__title {
     margin-bottom: 20px;
     color: $blue;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 110%;
     text-transform: uppercase;
+
     @media screen and (min-width: 1366px) {
       margin-bottom: 25px;
       font-size: 34px;
@@ -72,6 +73,10 @@
         align-self: flex-end;
       }
       @media screen and (min-width: 1024px) {
+        width: 245px;
+        height: 245px;
+      }
+      @media screen and (min-width: 1366px) {
         width: 300px;
         height: 300px;
       }
@@ -79,6 +84,10 @@
 
     &_right {
       @media screen and (min-width: 1024px) {
+        width: 300px;
+        height: 300px;
+      }
+      @media screen and (min-width: 1366px) {
         width: 406px;
         height: 390px;
       }

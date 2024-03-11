@@ -32,6 +32,8 @@ class SocialNetworkCrudController extends AbstractCrudController
                     'telegram' => 'telegram',
                     'vk' => 'vk',
                     'whatsapp' => 'whatsapp',
+                    'wb' => 'wildberries',
+                    'ozon' => 'ozon',
                 ])
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')

@@ -55,7 +55,7 @@ export class Product {
 
     async #fetchProduct(color) {
         try {
-            const {data} = await axios.get('modification/' + color.dataset.id, {
+            const {data} = await axios.get('/modification/' + color.dataset.id, {
                 headers: {
                     "X-Requested-With": 'XMLHttpRequest'
                 }

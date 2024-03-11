@@ -13,13 +13,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
     location.hash = location.hash;
 
-    if(document.querySelector('[data-header]')) {
+    if (document.querySelector('[data-header]')) {
         let scrollValue = 0
         const header = document.querySelector('[data-header]')
         window.addEventListener('scroll', () => {
             const st = window.scrollY || document.documentElement.scrollTop
-            st > scrollValue ? addClass(header, 'blur') : removeClass(header, 'blur')
+            st > scrollValue ? addClass(header, 'hidden') : removeClass(header, 'hidden')
             scrollValue = st === 0 ? 0 : st;
+        })
+    }
+
+    if (document.querySelector('[data-back]')) {
+        const backBtn = document.querySelector('[data-back]'),
+            backBtnWrapper = backBtn.parentElement
+
+        window.scrollY > document.documentElement.scrollHeight / 3 && removeClass(backBtnWrapper, 'hidden')
+
+        backBtn.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        })
+
+        window.addEventListener('scroll', () => {
+            window.scrollY > document.documentElement.scrollHeight / 4 ?
+                removeClass(backBtnWrapper, 'hidden') :
+                addClass(backBtnWrapper, 'hidden')
         })
     }
 

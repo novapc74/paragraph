@@ -38,4 +38,18 @@ export default function animations() {
             })
         })
     }
+
+    const backBtn = document.querySelector('[data-back]')
+    if(backBtn) {
+        ScrollTrigger.create({
+            trigger: '.section.section_dark',
+            start: 'top bottom',
+            end: 'bottom bottom',
+            toggleClass: {
+                targets: backBtn,
+                className: '_white'
+            },
+            scrub: true,
+        })
+    }
 }

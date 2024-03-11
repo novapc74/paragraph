@@ -9,7 +9,6 @@ export default function swipers() {
         new Swiper('.hero__swiper', {
             slidesPerView: 1,
             slideActiveClass: 'hero-slide_active',
-            allowTouchMove: false,
             speed: 1500,
             effect: 'fade',
             navigation: {
@@ -20,8 +19,6 @@ export default function swipers() {
             pagination: {
                 el: '.hero__pagination',
                 type: 'fraction',
-                // currentClass: 'swiper-pagination-current numeric',
-                // totalClass: 'swiper-pagination-total numeric',
                 formatFractionCurrent: leadingZeroFormat,
                 formatFractionTotal: leadingZeroFormat
             },

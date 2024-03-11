@@ -2,20 +2,24 @@
 
 <section class="section section_light hero">
     <div class="container hero__container">
+        <div class="hero__top">
+            <div class="hero__header">
+                <h1 class="hero__heading">Канцелярские товары</h1>
+                <p class="hero__title">paragraph</p>
+            </div>
+            <div class="hero__content">
+                <p class="hero__description">
+                    Дизайн и качество премиального уровня <br>
+                    Собственное производство <br>
+                    Возможность оптовых и мелкооптовых поставках
+                </p>
+                <a href="/#catalog" class="text-button hero__link">подробнее</a>
+            </div>
+        </div>
         <div class="swiper hero__swiper hero-swiper">
             <div class="swiper-wrapper hero-swiper__wrapper">
                 {% for block in blocks %}
                     <div class="swiper-slide hero-swiper__slide hero-slide">
-                        <div class="hero-slide__top">
-                            <div class="hero-slide__header">
-                                <h3 class="hero-slide__heading">{{ block.product.title | striptags }}</h3>
-                                <h4 class="hero-slide__title">{{ block.product.color.modernTitle }}</h4>
-                            </div>
-                            <div class="hero-slide__content">
-                                <p class="hero-slide__description">{{ block.text }}</p>
-                                <a href="/#catalog" class="text-button hero-slide__link">подробнее</a>
-                            </div>
-                        </div>
                         <div class="hero-slide__image">
                             <img class="fade" src="{{ vich_uploader_asset(block.image) }}"
                                  alt="картинка для продукта - {{ block.product.title }}">

@@ -1,0 +1,28 @@
+<section class="section section_light wholesale">
+    <div class="container wholesale__container">
+        <div class="wholesale__body">
+            <h2 class="section__heading">Оптовые закупки</h2>
+            <p class="wholesale__title">
+                Широкий выбор канцтоваров для оптовых покупателей по низким ценам
+            </p>
+            <p class="wholesale__description">
+                Наша продукция - это стильный и функциональный порядок в вашем доме и офисе. Мы осознанно отказались от производства вертикальных накопителей, поставляемых в сложенном состоянии, понимая, что они не могут гарантировать отсутствие перекосов и деформаций после их приведения в собранное состояние.
+            </p>
+            <button class="filled-button wholesale__btn" data-open-modal="feedback">
+                <span>Оставить заявку</span>
+                <svg class="filled-button__bg">
+                    <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#button-bg"></use>
+                </svg>
+            </button>
+        </div>
+        <div class="wholesale__img">
+            <picture>
+                {# <source srcset="{{ asset('build/images/manufacture-1.jpg') }}" type="image/webp"> #}
+                <source srcset="{{ asset('build/images/wholesale.jpg') }}"
+                        type="image/jpeg">
+                <img src="{{ asset('build/images/wholesale.jpg') }}"
+                     alt="Оптовые закупки" loading="lazy">
+            </picture>
+        </div>
+    </div>
+</section>
