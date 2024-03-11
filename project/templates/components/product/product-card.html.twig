@@ -41,9 +41,9 @@
     </div>
     <div class="product-card__body">
         {% if isPage | length %}
-            <h1 class="product-card__heading">{{ product.title | raw }}</h1>
+            <h1 class="product-card__heading">{{ product.title | striptags }}</h1>
         {% else %}
-            <h3 class="product-card__heading">{{ product.title | raw }}</h3>
+            <h3 class="product-card__heading">{{ product.title | striptags }}</h3>
         {% endif %}
 
         <div class="product-card__title">{{ current.color.modernTitle }}</div>
