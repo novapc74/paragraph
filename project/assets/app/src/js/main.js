@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const header = document.querySelector('[data-header]')
         window.addEventListener('scroll', () => {
             const st = window.scrollY || document.documentElement.scrollTop
-            st > scrollValue ? addClass(header, 'hidden') : removeClass(header, 'hidden')
+            st > scrollValue && window.scrollY > 500 ? addClass(header, 'hidden') : removeClass(header, 'hidden')
             scrollValue = st === 0 ? 0 : st;
         })
     }
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const backBtn = document.querySelector('[data-back]'),
             backBtnWrapper = backBtn.parentElement
 
-        window.scrollY > document.documentElement.scrollHeight / 3 && removeClass(backBtnWrapper, 'hidden')
+        window.scrollY > document.documentElement.scrollHeight / 4 && removeClass(backBtnWrapper, 'hidden')
 
         backBtn.addEventListener('click', () => {
             window.scrollTo({top: 0, behavior: 'smooth'});
