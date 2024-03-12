@@ -2,14 +2,6 @@
 @import "../mixins/base";
 
 .hero {
-
-  &.section {
-    padding-top: 30px;
-    @media screen and (min-width: 1024px) {
-      padding-top: 40px;
-    }
-  }
-
   &__container {
     position: relative;
   }
@@ -39,8 +31,12 @@
       width: 905px;
     }
   }
+}
 
+.hero-slide {
   &__top {
+    opacity: 0;
+    transition: opacity 1s ease;
     margin-bottom: 30px;
     @media screen and (min-width: 768px) {
       margin-bottom: 25px;
@@ -52,7 +48,15 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 20px;
+      margin-bottom: 50px;
     }
+  }
+
+  &_active.swiper-slide {
+    pointer-events: auto;
+  }
+  &_active &__top, &_active &__image {
+    opacity: 1;
   }
 
   &__header {
@@ -70,11 +74,10 @@
     text-transform: uppercase;
     margin-bottom: 20px;
     @media screen and (min-width: 1024px) {
-      font-size: 32px;
-      max-width: 395px;
+      font-size: 40px;
     }
     @media screen and (min-width: 1366px) {
-      font-size: 40px;
+      font-size: 50px;
     }
   }
 
@@ -84,10 +87,10 @@
     font-size: 16px;
     text-transform: uppercase;
     @media screen and (min-width: 1024px) {
-      font-size: 18px;
+      font-size: 20px;
     }
     @media screen and (min-width: 1366px) {
-      font-size: 24px;
+      font-size: 25px;
     }
   }
 
@@ -110,17 +113,6 @@
   &__link {
     color: $black;
   }
-}
-
-.hero-slide {
-
-  &_active.swiper-slide {
-    pointer-events: auto;
-  }
-
-  &_active &__image {
-    opacity: 1;
-  }
 
   &__image {
     position: relative;
@@ -129,8 +121,7 @@
     transition: opacity 1s ease;
 
     @media screen and (min-width: 1024px) {
-      padding-top: 0;
-      height: 400px;
+      height: 450px;
     }
     @media screen and (min-width: 1366px) {
       height: 494px;

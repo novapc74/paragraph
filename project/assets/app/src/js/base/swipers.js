@@ -9,7 +9,11 @@ export default function swipers() {
         new Swiper('.hero__swiper', {
             slidesPerView: 1,
             slideActiveClass: 'hero-slide_active',
+            loop: true,
             speed: 1500,
+            autoplay: {
+                delay: 5000,
+            },
             effect: 'fade',
             navigation: {
                 disabledClass: 'swiper-button_disabled',
