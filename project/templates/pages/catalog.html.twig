@@ -36,7 +36,7 @@
 
                         <ul class="catalog-page__products">
                             {% for product in category.products %}
-                                <li class="catalog-page__product catalog-product">
+                                <a href="/product/{{ product.slug }}" class="catalog-page__product catalog-product">
                                     <div class="catalog-product__image">
                                         <picture>
                                             <source srcset="{{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}"
@@ -46,14 +46,14 @@
                                         </picture>
                                     </div>
                                     <div class="catalog-product__body">
-                                        <a href="/product/{{ product.slug }}" class="catalog-product__title">
+                                        <div class="catalog-product__title">
                                             <span>{{ product.title | striptags }}</span>
                                             <svg>
                                                 <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
                                             </svg>
-                                        </a>
+                                        </div>
                                     </div>
-                                </li>
+                                </a>
                             {% endfor %}
                         </ul>
                     </li>
