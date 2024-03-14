@@ -21,11 +21,11 @@
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
     {% endif %}
 
-    {% include 'components/sections/wholesale.html.twig' %}
-
     {% include 'components/sections/about.html.twig' %}
 
     {% include 'components/sections/paragraph.html.twig' %}
+
+    {% include 'components/sections/wholesale.html.twig' %}
 
     {% include 'components/sections/semicircles.html.twig' %}
 
@@ -33,9 +33,9 @@
     {#        {% include 'components/sections/categories.html.twig' with {categories} %} #}
     {#    {% endif %} #}
 
-    {% if products | length %}
-        {% include 'components/sections/catalog.html.twig' with {products} %}
-    {% endif %}
+    {#    {% if products | length %} #}
+    {#        {% include 'components/sections/catalog.html.twig' with {products} %} #}
+    {#    {% endif %} #}
 
     {% if interior_blocks | length %}
         {% include 'components/sections/interior.html.twig' with {blocks: interior_blocks} %}
