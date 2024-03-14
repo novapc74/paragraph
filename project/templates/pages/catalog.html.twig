@@ -19,13 +19,21 @@
         {title :  '[Каталог]' },
     ] } %}
 
-    <h1 class="invisible">Каталог</h1>
+    {% if catalog | length is not same as(1) %}
+        <h1 class="invisible">Каталог</h1>
+    {% endif %}
+
     <section class="section section_light catalog-page">
         <div class="container">
             <ul class="catalog-page__categories">
                 {% for category in catalog %}
                     <li class="catalog-page__category catalog-category">
-                        <h2 class="catalog-category__title">{{ category.title }}</h2>
+                        {% if catalog | length is not same as(1) %}
+                            <h2 class="catalog-category__title">/{{ category.title }}</h2>
+                        {% else %}
+                            <h1 class="catalog-category__title">{{ category.title }}</h1>
+                        {% endif %}
+
                         <ul class="catalog-page__products">
                             {% for product in category.products %}
                                 <li class="catalog-page__product catalog-product">
