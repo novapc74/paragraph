@@ -47,6 +47,9 @@
         {% endif %}
 
         <div class="product-card__title">{{ current.color.modernTitle }}</div>
+        <div class="product-card__price">
+            от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
+        </div>
         <p class="product-card__description">
             {{ product.shortDescription }}
         </p>

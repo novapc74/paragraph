@@ -37,9 +37,6 @@
                         <ul class="catalog-page__products">
 
                             {% for product in category.products %}
-
-                                <h3>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</h3>
-
                                 {% if product.childProducts | length > 0 %}
                                     <a href="{{ path('app_product', {slug: product.slug}) }}"
                                        class="catalog-page__product catalog-product">
@@ -52,8 +49,13 @@
                                             </picture>
                                         </div>
                                         <div class="catalog-product__body">
-                                            <div class="catalog-product__title">
-                                                <span>{{ product.title | striptags }}</span>
+                                            <div class="catalog-product__bottom">
+                                                <div class="catalog-product__info">
+                                                    <span class="catalog-product__title">{{ product.title | striptags }}</span>
+                                                    <span class="catalog-product__price">
+                                                        от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
+                                                    </span>
+                                                </div>
                                                 <svg>
                                                     <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
                                                 </svg>
