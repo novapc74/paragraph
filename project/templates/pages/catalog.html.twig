@@ -37,6 +37,9 @@
                         <ul class="catalog-page__products">
 
                             {% for product in category.products %}
+
+                                <h3>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</h3>
+
                                 {% if product.childProducts | length > 0 %}
                                     <a href="{{ path('app_product', {slug: product.slug}) }}"
                                        class="catalog-page__product catalog-product">

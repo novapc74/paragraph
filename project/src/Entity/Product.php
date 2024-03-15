@@ -50,6 +50,9 @@ class Product implements ExplodeDescriptionInterface
     #[ORM\ManyToOne(targetEntity: Category::class, cascade: ['persist'], inversedBy: 'products')]
     private ?Category $category = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $price = null;
+
     public function __construct()
     {
         $this->productProperties = new ArrayCollection();
@@ -256,5 +259,17 @@ class Product implements ExplodeDescriptionInterface
             $this->title = $parentProduct->getTitle();
             $this->description = $parentProduct->getDescription();
         }
+    }
+
+    public function getPrice(): ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?int $price): static
+    {
+        $this->price = $price;
+
+        return $this;
     }
 }

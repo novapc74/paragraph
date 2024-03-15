@@ -10,6 +10,7 @@ use App\Form\Admin\ProductPropertyValueType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
@@ -59,7 +60,13 @@ class ProductCrudController extends AbstractCrudController
                     'constraints' => [
                         new NotBlank(),
                     ]
-                ])
+                ]),
+            FormField::addRow(),
+            MoneyField::new('price', 'Цена')
+                ->setTextAlign('center')
+                ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
+                ->setCurrency('RUB')
+                ->setStoredAsCents(false)
             ,
             FormField::addRow(),
             TextareaField::new('fullDescription', 'Полное описание')
