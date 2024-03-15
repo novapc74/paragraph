@@ -14,7 +14,7 @@
             <li class="mobile-header__item" data-nav-link="contacts">
                 <a href="/#contacts" class="mobile-header__link">Контакты</a>
             </li>
-            {% if contact.phone %}
+            {% if contact.phone is defined %}
                 <li class="mobile-header__item mobile-header__item_phone numeric">
                     <a href="tel:{{ contact.phone[0] | filterPhoneMask }}">{{ contact.phone[0] }}</a>
                 </li>

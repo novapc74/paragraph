@@ -14,7 +14,8 @@ class CategoryFixtures extends BaseFixture implements DependentFixtureInterface
         $this->createEntity(Category::class, 1, function (Category $category) {
             $category
                 ->setTitle('Paragraph')
-                ->addProduct($this->getReference('Product_0'));
+                ->addProduct($this->getReference('Product_0'))
+                ->setDescription('Тут какое-то описание для категории');
 
         });
 

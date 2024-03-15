@@ -44,7 +44,6 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('title', 'Название')
                 ->setTextAlign('center')
                 ->setColumns('col-sm-6 col-lg-5 col-xxl-3')
-                ->setFormType(CKEditorType::class)
             ,
             FormField::addRow(),
             SlugField::new('slug', 'Идентификатор')

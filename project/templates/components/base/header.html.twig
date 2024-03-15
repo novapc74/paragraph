@@ -34,7 +34,7 @@
                     </ul>
                 </nav>
 
-                {% if contact.phone %}
+                {% if contact.phone is defined %}
                     <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
                        class="default-link numeric header__phone">{{ contact.phone[0] }}</a>
                 {% endif %}
