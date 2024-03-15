@@ -15,7 +15,7 @@
 
 {% block content %}
     {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
-        {title : '[Главная]', url : '/'},
+        {title : '[Главная]', url : path('app_home_page') },
         {title :  '[Каталог]' },
     ] } %}
 
@@ -38,7 +38,8 @@
 
                             {% for product in category.products %}
                                 {% if product.childProducts | length > 0 %}
-                                    <a href="/product/{{ product.slug }}" class="catalog-page__product catalog-product">
+                                    <a href="{{ path('app_product', {slug: product.slug}) }}"
+                                       class="catalog-page__product catalog-product">
                                         <div class="catalog-product__image">
                                             <picture>
                                                 <source srcset="{{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}"

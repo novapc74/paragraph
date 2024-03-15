@@ -15,8 +15,8 @@
 
 {% block content %}
     {% include 'components/base/breadcrumbs.html.twig' with { breadcrumbs: [
-        {title : '[Главная]', url : '/'},
-        {title :  '[Каталог]', url : '/catalog' },
+        {title : '[Главная]', url : path('app_home_page') },
+        {title :  '[Каталог]', url : path('app_catalog') },
         {title :  "[#{product.title | striptags}]" },
     ] } %}
 
