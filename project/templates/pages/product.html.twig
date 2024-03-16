@@ -5,14 +5,15 @@
 {% extends 'layouts/default.html.twig' %}
 
 {% block title %}Paragraph | {{ product.title | striptags }}{% endblock %}
+{% block description %}{{ product.shortDescription }}{% endblock %}
 
 {% block meta %}
     <meta property="og:title"
           content="{{ product.title | striptags }}">
     <meta property="og:description"
-          content=" {{ product.shortDescription }}">
+          content="{{ product.shortDescription }}">
     <meta property="og:image"
-          content=" {{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}">
+          content="{{ app.request.getSchemeAndHttpHost() }}{{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}">
 {% endblock %}
 
 {% block content %}

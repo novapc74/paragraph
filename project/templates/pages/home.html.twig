@@ -14,7 +14,7 @@
           content="Продажа канцелярских товаров для хранения документов">
     <meta property="og:description"
           content="Официальный сайт канцелярских товаров премиального уровня для хранения документов. Продуманный дизайн, высококачественные материалы, удовольствие при использовании.">
-    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
+    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('build/images/logo.svg') }}">
 {% endblock %}
 
 {% block content %}

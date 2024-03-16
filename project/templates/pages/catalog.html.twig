@@ -5,13 +5,14 @@
 {% extends 'layouts/default.html.twig' %}
 
 {% block title %}Paragraph | Каталог{% endblock %}
+{% block description %}Официальный сайт канцелярских товаров премиального уровня для хранения документов. Продуманный дизайн, высококачественные материалы, удовольствие при использовании.{% endblock %}
 
 {% block meta %}
     <meta property="og:title"
           content="Каталог товаров производителя Paragraph">
     <meta property="og:description"
           content="Официальный сайт канцелярских товаров премиального уровня для хранения документов. Продуманный дизайн, высококачественные материалы, удовольствие при использовании.">
-    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
+    <meta property="og:image" content="{{ app.request.getSchemeAndHttpHost() }}{{ asset('build/images/logo.svg') }}">
 {% endblock %}
 
 {% block content %}
