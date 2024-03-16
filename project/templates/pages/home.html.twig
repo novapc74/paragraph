@@ -8,11 +8,13 @@
 
 {% block title %}Paragraph | Продажа канцелярских товаров для хранения документов{% endblock %}
 
+
 {% block meta %}
     <meta property="og:title"
-          content="Paragraph | Магазин канцтоваров для дома и офиса">
+          content="Продажа канцелярских товаров для хранения документов">
     <meta property="og:description"
           content="Официальный сайт канцелярских товаров премиального уровня для хранения документов. Продуманный дизайн, высококачественные материалы, удовольствие при использовании.">
+    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
 {% endblock %}
 
 {% block content %}
@@ -21,13 +23,13 @@
         {% include 'components/sections/hero.html.twig' with {blocks: main_blocks} %}
     {% endif %}
 
-    {% include 'components/sections/wholesale.html.twig' %}
-
-    {% include 'components/sections/about.html.twig' %}
-
     {% include 'components/sections/paragraph.html.twig' %}
 
     {% include 'components/sections/semicircles.html.twig' %}
+
+    {% include 'components/sections/wholesale.html.twig' %}
+
+    {% include 'components/sections/about.html.twig' %}
 
     {#    {% if categories | length %} #}
     {#        {% include 'components/sections/categories.html.twig' with {categories} %} #}

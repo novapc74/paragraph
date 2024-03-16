@@ -16,7 +16,7 @@
 
         {% if not isError  %}
 
-            <div class="header__menu">
+            <div class="header__menu" itemscope itemtype="http://schema.org/Organization">
                 <nav class="header__nav nav-header">
                     <ul class="nav-header__list">
                         <li class="default-link nav-header__item">
@@ -36,8 +36,14 @@
 
                 {% if contact.phone is defined %}
                     <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
-                       class="default-link numeric header__phone">{{ contact.phone[0] }}</a>
+                       class="default-link numeric header__phone">
+                        <span itemprop="telephone">{{ contact.phone[0] }}</span>
+                    </a>
                 {% endif %}
+                <meta itemprop="name" content="{{ contact.title }}" />
+                <meta itemprop="address" content="{{ contact.address | striptags }}" />
+                <meta itemprop="email" content="{{ contact.email }}" />
+                <meta itemprop="vatID" content="{{ contact.inn }}" />
 
                 <button class="default-button header__button header__button_feedback" data-open-modal="feedback">
                     <span>Оставить заявку</span>

@@ -2,7 +2,7 @@
 {# @var contact \App\Entity\Contact #}
 
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" prefix="og: http://ogp.me/ns#">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -26,13 +26,12 @@
 
     <title>{% block title %}Paragraph{% endblock %}</title>
     <meta name="description"
-          content="{% block description %}PARAGRAPH – это стильные и функциональные канцелярские товары для хранения документов.{% endblock %}">
+          content="{% block description %}Официальный сайт канцелярских товаров премиального уровня для хранения документов. Продуманный дизайн, высококачественные материалы, удовольствие при использовании.{% endblock %}">
     {% block meta %}{% endblock %}
     <link rel="canonical" href=" {{ app.request.uri }}"/>
     <meta property="og:url" content="{{ app.request.uri }}">
     <meta property="og:type" content="article">
     <meta property="og:site_name" content="paragraph-store.ru"/>
-    <meta property="og:image" content="{{ asset('build/images/logo.svg') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}

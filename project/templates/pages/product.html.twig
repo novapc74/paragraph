@@ -4,13 +4,15 @@
 
 {% extends 'layouts/default.html.twig' %}
 
-{% block title %}Paragraph | {{ product.title }}{% endblock %}
+{% block title %}Paragraph | {{ product.title | striptags }}{% endblock %}
 
 {% block meta %}
     <meta property="og:title"
           content="{{ product.title | striptags }}">
     <meta property="og:description"
-          content="{{ product.description }}">
+          content=" {{ product.shortDescription }}">
+    <meta property="og:image"
+          content=" {{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}">
 {% endblock %}
 
 {% block content %}

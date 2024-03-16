@@ -16,34 +16,41 @@
                 <div class="contacts__map" id="map" data-coords="{{ contact.coordinates }}"
                      data-icon="{{ asset('build/images/map-icon.svg') }}"></div>
                 <address>
-                    <ul class="contacts__baloon">
+                    <ul class="contacts__baloon" itemscope itemtype="http://schema.org/Organization">
                         {% if contact.title %}
-                            <li class="contacts__item contacts-item contacts-item_title">
+                            <li class="contacts__item contacts-item contacts-item_title" itemprop="name">
                                 {{ contact.title }}
                             </li>
                         {% endif %}
                         {% if contact.inn %}
                             <li class="contacts__item contacts-item">
-                            <span href="https://yandex.ru/maps/-/CDeqfUok"
-                                  class="contacts-item__value">ИНН <span class="numeric">{{ contact.inn }}</span></span>
+                            <span class="contacts-item__value">
+                                ИНН <span class="numeric" itemprop="vatID">{{ contact.inn }}</span>
+                            </span>
                             </li>
                         {% endif %}
                         {% if contact.address %}
                             <li class="contacts__item contacts-item">
                                 <a href="https://yandex.ru/maps/-/CDeqfUok" target="_blank"
-                                   class="contacts-item__value">{{ contact.address | raw }}</a>
+                                   class="contacts-item__value">
+                                    <span itemprop="address">{{ contact.address | raw }}</span>
+                                </a>
                             </li>
                         {% endif %}
                         {% if contact.email %}
                             <li class="contacts__item contacts-item">
                                 <a href="mailto:{{ contact.email }}"
-                                   class="contacts-item__value">{{ contact.email }}</a>
+                                   class="contacts-item__value">
+                                    <span itemprop="email"> {{ contact.email }}</span>
+                                </a>
                             </li>
                         {% endif %}
                         {% if contact.phone %}
                             <li class="contacts__item contacts-item">
                                 <a href="tel:{{ contact.phone[0] | filterPhoneMask }}"
-                                   class="contacts-item__value numeric">{{ contact.phone[0] }}</a>
+                                   class="contacts-item__value numeric">
+                                    <span itemprop="telephone">{{ contact.phone[0] }}</span>
+                                </a>
                             </li>
                         {% endif %}
                     </ul>

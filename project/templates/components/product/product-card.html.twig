@@ -39,18 +39,21 @@
             </div>
         </div>
     </div>
-    <div class="product-card__body">
+    <div class="product-card__body" itemscope itemtype="http://schema.org/Product">
+        <meta itemprop="image" content="{{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}" />
         {% if isPage | length %}
-            <h1 class="product-card__heading">{{ product.title | striptags }}</h1>
+            <h1 class="product-card__heading" itemprop="name">{{ product.title | striptags }}</h1>
         {% else %}
-            <h3 class="product-card__heading">{{ product.title | striptags }}</h3>
+            <h3 class="product-card__heading" itemprop="name">{{ product.title | striptags }}</h3>
         {% endif %}
 
         <div class="product-card__title">{{ current.color.modernTitle }}</div>
-        <div class="product-card__price">
+        <div class="product-card__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
             от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
+            <meta itemprop="price" content="{{ product.price }}" />
+            <meta itemprop="priceCurrency" content="RUB" />
         </div>
-        <p class="product-card__description">
+        <p class="product-card__description" itemprop="description">
             {{ product.shortDescription }}
         </p>
 
