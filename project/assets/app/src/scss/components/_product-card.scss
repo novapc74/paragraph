@@ -386,6 +386,12 @@
     &_ozon {
       background-image: url(../../images/ozon-logo.svg);
     }
+
+    span {
+      opacity: 0;
+      user-select: none;
+      pointer-events: none;
+    }
   }
 
   &__logo {
@@ -397,12 +403,6 @@
 
     &_ozon {
       height: 14px;
-    }
-
-    span {
-      opacity: 0;
-      user-select: none;
-      pointer-events: none;
     }
   }
 
