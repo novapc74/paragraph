@@ -4,14 +4,14 @@
 
 {% extends 'layouts/default.html.twig' %}
 
-{% block title %}Paragraph | {{ product.title | striptags }}{% endblock %}
-{% block description %}{{ product.shortDescription }}{% endblock %}
+{% block title %}{{ product.title | striptags }} Paragraph. Цена от {{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}{% endblock %}
+{% block description %}Купить &quot;{{ product.title | striptags }}&quot; для офиса и дома вы можете на сайте Paragraph. Наши канцтовары помогут организовать пространство на рабочем месте.{% endblock %}
 
 {% block meta %}
     <meta property="og:title"
-          content="{{ product.title | striptags }}">
+          content="{{ product.title | striptags }} Paragraph. Цена от {{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}">
     <meta property="og:description"
-          content="{{ product.shortDescription }}">
+          content="Купить &quot;{{ product.title | striptags }}&quot; для офиса и дома вы можете на сайте Paragraph. Наши канцтовары помогут организовать пространство на рабочем месте.">
     <meta property="og:image"
           content="{{ app.request.getSchemeAndHttpHost() }}{{ vich_uploader_asset(product.childProducts[0].gallery[0].image, 'imageFile') }}">
 {% endblock %}
@@ -23,7 +23,6 @@
         {title :  "[#{product.title | striptags}]" },
     ] } %}
 
-    <h1 class="invisible">{{ product.title | striptags }}</h1>
     <section class="section section_light product-page">
         <div class="container">
             {% include "components/product/product-card.html.twig" with {product, current: product.childProducts[0], isPage: true} %}
