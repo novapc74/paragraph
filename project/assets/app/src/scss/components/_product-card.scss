@@ -11,7 +11,7 @@
     margin-bottom: 20px;
     @media screen and (min-width: 768px) {
       display: flex;
-      height: 726px;
+      height: 75vw;
     }
     @media screen and (min-width: 1024px) {
       position: sticky;
@@ -33,10 +33,9 @@
     margin-bottom: 15px;
 
     @media screen and (min-width: 768px) {
-      width: calc(100% - 176px - 15px);
+      width: 75vw;
       margin-bottom: 0;
       margin-right: 15px;
-      aspect-ratio: unset;
     }
     @media screen and (min-width: 1024px) {
       width: 100%;

@@ -13,7 +13,6 @@
                 {% for gallery in current.gallery %}
                     <div class="swiper-slide product-card-swiper__slide">
                         <picture>
-                            {#                                    <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}" type="image/webp"> #}
                             <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
                                     type="image/jpeg">
                             <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
@@ -28,10 +27,9 @@
                 {% for gallery in current.gallery %}
                     <div class="swiper-slide product-card-thumbs__slide">
                         <picture>
-                            {#                                    <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}" type="image/webp"> #}
-                            <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                            <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
                                     type="image/jpeg">
-                            <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
+                            <img src="{{ vich_uploader_asset(gallery.image, 'imageFile') }}"
                                  alt="{{ current.title | striptags }}" loading="lazy">
                         </picture>
                     </div>
