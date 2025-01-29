@@ -26,7 +26,7 @@
         <div class="swiper product-card__thumbs product-card-thumbs">
             <div class="swiper-wrapper product-card-thumbs__wrapper">
                 {% for gallery in current.gallery %}
-                    <div class="swiper-slide product-card-thumbs__slide">А
+                    <div class="swiper-slide product-card-thumbs__slide">
                         <picture>
                             {#                                    <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}" type="image/webp"> #}
                             <source srcset="{{ vich_uploader_asset(gallery.image, 'imageFile') | imagine_filter_cache('medium') }}"
@@ -48,11 +48,13 @@
         {% endif %}
 
         <div class="product-card__title">{{ current.color.modernTitle }}</div>
-        <div class="product-card__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-            от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
-            <meta itemprop="price" content="{{ product.price }}" />
-            <meta itemprop="priceCurrency" content="RUB" />
-        </div>
+        {% if product.price %}
+            <div class="product-card__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
+                <meta itemprop="price" content="{{ product.price }}" />
+                <meta itemprop="priceCurrency" content="RUB" />
+            </div>
+        {% endif %}
         <p class="product-card__description" itemprop="description">
             {{ product.shortDescription }}
         </p>

@@ -54,9 +54,11 @@
                                             <div class="catalog-product__bottom">
                                                 <div class="catalog-product__info">
                                                     <span class="catalog-product__title">{{ product.title | striptags }}</span>
-                                                    <span class="catalog-product__price">
-                                                        от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
-                                                    </span>
+                                                    {% if product.price %}
+                                                        <span class="catalog-product__price">
+                                                            от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
+                                                        </span>
+                                                    {% endif %}
                                                 </div>
                                                 <svg>
                                                     <use xlink:href="{{ asset('build/images/svg/sprite.svg') }}#arrow-icon"></use>
