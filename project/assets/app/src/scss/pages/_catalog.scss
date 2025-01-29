@@ -23,10 +23,10 @@
     display: grid;
     gap: 20px;
     @media screen and (min-width: 768px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
     }
     @media screen and (min-width: 1024px) {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }
@@ -51,12 +51,9 @@
 
 .catalog-product {
   &__image {
-    height: 410px;
+    aspect-ratio: 1;
     margin-bottom: 20px;
     overflow: hidden;
-    @media screen and (min-width: 768px) {
-      height: 250px;
-    }
 
     img {
       transition: transform .3s ease;
