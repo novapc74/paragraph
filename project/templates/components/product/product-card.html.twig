@@ -45,7 +45,7 @@
             <h3 class="product-card__heading" itemprop="name">{{ product.title | striptags }}</h3>
         {% endif %}
 
-        <div class="product-card__title">{{ current.color.modernTitle }}</div>
+{#        <div class="product-card__title">{{ current.color.modernTitle }}</div>#}
         {% if product.price %}
             <div class="product-card__price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
                 от <span>{{ product.price | format_currency('RUB',  {fraction_digit: 0}) }}</span> за шт.
