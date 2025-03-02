@@ -62,7 +62,11 @@ export class Product {
             })
             if (data) {
                 toggleActiveClass(color, this.product, '.product-colors__item', 'active')
-                this.title.textContent = data.title
+
+                if(this.title) {
+                    this.title.textContent = data.title
+                }
+                
                 this.color.textContent = data.color
                 this.#resetMarketplaces(data.marketplaces)
                 this.#resetSwipers(data.images)
