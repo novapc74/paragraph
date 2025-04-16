@@ -129,6 +129,7 @@
     cursor: pointer;
     transition: transform .4s ease;
     aspect-ratio: 1;
+    background-color: $white;
 
     &:before {
       content: '';
@@ -138,6 +139,10 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity .4s ease;
+    }
+
+    img {
+      object-fit: contain;
     }
 
     &_active {
@@ -378,6 +383,16 @@
     }
     &__link:hover &__logo {
       opacity: 1;
+    }
+  }
+}
+
+.product-card-swiper {
+  &__slide {
+    background-color: $white;
+    
+    img {
+      object-fit: contain;
     }
   }
 }

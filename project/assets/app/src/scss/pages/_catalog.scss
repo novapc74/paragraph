@@ -54,9 +54,11 @@
     aspect-ratio: 1;
     margin-bottom: 20px;
     overflow: hidden;
+    background-color: $white;
 
     img {
       transition: transform .3s ease;
+      object-fit: contain;
     }
   }
 
